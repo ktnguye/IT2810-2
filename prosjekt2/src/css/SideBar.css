@@ -1,0 +1,18 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: inherit;
+  align-items: center;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  z-index: 100;
+}
