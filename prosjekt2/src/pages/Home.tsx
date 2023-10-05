@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <TopBar setGlobalSearchTerm={updateSearchTerm} />
       <SideBar />
-      <SongFeed searchTerm={searchTerm} />
+      <SongFeed />
       <SongDisplay />
     </div>
   );

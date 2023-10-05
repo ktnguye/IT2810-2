@@ -1,0 +1,72 @@
+.song-card {
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+
+  transition: all 0.7s ease;
+  box-shadow: 0px 23px 10px -15px rgba(0, 0, 0, 0.15);
+
+  text-align: left;
+}
+
+.song-card:hover {
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05, 1.05);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.song-card .song-cover {
+  height: 100%;
+  width: 100%;
+}
+
+.song-card .song-info {
+  padding-left: 20px;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.song-title {
+  margin-bottom: 0px;
+}
+
+.song-artist {
+  margin: 0px;
+}
+
+.song-card .song-genres {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+.song-card:hover .song-cover {
+  height: 100%;
+  opacity: 0.7;
+}
+
+.song-genres {
+  margin-top: 0px;
+  color: #f0f0f0;
+}
+
+.song-cover-fade {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, #000 -14.57%, rgba(46, 46, 46, 0) 80.57%);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
