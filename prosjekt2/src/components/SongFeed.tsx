@@ -1,17 +1,17 @@
-import React from "react";
-import Song from "../components/Song";
+import React from 'react';
+import Song from '../components/Song';
 
 const songs: Song[] = [
   {
-    title: "Hot Line Bling",
-    artist: "Drake",
-    genres: ["Rap", "Pop"],
+    title: 'Hot Line Bling',
+    artist: 'Drake',
+    genres: ['Rap', 'Pop'],
     year: 2015,
-    album: "Views",
+    album: 'Views',
     length: 4.27,
     rating: 4.5,
     cover:
-      "https://upload.wikimedia.org/wikipedia/en/a/af/Drake_-_Views_cover.jpg",
+      'https://upload.wikimedia.org/wikipedia/en/a/af/Drake_-_Views_cover.jpg',
   },
 ];
 

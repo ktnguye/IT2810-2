@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Genre from "./Genre";
-import "../css/TopBar.css";
+import React, { useState } from 'react';
+import Genre from './Genre';
+import '../css/TopBar.css';
 
 export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;
 }) {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const updateSearchTerm = (newSearchTerm: string) => {
     props.setGlobalSearchTerm(newSearchTerm);
