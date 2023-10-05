@@ -1,8 +1,8 @@
-import React from "react";
-import "../css/SideBar.css";
-import Genre from "./Genre";
+import React from 'react';
+import '../css/SideBar.css';
+import Genre from './Genre';
 
-const genres = ["Rap", "Pop", "Rock", "Country", "Jazz", "Classical"];
+const genres = ['Rap', 'Pop', 'Rock', 'Country', 'Jazz', 'Classical'];
 
 export default function SideBar() {
   return (
