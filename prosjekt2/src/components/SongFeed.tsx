@@ -25,6 +25,105 @@ const songs: Song[] = [
     cover:
       "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
   },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },{
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  {
+    title: "The Hills",
+    artist: "The Weeknd",
+    genres: ["Rap", "Pop"],
+    year: 2015,
+    album: "Beauty Behind the Madness",
+    length: 4.02,
+    rating: 4,
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/af/The_Weeknd_-_The_Hills.jpg",
+  },
+  
 ];
 
 export default function SongFeed() {

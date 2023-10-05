@@ -1,7 +1,13 @@
 .song-feed {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
+  margin-top: 5.5rem;
+  width: 80%;
+    flex-wrap: wrap;
+    /* scroll */
+    overflow-y: scroll;
+    height: 100vh;
+    /* hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
 }

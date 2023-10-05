@@ -1,11 +1,9 @@
 .side-bar {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20rem;
-  height: 100%;
+  position: relative;
+  width: 20%;
+  height: 100vh;
   background-color: #1a1a1a;
   color: #ffffff;
   font-size: 1.2rem;

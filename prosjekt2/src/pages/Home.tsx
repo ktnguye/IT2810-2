@@ -11,7 +11,11 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100vw',
+    }}>
       <TopBar setGlobalSearchTerm={updateSearchTerm} />
       <SideBar />
       <SongFeed />
