@@ -20,3 +20,10 @@
   width: 100%;
   height: auto;
 }
+
+@media only screen and (max-width: 500px) {
+  .side-bar {
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+  }
+}

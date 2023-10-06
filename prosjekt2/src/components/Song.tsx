@@ -1,9 +1,10 @@
 import React from 'react';
-import "../css/Song.css";
+import '../css/Song.css';
+import { Link } from 'react-router-dom';
 
 export default function Song(props: { song: Song }) {
   return (
-    <div className="song-card">
+    <Link to={`/song/${props.song.id}`} className="song-card">
       <img className="song-cover" src={props.song.cover} alt="cover" />
       <div className="song-cover-fade"></div>
       <div className="song-info">
@@ -13,12 +14,12 @@ export default function Song(props: { song: Song }) {
           {props.song.genres.map((genre, index) => {
             return (
               <span key={index} className="song-genre">
-                {genre} {index !== props.song.genres.length - 1 ? "• " : ""}
+                {genre} {index !== props.song.genres.length - 1 ? '• ' : ''}
               </span>
             );
           })}
         </h5>
       </div>
-    </div>
+    </Link>
   );
 }
