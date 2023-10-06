@@ -3,6 +3,7 @@ import TopBar from '../components/TopBar';
 import SideBar from '../components/SideBar';
 import SongFeed from '../components/SongFeed';
 import SongDisplay from '../components/SongDisplay';
+import '../css/Home.css';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,15 +12,15 @@ export default function Home() {
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'row',
-      width: '100vw',
-    }}>
-      <TopBar setGlobalSearchTerm={updateSearchTerm} />
+    <div className='home'>
       <SideBar />
-      <SongFeed />
-      <SongDisplay />
+      <div className='home-page-content'>
+        <TopBar setGlobalSearchTerm={updateSearchTerm} />
+        <div className='home-page-song-content'>
+          <SongFeed />
+          <SongDisplay />
+        </div>
+      </div>
     </div>
   );
 }
