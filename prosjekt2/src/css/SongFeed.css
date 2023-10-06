@@ -1,13 +1,9 @@
 .song-feed {
-  display: flex;
-  margin-top: 5.5rem;
-  width: 80%;
+    display: flex;
+    width: 70%;
     flex-wrap: wrap;
-    /* scroll */
     overflow-y: scroll;
-    height: 100vh;
-    /* hide scrollbar */
+    height: 90vh;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    
 }
