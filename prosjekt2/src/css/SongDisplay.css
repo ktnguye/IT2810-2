@@ -1,2 +1,21 @@
 .song-display {
+  background-color: #1a1a1a;
+  transition: width 0.3s;
+  width: 30%;
+  overflow: hidden;
+  text-wrap: wrap;
+  height: 90vh;
+}
+
+/* if screen width is less then 750px, set width to 50% */
+@media only screen and (max-width: 750px) {
+  .song-display {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .song-display {
+    width: 100%;
+  }
 }
