@@ -29,6 +29,15 @@
   padding-left: 1vw;
 }
 
+.side-bar h2 {
+  font-size: 1.7vw; /* Use vw units for responsive text size */
+  margin-bottom: 10px; /* Add some spacing at the bottom */
+  text-transform: uppercase; /* Convert text to uppercase */
+  color: #72abd9; /* Set a color that complements the linear gradient background */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  letter-spacing: 1px; /* Adjust letter spacing for better readability */
+}
+
 @media only screen and (max-width: 500px) {
   .side-bar {
     font-size: 0.8rem;
