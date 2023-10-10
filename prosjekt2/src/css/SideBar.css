@@ -6,18 +6,18 @@
   height: 100vh;
   background-color: #1a1a1a;
   color: #ffffff;
-  font-size: 1.7vw;
+  font-size: clamp(0.7rem, 1.7vw, 2.2rem);
   font-weight: 500;
   font-family: inherit;
   align-items: flex-start;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   box-sizing: border-box;
   z-index: 100;
   overflow-y: auto;
 }
 
 .side-bar-logo {
-  margin-top: 50px;
+  margin-top: 5vw;
   width: 100%;
   height: auto;
 }
@@ -40,8 +40,11 @@
 
 @media only screen and (max-width: 500px) {
   .side-bar {
-    font-size: 0.8rem;
-    padding: 0 0.5rem;
     width: 40%;
+    padding: 0.5rem;
+  }
+
+  .side-bar-logo {
+    margin-top: 10vw;
   }
 }
