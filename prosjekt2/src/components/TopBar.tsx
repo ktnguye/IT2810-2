@@ -13,6 +13,7 @@ export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;
 }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [order, setOrder] = useState(0);
 
   const setTerm = (newSearchTerm: string) => {
     props.setGlobalSearchTerm(newSearchTerm);
@@ -26,8 +27,8 @@ export default function TopBar(props: {
     { value: '4', label: 'Rating: Low-High' },
   ];
 
-  //remove anytype here when later implementing functionality
-  const handleChange = (selectedOption: any) => {
+  const handleChange = (selectedOption: ValueType<OptionType>) => {
+    setOrder(parseInt(selectedOption.value));
     console.log(`Option selected:`, selectedOption);
   };
 
