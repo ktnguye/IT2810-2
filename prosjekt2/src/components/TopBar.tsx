@@ -20,7 +20,6 @@ export default function TopBar(props: {
   };
 
   const options: OptionType[] = [
-    { value: '0', label: 'Default' },
     { value: '1', label: 'Name: A-Z' },
     { value: '2', label: 'Name: Z-A' },
     { value: '3', label: 'Rating: High-Low' },
