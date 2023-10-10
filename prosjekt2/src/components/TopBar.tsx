@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import Select from 'react-select';
-import ValueType from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import '../css/TopBar.css';
 import SearchBar from './SearchBar';
 
@@ -15,14 +14,23 @@ export default function TopBar(props: {
     setSearchTerm(newSearchTerm);
   };
 
+  type OptionType = {
+    value: string;
+    label: string;
+  };
+
   const options: OptionType[] = [
+    { value: '0', label: 'Default' },
     { value: '1', label: 'Name: A-Z' },
     { value: '2', label: 'Name: Z-A' },
     { value: '3', label: 'Rating: High-Low' },
     { value: '4', label: 'Rating: Low-High' },
   ];
 
-  const handleChange = (selectedOption: ValueType<OptionType>) => {
+  const handleChange = (selectedOption: SingleValue<OptionType>) => {
+    if (selectedOption == null) {
+      return;
+    }
     setOrder(parseInt(selectedOption.value));
     console.log(`Option selected:`, selectedOption.label);
   };
@@ -33,7 +41,7 @@ export default function TopBar(props: {
       <Select
         className="order-button"
         options={options}
-        onChange={handleChange}
+        onChange={(option) => handleChange(option)}
       />
     </div>
   );
