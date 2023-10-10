@@ -4,11 +4,6 @@ import ValueType from 'react-select';
 import '../css/TopBar.css';
 import SearchBar from './SearchBar';
 
-interface OptionType {
-  value: string;
-  label: string;
-}
-
 export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;
 }) {
@@ -29,7 +24,7 @@ export default function TopBar(props: {
 
   const handleChange = (selectedOption: ValueType<OptionType>) => {
     setOrder(parseInt(selectedOption.value));
-    console.log(`Option selected:`, selectedOption);
+    console.log(`Option selected:`, selectedOption.label);
   };
 
   return (

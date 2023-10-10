@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import '../css/TopBar.css';
 
-export default function SearchBar({ search }: any) {
+export default function SearchBar({
+  search,
+}: {
+  search: (term: string) => void;
+}) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

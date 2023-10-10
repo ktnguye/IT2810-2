@@ -142,7 +142,7 @@ const songs: Song[] = [
 ];
 
 export default function Home(props: { song?: Song }) {
-  let { id } = useParams();
+  const { id } = useParams();
 
   const [searchTerm, setSearchTerm] = useState('');
   const updateSearchTerm = (term: string) => {
