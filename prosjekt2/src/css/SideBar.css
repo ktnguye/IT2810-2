@@ -22,7 +22,7 @@
   height: auto;
 }
 
-.GenresDisplay {
+.genres-display {
   display: grid;
   grid-gap: 1vw;
   justify-items: flex-start;
