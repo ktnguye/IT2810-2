@@ -29,12 +29,7 @@
   padding: 0 1.5rem;
   box-sizing: border-box;
   z-index: 100;
-  border-radius: 5px;
-}
-
-.search-bar:hover {
-  transform: scale(1.02);
-  transition: transform 0.2s ease-in-out;
+  border-radius: 10px;
 }
 
 .order-button {
@@ -46,11 +41,6 @@
   padding-left: 1rem;
   box-sizing: border-box;
   z-index: 100;
-}
-
-.order-button:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s ease-in-out;
 }
 
 .order-button__control,
