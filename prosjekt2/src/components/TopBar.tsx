@@ -22,6 +22,7 @@ export default function TopBar(props: {
     { value: '4', label: 'Rating: Low-High' },
   ];
 
+  /**Does nothing now, but will be used to order songs */
   const handleChange = (selectedOption: SingleValue<OptionInterface>) => {
     if (selectedOption == null) {
       return;

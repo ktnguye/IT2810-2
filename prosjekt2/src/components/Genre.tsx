@@ -13,7 +13,10 @@ export default function Genre(props: {
   return (
     <button
       className={props.isSelected ? 'selected-genre-button' : 'genre-button'}
-      onClick={selectGenre.bind(null, props.genre)}
+      onClick={selectGenre.bind(
+        null,
+        props.genre
+      )} /**After a button is clicked, its css is changed */
     >
       {props.genre}
     </button>

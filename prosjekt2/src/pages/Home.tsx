@@ -170,6 +170,7 @@ export default function Home(props: { song?: SongInterface }) {
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={updateSearchTerm} />
         <div className="home-page-song-content">
+          {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
           {windowWidth <= 500 ? (
             props.song && id ? (
               <SongDisplay song={songs[parseInt(id)]} />
