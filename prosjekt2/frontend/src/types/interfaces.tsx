@@ -1,4 +1,4 @@
-interface Song {
+export interface SongInterface {
   id: number;
   title: string;
   artist: string;
@@ -8,4 +8,9 @@ interface Song {
   length: number;
   rating: number;
   cover: string;
+}
+
+export interface OptionInterface {
+  value: string;
+  label: string;
 }

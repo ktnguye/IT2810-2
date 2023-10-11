@@ -1,8 +1,9 @@
 import React from 'react';
 import '../css/Song.css';
 import { Link } from 'react-router-dom';
+import { SongInterface } from '../types/interfaces';
 
-export default function Song(props: { song: Song }) {
+export default function Song(props: { song: SongInterface }) {
   return (
     <Link to={`/song/${props.song.id}`} className="song-card">
       <img className="song-cover" src={props.song.cover} alt="cover" />
