@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Select, { SingleValue } from 'react-select';
 import '../css/TopBar.css';
 import SearchBar from './SearchBar';
+import { OptionInterface } from '../types/interfaces';
 
 export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;
@@ -14,19 +15,14 @@ export default function TopBar(props: {
     setSearchTerm(newSearchTerm);
   };
 
-  type OptionType = {
-    value: string;
-    label: string;
-  };
-
-  const options: OptionType[] = [
+  const options: OptionInterface[] = [
     { value: '1', label: 'Name: A-Z' },
     { value: '2', label: 'Name: Z-A' },
     { value: '3', label: 'Rating: High-Low' },
     { value: '4', label: 'Rating: Low-High' },
   ];
 
-  const handleChange = (selectedOption: SingleValue<OptionType>) => {
+  const handleChange = (selectedOption: SingleValue<OptionInterface>) => {
     if (selectedOption == null) {
       return;
     }
