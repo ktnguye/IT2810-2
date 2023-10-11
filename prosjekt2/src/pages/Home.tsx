@@ -5,9 +5,10 @@ import SongFeed from '../components/SongFeed';
 import SongDisplay from '../components/SongDisplay';
 import { useParams } from 'react-router-dom';
 import '../css/Home.css';
+import { SongInterface } from '../types/interfaces';
 import SongForm from './SongForm';
 
-const songs: Song[] = [
+const songs: SongInterface[] = [
   {
     id: 0,
     title: 'Hot Line Bling',
@@ -142,8 +143,8 @@ const songs: Song[] = [
   },
 ];
 
-export default function Home(props: { song?: Song }) {
-  let { id } = useParams();
+export default function Home(props: { song?: SongInterface }) {
+  const { id } = useParams();
 
   const [searchTerm, setSearchTerm] = useState('');
   const updateSearchTerm = (term: string) => {
