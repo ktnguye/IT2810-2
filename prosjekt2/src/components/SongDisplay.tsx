@@ -1,7 +1,8 @@
 import React from 'react';
 import '../css/SongDisplay.css';
+import { SongInterface } from '../types/interfaces';
 
-export default function SongDisplay(props: { song: Song }) {
+export default function SongDisplay(props: { song: SongInterface }) {
   return (
     <div className="song-display">
       <img className="song-display-cover" src={props.song.cover} alt="cover" />
