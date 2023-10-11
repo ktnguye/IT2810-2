@@ -18,10 +18,8 @@
 
 .search-bar {
   display: flex;
-  position: absolute;
-  top: 20;
   width: 40%;
-  height: 50%;
+  height: 60%;
   background-color: #ffffff;
   color: #1a1a1a;
   font-size: 1.2rem;
@@ -31,10 +29,27 @@
   padding: 0 1.5rem;
   box-sizing: border-box;
   z-index: 100;
+  border-radius: 10px;
+}
+
+.order-button {
+  color: #1a1a1a;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: inherit;
+  align-items: center;
+  padding-left: 1rem;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.order-button__control,
+.order-button__option {
+  color: black;
 }
 
 @media only screen and (max-width: 500px) {
   .search-bar {
-    width: 80%;
+    width: 50%;
   }
 }
