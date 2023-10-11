@@ -3,6 +3,7 @@ import Select, { SingleValue } from 'react-select';
 import '../css/TopBar.css';
 import SearchBar from './SearchBar';
 import { OptionInterface } from '../types/interfaces';
+import SongForm from '../pages/SongForm';
 
 export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;
@@ -31,6 +32,16 @@ export default function TopBar(props: {
     console.log(`Option selected:`, selectedOption.label);
   };
 
+  const [isShowingPopup, setIsShowingPopup] = useState(false);
+
+  const openPopup = () => {
+    setIsShowingPopup(true);
+  };
+
+  const closePopup = () => {
+    setIsShowingPopup(false);
+  };
+
   return (
     <div className="top-bar">
       <SearchBar search={setTerm} />
@@ -39,6 +50,12 @@ export default function TopBar(props: {
         options={options}
         onChange={(option) => handleChange(option)}
       />
+      <button className="add-songform-button" onClick={openPopup}>
+        Add song
+      </button>
+      {
+        isShowingPopup && <SongForm closePopup={closePopup} />
+      }
     </div>
   );
 }

@@ -164,6 +164,7 @@ export default function Home(props: { song?: SongInterface }) {
     };
   }, []);
 
+
   return (
     <div className="home">
       <SideBar />

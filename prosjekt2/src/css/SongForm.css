@@ -1,0 +1,43 @@
+.song-form-page {
+    position: fixed;
+    display: flex;
+    padding: 0 5% 2% 5%;
+    z-index: 100;
+    background-color: black;
+    flex-direction: row;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+
+.song-form {
+    padding-left: 5%;
+    font-size: large;
+    text-align: left;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-song-button {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-size: 1.2rem;
+}
+
+.close-songform-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    margin: 1% 1% 0 0;
+}
