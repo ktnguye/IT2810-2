@@ -6,7 +6,6 @@ import SongDisplay from '../components/SongDisplay';
 import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
-import SongForm from './SongForm';
 
 const songs: SongInterface[] = [
   {
@@ -165,16 +164,12 @@ export default function Home(props: { song?: SongInterface }) {
     };
   }, []);
 
-  const [isShowingPopup, setIsShowingPopup] = useState(false);
 
   return (
     <div className="home">
       <SideBar />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={updateSearchTerm} />
-        <button className="add-song-button" onClick={() => setIsShowingPopup(true)}>
-          Add song
-        </button>
         <div className="home-page-song-content">
           {windowWidth <= 500 ? (
             props.song && id ? (
@@ -192,11 +187,6 @@ export default function Home(props: { song?: SongInterface }) {
           )}
         </div>
       </div>
-      {
-        isShowingPopup && (
-          <SongForm />
-        )
-      }
     </div>
   );
 }

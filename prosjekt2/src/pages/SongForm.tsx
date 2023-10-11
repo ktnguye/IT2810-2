@@ -1,7 +1,11 @@
 import { useState } from "react";
 import '../css/SongForm.css'
 
-export default function SongForm() {
+interface SongFormProps {
+    closePopup: () => void;
+}
+
+export default function SongForm({ closePopup }: SongFormProps) {
     const [file, setFile] = useState<File | null>(null);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,9 +14,12 @@ export default function SongForm() {
         }
     };
 
+    const genres = ['Rap', 'Pop', 'Rock', 'Country', 'Jazz', 'Classical', 'Metal'];
+
     return (
         <div className="song-form-page">
             <div className="song-form">
+                <button className="close-songform-button" onClick={closePopup}>X</button>
                 <h1>Add New Song</h1>
                 <form action="">
                     <label>
@@ -30,16 +37,19 @@ export default function SongForm() {
                 <label>
                         Genre: <select name="genre" >
                             <option value="Pop">Pop</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Pop">Pop</option>
                         </select>
                 </label>
                     <label>
                         Cover:<input type="file" accept="image/*" required onChange={handleFileChange} />
                     </label>
                     <br /> <br />
-                <button className="button green" type="submit">
+                    <button className="add-song-button" type="submit">
                         Add song
                 </button>
                 </form>
+
             </div>
         </div>
     );
