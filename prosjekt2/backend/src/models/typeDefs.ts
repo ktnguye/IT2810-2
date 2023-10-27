@@ -4,10 +4,13 @@ export const typeDefs = gql`
   type Query {
     greetings: String
     welcome(name: String!): String
+    songs: [Song]
+    song(id: ID): Song
   }
 
   # Song object
   type Song {
+    id: ID
     title: String
     artist: String
     genres: [String]
@@ -30,5 +33,17 @@ export const typeDefs = gql`
       rating: Float
       cover: String
     ): Song
+    update(
+      id: ID
+      title: String
+      artist: String
+      genres: [String]
+      year: Float
+      album: String
+      length: Float
+      rating: Float
+      cover: String
+    ): Song
+    delete(id: ID): Song
   }
 `;
