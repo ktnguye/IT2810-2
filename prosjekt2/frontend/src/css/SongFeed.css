@@ -1,0 +1,25 @@
+.song-feed {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  max-height: 90vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin: 0px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* if screen width is less then 750px, set width to 50% */
+@media only screen and (max-width: 750px) {
+  .song-feed {
+    width: 40%;
+    flex-grow: 1;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .song-feed {
+    width: 100%;
+  }
+}
