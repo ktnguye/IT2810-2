@@ -15,3 +15,19 @@ export const GET_SONGS = gql`
     }
   }
 `;
+
+export const GET_SONGS_BY_TITLE = gql`
+  query SongsByTitle($title: String!) {
+    songsByTitle(title: $title) {
+      id
+      title
+      artist
+      genres
+      year
+      album
+      length
+      rating
+      cover
+    }
+  }
+`;

@@ -7,33 +7,59 @@ import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_SONGS } from '../graphql/queries';
+import { GET_SONGS, GET_SONGS_BY_TITLE } from '../graphql/queries';
 
 export default function Home(props: { song?: SongInterface }) {
-  const { error, loading, data } = useQuery(GET_SONGS);
-
+  const [searchTerm, setSearchTerm] = useState('');
   const [songs, setSongs] = useState<SongInterface[]>([]);
+  const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
+    return (
+      props.song || {
+        id: '',
+        title: '',
+        artist: '',
+        album: '',
+        year: 0,
+        length: 0,
+        rating: 0,
+        cover: '',
+        genres: [],
+      }
+    );
+  });
 
-  const [selectedSong, setSelectedSong] = useState<SongInterface>(
-    props.song || {
-      id: '',
-      title: '',
-      artist: '',
-      cover: '',
-      genres: [],
-      year: 0,
-      album: '',
-      length: 0,
-      rating: 0,
-    }
-  );
+  const {
+    error: errorAll,
+    loading: loadingAll,
+    data: dataAll,
+  } = useQuery(GET_SONGS);
+
+  const {
+    error: errorByTitle,
+    loading: loadingByTitle,
+    data: dataByTitle,
+  } = useQuery(GET_SONGS_BY_TITLE, {
+    variables: { title: searchTerm },
+  });
 
   useEffect(() => {
-    console.log(data);
-    if (data) {
-      setSongs(data.songs);
+    console.log('dataAll', dataAll);
+    if (dataAll) {
+      setSongs(dataAll.songs);
     }
-  }, [data]);
+  }, []);
+
+  function activateSearch(Term: string) {
+    console.log('Term', Term);
+    setSearchTerm(Term);
+  }
+
+  useEffect(() => {
+    console.log(searchTerm);
+    if (dataByTitle) {
+      setSongs(dataByTitle.songsByTitle);
+    }
+  }, [searchTerm]);
 
   const { id } = useParams();
 
@@ -46,11 +72,6 @@ export default function Home(props: { song?: SongInterface }) {
       }
     }
   }, [id, songs]);
-
-  const [searchTerm, setSearchTerm] = useState('');
-  const updateSearchTerm = (term: string) => {
-    setSearchTerm(term);
-  };
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -70,7 +91,7 @@ export default function Home(props: { song?: SongInterface }) {
     <div className="home">
       <SideBar />
       <div className="home-page-content">
-        <TopBar setGlobalSearchTerm={updateSearchTerm} />
+        <TopBar setGlobalSearchTerm={activateSearch} />
         <div className="home-page-song-content">
           {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
           {windowWidth <= 500 ? (

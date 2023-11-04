@@ -16,6 +16,11 @@ export const resolvers = {
       const song = await Song.findById(args.id);
       return song;
     },
+    songsByTitle: async (parent, args) => {
+      const { title } = args;
+      const songs = await Song.find({ title: { $regex: title } });
+      return songs;
+    },
   },
 
   Mutation: {
