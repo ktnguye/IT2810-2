@@ -5,6 +5,7 @@ export const typeDefs = gql`
     greetings: String
     welcome(name: String!): String
     songs: [Song]
+    next12songs(index: Int): [Song]
     song(id: ID): Song
   }
 
