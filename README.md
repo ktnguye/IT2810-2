@@ -3,7 +3,7 @@
 ### Setup & Startup
 
 1. **Prerequisites**:
-   - Install Node.js v20.5+ and npm v9.8+.
+   - Install Node.js v19.6+ and npm v9.4+.
    - Ensure Vite 4.4+ is setup.
 
 2. **Installation**:
