@@ -1,10 +1,14 @@
 import React from 'react';
 import '../css/SongDisplay.css';
 import { SongInterface } from '../types/interfaces';
+import { Link } from 'react-router-dom';
 
 export default function SongDisplay(props: { song: SongInterface }) {
   return (
     <div className="song-display">
+      <Link to={'/'} className="back-button">
+        {'<-'}
+      </Link>
       <h2 className="song-display-title">{props.song.title}</h2>
       <img className="song-display-cover" src={props.song.cover} alt="cover" />
       <div className="song-display-info">

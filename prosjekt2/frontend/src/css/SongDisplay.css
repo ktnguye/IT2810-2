@@ -1,6 +1,7 @@
 .song-display {
   display: flex;
   flex-direction: row;
+  position: relative;
   justify-content: space-around;
   align-items: center;
   background-color: #1a1a1a;
@@ -13,6 +14,18 @@
 
 .song-display-cover {
   width: 30%;
+}
+
+.back-button {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 500px) {
