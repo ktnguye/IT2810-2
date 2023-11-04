@@ -14,6 +14,20 @@ export default function Home(props: { song?: SongInterface }) {
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
 
+  const [selectedSong, setSelectedSong] = useState<SongInterface>(
+    props.song || {
+      id: '',
+      title: '',
+      artist: '',
+      cover: '',
+      genres: [],
+      year: 0,
+      album: '',
+      length: 0,
+      rating: 0,
+    }
+  );
+
   useEffect(() => {
     console.log(data);
     if (data) {
@@ -22,6 +36,16 @@ export default function Home(props: { song?: SongInterface }) {
   }, [data]);
 
   const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      let songWithId = songs.find((song) => song.id === id);
+
+      if (songWithId) {
+        setSelectedSong(songWithId);
+      }
+    }
+  }, [id, songs]);
 
   const [searchTerm, setSearchTerm] = useState('');
   const updateSearchTerm = (term: string) => {
@@ -51,14 +75,14 @@ export default function Home(props: { song?: SongInterface }) {
           {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
           {windowWidth <= 500 ? (
             props.song && id ? (
-              <SongDisplay song={songs[parseInt(id)]} />
+              <SongDisplay song={selectedSong} />
             ) : (
               <SongFeed songs={songs} />
             )
           ) : props.song && id ? (
             <>
               <SongFeed songs={songs} />
-              <SongDisplay song={songs[parseInt(id)]} />
+              <SongDisplay song={selectedSong} />
             </>
           ) : (
             <SongFeed songs={songs} />

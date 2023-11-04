@@ -1,5 +1,5 @@
 export interface SongInterface {
-  id: number;
+  id: string;
   title: string;
   artist: string;
   genres: string[];
