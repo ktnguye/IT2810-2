@@ -46,7 +46,6 @@
 .song-card .song-genres {
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
-  font-size: 13px;
   letter-spacing: 2px;
   font-weight: 500;
 }
@@ -78,14 +77,16 @@
 /* make song-card scale width width when screen width is less then 750px */
 @media only screen and (max-width: 750px) {
   .song-card {
-    width: 140px;
-    height: auto;
-    margin: 15px 0px;
+    width: 160px;
+    height: 160px;
+    font-size: 10px;
   }
 }
 
 @media only screen and (max-width: 500px) {
   .song-card {
-    width: 45%;
+    width: 100px;
+    height: 100px;
+    font-size: 7px;
   }
 }
