@@ -43,14 +43,12 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   useEffect(() => {
-    console.log('dataAll', dataAll);
     if (dataAll) {
       setSongs(dataAll.songs);
     }
   }, []);
 
   function activateSearch(Term: string) {
-    console.log('Term', Term);
     setSearchTerm(Term);
   }
 
@@ -61,6 +59,8 @@ export default function Home(props: { song?: SongInterface }) {
     if (dataByTitle) {
       console.log('updating view');
       setSongs(dataByTitle.songsByTitle);
+    } else {
+      setSongs([]);
     }
   }, [searchTerm]);
 

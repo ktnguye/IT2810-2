@@ -20,7 +20,6 @@ export default function SearchBar({
   };
 
   const handleSearch = (term: string) => {
-    console.log('term', term);
     search(term);
   };
 
