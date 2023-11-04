@@ -1,21 +1,25 @@
 .song-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   background-color: #1a1a1a;
   transition: width 0.3s;
-  width: 30%;
-  overflow: hidden;
+  width: 100%;
+  overflow-y: scroll;
   text-wrap: wrap;
   height: 90vh;
 }
 
-/* if screen width is less then 750px, set width to 50% */
-@media only screen and (max-width: 750px) {
-  .song-display {
-    width: 50%;
-  }
+.song-display-cover {
+  width: 30%;
 }
 
 @media only screen and (max-width: 500px) {
   .song-display {
+    flex-direction: column;
+  }
+  .song-display-cover {
     width: 100%;
   }
 }

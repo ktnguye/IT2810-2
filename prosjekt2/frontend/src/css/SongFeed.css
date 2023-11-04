@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
-  height: 90vh;
+  max-height: 90vh;
   scrollbar-width: none;
   -ms-overflow-style: none;
   margin: 0px;

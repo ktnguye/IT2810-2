@@ -73,17 +73,8 @@ export default function Home(props: { song?: SongInterface }) {
         <TopBar setGlobalSearchTerm={updateSearchTerm} />
         <div className="home-page-song-content">
           {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
-          {windowWidth <= 500 ? (
-            props.song && id ? (
-              <SongDisplay song={selectedSong} />
-            ) : (
-              <SongFeed songs={songs} />
-            )
-          ) : props.song && id ? (
-            <>
-              <SongFeed songs={songs} />
-              <SongDisplay song={selectedSong} />
-            </>
+          {props.song && id ? (
+            <SongDisplay song={selectedSong} />
           ) : (
             <SongFeed songs={songs} />
           )}
