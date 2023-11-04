@@ -9,8 +9,14 @@ export const resolvers = {
     //   await Song.find();
     // },
     songs: async () => {
-      const songs = await Song.find();
-      return songs;
+      const results = await Song.find().sort({ year: 1 }).limit(12);
+      return results;
+    },
+    next12songs: async (parent, args) => {
+      // get 12 songs after the index of the last song in the current list
+      const { index } = args;
+      const results = await Song.find().skip(index).limit(12);
+      return results;
     },
     song: async (parent, args) => {
       const song = await Song.findById(args.id);

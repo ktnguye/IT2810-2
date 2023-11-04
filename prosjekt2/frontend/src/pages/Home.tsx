@@ -7,10 +7,15 @@ import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_SONGS } from '../graphql/queries';
+import { GET_NEXT_SONGS } from '../graphql/queries';
 
 export default function Home(props: { song?: SongInterface }) {
-  const { error, loading, data } = useQuery(GET_SONGS);
+  const [index, setIndex] = useState<number>(0);
+  const [reachedEnd, setReachedEnd] = useState<boolean>(false);
+
+  const { error, loading, data } = useQuery(GET_NEXT_SONGS, {
+    variables: { index: index },
+  });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
 
@@ -29,10 +34,11 @@ export default function Home(props: { song?: SongInterface }) {
   );
 
   useEffect(() => {
-    console.log(data);
-    if (data) {
-      setSongs(data.songs);
+    if (data && data.next12songs) {
+      setSongs([...songs, ...data.next12songs]);
     }
+
+    setReachedEnd(data && data.next12songs.length < 12);
   }, [data]);
 
   const { id } = useParams();
@@ -52,20 +58,6 @@ export default function Home(props: { song?: SongInterface }) {
     setSearchTerm(term);
   };
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <div className="home">
       <SideBar />
@@ -76,7 +68,11 @@ export default function Home(props: { song?: SongInterface }) {
           {props.song && id ? (
             <SongDisplay song={selectedSong} />
           ) : (
-            <SongFeed songs={songs} />
+            <SongFeed
+              songs={songs}
+              setIndex={setIndex}
+              reachedEnd={reachedEnd}
+            />
           )}
         </div>
       </div>
