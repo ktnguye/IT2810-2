@@ -56,7 +56,10 @@ export default function Home(props: { song?: SongInterface }) {
 
   useEffect(() => {
     console.log(searchTerm);
+    console.log('dataByTitle', dataByTitle);
+    console.log('dataByTitle.songsByTitle', dataByTitle?.songsByTitle);
     if (dataByTitle) {
+      console.log('updating view');
       setSongs(dataByTitle.songsByTitle);
     }
   }, [searchTerm]);

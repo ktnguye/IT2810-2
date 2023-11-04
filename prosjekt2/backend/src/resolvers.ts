@@ -18,7 +18,7 @@ export const resolvers = {
     },
     songsByTitle: async (parent, args) => {
       const { title } = args;
-      const songs = await Song.find({ title: { $regex: title } });
+      const songs = await Song.find({ title: {$regex: title } });
       return songs;
     },
   },
