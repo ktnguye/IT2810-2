@@ -17,8 +17,9 @@ export default function SideBar() {
       </Link>
       <h2>Genre</h2>
       <div className="genres-display">
-        {genres.map((genre) => (
+        {genres.map((genre, index) => (
           <Genre
+            key={index}
             genre={genre}
             isSelected={genre === selectedGenre}
             selectGenre={setSelectedGenre}
