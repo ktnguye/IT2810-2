@@ -21,11 +21,6 @@
   cursor: pointer;
 }
 
-.song-card .song-cover {
-  height: 100%;
-  width: 100%;
-}
-
 .song-card .song-info {
   padding-left: 20px;
 
@@ -48,16 +43,6 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 500;
-}
-
-.song-card:hover .song-cover {
-  height: 100%;
-  opacity: 0.7;
-}
-
-.song-card:active .song-cover {
-  height: 100%;
-  opacity: 0.4;
 }
 
 .song-genres {

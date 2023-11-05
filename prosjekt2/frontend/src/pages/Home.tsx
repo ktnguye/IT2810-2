@@ -24,7 +24,6 @@ export default function Home(props: { song?: SongInterface }) {
       id: '',
       title: '',
       artist: '',
-      cover: '',
       genres: [],
       year: 0,
       album: '',

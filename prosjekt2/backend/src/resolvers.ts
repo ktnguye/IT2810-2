@@ -26,8 +26,7 @@ export const resolvers = {
 
   Mutation: {
     create: async (parent, args) => {
-      const { title, artist, genres, year, album, length, rating, cover } =
-        args;
+      const { title, artist, genres, year, album, length, rating } = args;
       const newSong = new Song({
         title,
         artist,
@@ -36,7 +35,6 @@ export const resolvers = {
         album,
         length,
         rating,
-        cover,
       });
       await newSong.save();
       return newSong;

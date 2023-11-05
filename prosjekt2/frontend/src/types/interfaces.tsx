@@ -7,7 +7,6 @@ export interface SongInterface {
   album: string;
   length: number;
   rating: number;
-  cover: string;
 }
 
 export interface OptionInterface {
