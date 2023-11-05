@@ -10,7 +10,6 @@ export default function SongDisplay(props: { song: SongInterface }) {
         {'<-'}
       </Link>
       <h2 className="song-display-title">{props.song.title}</h2>
-      <img className="song-display-cover" src={props.song.cover} alt="cover" />
       <div className="song-display-info">
         <h3 className="song-display-artist">
           {props.song.artist} ({props.song.year})

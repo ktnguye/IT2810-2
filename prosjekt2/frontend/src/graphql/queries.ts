@@ -11,7 +11,6 @@ export const GET_NEXT_SONGS = gql`
       album
       length
       rating
-      cover
     }
   }
 `;

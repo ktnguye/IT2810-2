@@ -19,7 +19,6 @@ export const typeDefs = gql`
     album: String
     length: Float
     rating: Float
-    cover: String
   }
 
   # Mutation
@@ -32,7 +31,6 @@ export const typeDefs = gql`
       album: String
       length: Float
       rating: Float
-      cover: String
     ): Song
     update(
       id: ID
@@ -43,7 +41,6 @@ export const typeDefs = gql`
       album: String
       length: Float
       rating: Float
-      cover: String
     ): Song
     delete(id: ID): Song
   }
