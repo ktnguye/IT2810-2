@@ -4,7 +4,7 @@
 
 1. **Prerequisites**:
    - Install Node.js v19.6+ and npm v9.4+.
-   - Ensure Vite 4.4+ is setup.
+   - Ensure Vite 4.4+ is set up.
 
 2. **Installation**:
    - Clone the repository: `https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-30/project-2.git`
@@ -14,6 +14,7 @@
    - Install dependencies: `npm install`
 
 3. **Starting the project**:
+   - Run the project in the backend directory: `npm run dev`
    - Run the project in the frontend directory: `npm run dev`
 
 4. **Testing**:
