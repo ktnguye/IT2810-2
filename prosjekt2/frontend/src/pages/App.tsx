@@ -15,7 +15,6 @@ const song: SongInterface = {
   id: '1',
   title: 'Song title',
   artist: 'Artist name',
-  cover: 'https://picsum.photos/seed/picsum/200/300',
   genres: ['Pop', 'Rock'],
   year: 2021,
   album: 'Album name',

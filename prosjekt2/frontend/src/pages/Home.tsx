@@ -7,10 +7,17 @@ import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_SONGS, GET_SONGS_BY_TITLE } from '../graphql/queries';
+import { GET_NEXT_SONGS, GET_SONGS_BY_TITLE } from '../graphql/queries';
 
 export default function Home(props: { song?: SongInterface }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [index, setIndex] = useState<number>(0);
+  const [reachedEnd, setReachedEnd] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  const { error, loading, data } = useQuery(GET_SONGS_BY_TITLE, {
+    variables: { index: index, title: searchTerm },
+  });
+
   const [songs, setSongs] = useState<SongInterface[]>([]);
   const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
     return (
@@ -46,6 +53,14 @@ export default function Home(props: { song?: SongInterface }) {
     setSearchTerm(Term);
   }
 
+  // useEffect(() => {
+  //   if (data && data.next12songs) {
+  //     setSongs([...songs, ...data.next12songs]);
+  //   }
+
+  //   setReachedEnd(data && data.next12songs.length < 12);
+  // }, [data]);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -58,20 +73,6 @@ export default function Home(props: { song?: SongInterface }) {
     }
   }, [id, songs]);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <div className="home">
       <SideBar />
@@ -79,19 +80,14 @@ export default function Home(props: { song?: SongInterface }) {
         <TopBar setGlobalSearchTerm={activateSearch} />
         <div className="home-page-song-content">
           {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
-          {windowWidth <= 500 ? (
-            props.song && id ? (
-              <SongDisplay song={selectedSong} />
-            ) : (
-              <SongFeed songs={songs} />
-            )
-          ) : props.song && id ? (
-            <>
-              <SongFeed songs={songs} />
-              <SongDisplay song={selectedSong} />
-            </>
+          {props.song && id ? (
+            <SongDisplay song={selectedSong} />
           ) : (
-            <SongFeed songs={songs} />
+            <SongFeed
+              songs={songs}
+              setIndex={setIndex}
+              reachedEnd={reachedEnd}
+            />
           )}
         </div>
       </div>

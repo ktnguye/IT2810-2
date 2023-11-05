@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const GET_SONGS = gql`
-  query {
-    songs {
+export const GET_NEXT_SONGS = gql`
+  query Next12songs($index: Int!) {
+    next12songs(index: $index) {
       id
       title
       artist
@@ -11,7 +11,6 @@ export const GET_SONGS = gql`
       album
       length
       rating
-      cover
     }
   }
 `;

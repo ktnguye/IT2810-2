@@ -10,7 +10,6 @@ const Song = mongoose.model(
     album: String,
     length: Number,
     rating: Number,
-    cover: String,
   })
 );
 

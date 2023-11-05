@@ -3,10 +3,13 @@ import '../css/Song.css';
 import { Link } from 'react-router-dom';
 import { SongInterface } from '../types/interfaces';
 
-export default function Song(props: { song: SongInterface }) {
+export default function Song(props: { song: SongInterface; color: string }) {
   return (
-    <Link to={`/song/${props.song.id}`} className="song-card">
-      <img className="song-cover" src={props.song.cover} alt="cover" />
+    <Link
+      to={`/song/${props.song.id}`}
+      className="song-card"
+      style={{ backgroundColor: props.color }}
+    >
       <div className="song-cover-fade"></div>
       <div className="song-info">
         <h2 className="song-title">{props.song.title}</h2>
