@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Select, { SingleValue } from 'react-select';
 import '../css/TopBar.css';
 import SearchBar from './SearchBar';

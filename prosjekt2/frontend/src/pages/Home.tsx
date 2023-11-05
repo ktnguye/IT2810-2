@@ -9,6 +9,10 @@ import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
 import { GET_SONGS_BY_TITLE } from '../graphql/queries';
 
+interface DataProps {
+  songsByTitle: SongInterface[];
+}
+
 export default function Home(props: { song?: SongInterface }) {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
@@ -19,8 +23,13 @@ export default function Home(props: { song?: SongInterface }) {
   let oldIndex = 0;
   let oldOrder = 0;
 
-  const { error, loading, data } = useQuery(GET_SONGS_BY_TITLE, {
-    variables: { title: searchTerm, index: index, order: order, genre: genre },
+  const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
+    variables: {
+      title: searchTerm,
+      index: index,
+      order: order,
+      genre: genre,
+    },
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
@@ -45,15 +54,19 @@ export default function Home(props: { song?: SongInterface }) {
       if (oldIndex !== index) {
         if (oldOrder !== order) {
           setSongs([...data.songsByTitle]);
+          oldOrder = order;
         }
         setSongs([...songs, ...data.songsByTitle]);
+        oldIndex = index;
       } else {
         setSongs([...data.songsByTitle]);
       }
     }
-    oldIndex = index;
-    oldOrder = order;
-    setReachedEnd(data && data.songsByTitle.length < 12);
+    if (data && data.songsByTitle.length < 12) {
+      setReachedEnd(true);
+    } else {
+      setReachedEnd(false);
+    }
   }, [data]);
 
   function activateSearch(Term: string) {
@@ -65,7 +78,7 @@ export default function Home(props: { song?: SongInterface }) {
 
   useEffect(() => {
     if (id) {
-      let songWithId = songs.find((song) => song.id === id);
+      const songWithId = songs.find((song) => song.id === id);
 
       if (songWithId) {
         setSelectedSong(songWithId);

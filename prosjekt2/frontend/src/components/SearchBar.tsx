@@ -11,7 +11,7 @@ export default function SearchBar({
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       search(searchTerm);
-    }, 500);
+    }, 300);
 
     return () => {
       clearTimeout(timeoutId);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../css/SideBar.css';
 import Genre from './Genre';
 // import songify logo from '../../public/songify-logo.png';
