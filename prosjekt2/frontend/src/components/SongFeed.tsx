@@ -3,6 +3,16 @@ import '../css/SongFeed.css';
 import { SongInterface } from '../types/interfaces';
 import { useState } from 'react';
 
+const songColors = [
+  '#2d004e', // Dark Indigo
+  '#000033', // Dark Blue
+  '#003300', // Dark Green
+  '#4d4d00', // Dark Olive
+  '#4c2800', // Dark Saddle Brown
+  '#663d00', // Dark Sienna
+  '#4d0000', // Dark Red
+];
+
 export default function SongFeed(props: {
   songs: SongInterface[];
   setIndex: (index: number) => void;
@@ -17,8 +27,12 @@ export default function SongFeed(props: {
 
   return (
     <div className="song-feed">
-      {props.songs.map((song) => (
-        <Song key={song.id} song={song} />
+      {props.songs.map((song, index) => (
+        <Song
+          key={song.id}
+          song={song}
+          color={songColors[index % songColors.length]}
+        />
       ))}
       {!props.reachedEnd && (
         <button className="load-more-button" onClick={loadMore}>
