@@ -6,18 +6,17 @@ import { OptionInterface } from '../types/interfaces';
 
 export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;
+  setOrder: (order: number) => void;
 }) {
-  const [order, setOrder] = useState(0);
-
   const search = (term: string) => {
     props.setGlobalSearchTerm(term);
   };
 
   const options: OptionInterface[] = [
-    { value: '1', label: 'Name: A-Z' },
-    { value: '2', label: 'Name: Z-A' },
-    { value: '3', label: 'Rating: High-Low' },
-    { value: '4', label: 'Rating: Low-High' },
+    { value: '0', label: 'Name: A-Z' },
+    { value: '1', label: 'Name: Z-A' },
+    { value: '2', label: 'Year: Newest First' },
+    { value: '3', label: 'Year: Oldest First' },
   ];
 
   /**Does nothing now, but will be used to order songs */
@@ -25,7 +24,7 @@ export default function TopBar(props: {
     if (selectedOption == null) {
       return;
     }
-    setOrder(parseInt(selectedOption.value));
+    props.setOrder(parseInt(selectedOption.value));
     console.log(`Option selected:`, selectedOption.label);
   };
 
@@ -35,6 +34,7 @@ export default function TopBar(props: {
       <Select
         className="order-button"
         options={options}
+        placeholder="Order by"
         onChange={(option) => handleChange(option)}
       />
     </div>
