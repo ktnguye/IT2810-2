@@ -5,10 +5,24 @@ import Genre from './Genre';
 import songifyLogo from '../assets/songify-logo.png';
 import { Link } from 'react-router-dom';
 
-const genres = ['Rap', 'Pop', 'Rock', 'Country', 'Jazz', 'Classical', 'Metal'];
+const genres = [
+  'Rap',
+  'Pop',
+  'Rock',
+  'Country',
+  'Jazz',
+  'Classical',
+  'Metal',
+  'Bangers',
+];
 
-export default function SideBar() {
+export default function SideBar(props: { setGenre: (genre: string) => void }) {
   const [selectedGenre, setSelectedGenre] = useState<string>('');
+
+  const setGenre = (genre: string) => {
+    setSelectedGenre(genre);
+    props.setGenre(genre);
+  };
 
   return (
     <div className="side-bar">
@@ -22,7 +36,7 @@ export default function SideBar() {
             key={index}
             genre={genre}
             isSelected={genre === selectedGenre}
-            selectGenre={setSelectedGenre}
+            selectGenre={setGenre}
           />
         ))}
       </div>
