@@ -15,16 +15,9 @@ const songColors = [
 
 export default function SongFeed(props: {
   songs: SongInterface[];
-  setIndex: (index: number) => void;
+  loadMore: () => void;
   reachedEnd: boolean;
 }) {
-  const [index, setIndex] = useState<number>(0);
-
-  function loadMore() {
-    props.setIndex(index + 12);
-    setIndex(index + 12);
-  }
-
   return (
     <div className="song-feed">
       {props.songs.map((song, index) => (
@@ -35,7 +28,7 @@ export default function SongFeed(props: {
         />
       ))}
       {!props.reachedEnd && (
-        <button className="load-more-button" onClick={loadMore}>
+        <button className="load-more-button" onClick={props.loadMore}>
           Load more
         </button>
       )}

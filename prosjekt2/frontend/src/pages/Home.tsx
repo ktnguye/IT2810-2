@@ -7,15 +7,17 @@ import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_NEXT_SONGS, GET_SONGS_BY_TITLE } from '../graphql/queries';
+import { GET_SONGS_BY_TITLE } from '../graphql/queries';
 
 export default function Home(props: { song?: SongInterface }) {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
 
+  let oldIndex = 0;
+
   const { error, loading, data } = useQuery(GET_SONGS_BY_TITLE, {
-    variables: { index: index, title: searchTerm },
+    variables: { title: searchTerm, index: index },
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
@@ -29,37 +31,28 @@ export default function Home(props: { song?: SongInterface }) {
         year: 0,
         length: 0,
         rating: 0,
-        cover: '',
         genres: [],
       }
     );
   });
 
-  const {
-    error: errorByTitle,
-    loading: loadingByTitle,
-    data: dataByTitle,
-  } = useQuery(GET_SONGS_BY_TITLE, {
-    variables: { title: searchTerm },
-  });
-
   useEffect(() => {
-    if (dataByTitle) {
-      setSongs(dataByTitle.songsByTitle);
+    if (data) {
+      console.log(oldIndex, index);
+      if (oldIndex !== index) {
+        setSongs([...songs, ...data.songsByTitle]);
+        oldIndex = index;
+      } else {
+        setSongs([...data.songsByTitle]);
+      }
     }
-  }, [dataByTitle]);
+    setReachedEnd(data && data.songsByTitle.length < 12);
+  }, [data]);
 
   function activateSearch(Term: string) {
+    setIndex(0);
     setSearchTerm(Term);
   }
-
-  // useEffect(() => {
-  //   if (data && data.next12songs) {
-  //     setSongs([...songs, ...data.next12songs]);
-  //   }
-
-  //   setReachedEnd(data && data.next12songs.length < 12);
-  // }, [data]);
 
   const { id } = useParams();
 
@@ -73,6 +66,10 @@ export default function Home(props: { song?: SongInterface }) {
     }
   }, [id, songs]);
 
+  const loadMore = () => {
+    setIndex(index + 12);
+  };
+
   return (
     <div className="home">
       <SideBar />
@@ -85,7 +82,7 @@ export default function Home(props: { song?: SongInterface }) {
           ) : (
             <SongFeed
               songs={songs}
-              setIndex={setIndex}
+              loadMore={loadMore}
               reachedEnd={reachedEnd}
             />
           )}
