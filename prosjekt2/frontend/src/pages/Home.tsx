@@ -14,12 +14,13 @@ export default function Home(props: { song?: SongInterface }) {
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
+  const [genre, setGenre] = useState<string>('');
 
   let oldIndex = 0;
   let oldOrder = 0;
 
   const { error, loading, data } = useQuery(GET_SONGS_BY_TITLE, {
-    variables: { title: searchTerm, index: index, order: order },
+    variables: { title: searchTerm, index: index, order: order, genre: genre },
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
@@ -77,13 +78,18 @@ export default function Home(props: { song?: SongInterface }) {
     setOrder(newOrder);
   };
 
+  const setNewGenre = (newGenre: string) => {
+    setIndex(0);
+    setGenre(newGenre);
+  };
+
   const loadMore = () => {
     setIndex(index + 12);
   };
 
   return (
     <div className="home">
-      <SideBar />
+      <SideBar setGenre={setNewGenre} />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">

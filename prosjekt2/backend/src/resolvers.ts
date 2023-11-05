@@ -17,17 +17,20 @@ export const resolvers = {
       return song;
     },
     songsByTitle: async (parent, args) => {
-      const { title, index, order } = args;
+      const { title, index, order, genre } = args;
 
       const sortingOptions = [
         { title: 1, year: 1, _id: 1 },
-        { title: -1, year: 1, _id: 1 },
+        { title: -1, year: -1, _id: 1 },
         { year: -1, title: 1, _id: 1 },
-        { year: 1, title: 1, _id: 1 },
+        { year: 1, title: -1, _id: 1 },
       ];
+
+      const genreFilter = genre === '' ? { $regex: genre } : { $all: [genre] };
 
       const songs = await Song.find({
         title: { $regex: title, $options: 'i' },
+        genres: genreFilter,
       })
         .sort(sortingOptions[order])
         .skip(index)

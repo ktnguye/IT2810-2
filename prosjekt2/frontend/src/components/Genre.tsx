@@ -7,7 +7,11 @@ export default function Genre(props: {
   selectGenre: (genre: string) => void;
 }) {
   const selectGenre = (genre: string) => {
-    props.selectGenre(genre);
+    if (props.isSelected) {
+      props.selectGenre('');
+    } else {
+      props.selectGenre(genre);
+    }
   };
 
   return (

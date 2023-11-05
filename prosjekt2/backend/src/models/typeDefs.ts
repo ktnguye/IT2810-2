@@ -6,7 +6,7 @@ export const typeDefs = gql`
     welcome(name: String!): String
     songs: [Song]
     song(id: ID): Song
-    songsByTitle(title: String, index: Int, order: Int): [Song]
+    songsByTitle(title: String, index: Int, order: Int, genre: String): [Song]
   }
 
   # Song object
