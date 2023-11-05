@@ -14,15 +14,15 @@
    - Install dependencies: `npm install`
 
 3. **Starting the project**:
-   - Run the project in the `../backend`: `npm run dev`
-   - Run the project in the `../frontend`: `npm run dev`
+   - Run the project: `cd backend` then `npm run dev`
+   - Run the project: `cd frontend` then `npm run dev`
 
 4. **Testing**:
    - Run tests: `npm run test` (Tests not implemented yet)
 
 4. **Code formatting**:
-   - Run linting in `../frontend`: `npm run lint`
-   - Run prettier in `../frontend`: `npx prettier --write .`
+   - Run linting: `cd frontend` then `npm run lint`
+   - Run prettier: `cd frontend` then `npx prettier --write .`
 
 ### Detailed documentation:
 [Here](https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-30/project-2/-/wikis/Documentation-for-Project-2)
