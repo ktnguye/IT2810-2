@@ -78,13 +78,18 @@ export default function Home(props: { song?: SongInterface }) {
     setOrder(newOrder);
   };
 
+  const setNewGenre = (newGenre: string) => {
+    setIndex(0);
+    setGenre(newGenre);
+  };
+
   const loadMore = () => {
     setIndex(index + 12);
   };
 
   return (
     <div className="home">
-      <SideBar setGenre={setGenre} />
+      <SideBar setGenre={setNewGenre} />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
