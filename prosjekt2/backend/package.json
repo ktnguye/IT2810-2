@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
     "prod": "tsc && node ./dist/index.js",
-    "start": "node index.js"
+    "start": "node app.ts"
   },
   "keywords": [],
   "author": "",

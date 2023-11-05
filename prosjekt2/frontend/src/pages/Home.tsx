@@ -7,38 +7,52 @@ import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_NEXT_SONGS } from '../graphql/queries';
+import { GET_SONGS_BY_TITLE } from '../graphql/queries';
 
 export default function Home(props: { song?: SongInterface }) {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const { error, loading, data } = useQuery(GET_NEXT_SONGS, {
-    variables: { index: index },
+  let oldIndex = 0;
+
+  const { error, loading, data } = useQuery(GET_SONGS_BY_TITLE, {
+    variables: { title: searchTerm, index: index },
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
-
-  const [selectedSong, setSelectedSong] = useState<SongInterface>(
-    props.song || {
-      id: '',
-      title: '',
-      artist: '',
-      genres: [],
-      year: 0,
-      album: '',
-      length: 0,
-      rating: 0,
-    }
-  );
+  const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
+    return (
+      props.song || {
+        id: '',
+        title: '',
+        artist: '',
+        album: '',
+        year: 0,
+        length: 0,
+        rating: 0,
+        genres: [],
+      }
+    );
+  });
 
   useEffect(() => {
-    if (data && data.next12songs) {
-      setSongs([...songs, ...data.next12songs]);
+    if (data) {
+      console.log(oldIndex, index);
+      if (oldIndex !== index) {
+        setSongs([...songs, ...data.songsByTitle]);
+        oldIndex = index;
+      } else {
+        setSongs([...data.songsByTitle]);
+      }
     }
-
-    setReachedEnd(data && data.next12songs.length < 12);
+    setReachedEnd(data && data.songsByTitle.length < 12);
   }, [data]);
+
+  function activateSearch(Term: string) {
+    setIndex(0);
+    setSearchTerm(Term);
+  }
 
   const { id } = useParams();
 
@@ -52,16 +66,15 @@ export default function Home(props: { song?: SongInterface }) {
     }
   }, [id, songs]);
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const updateSearchTerm = (term: string) => {
-    setSearchTerm(term);
+  const loadMore = () => {
+    setIndex(index + 12);
   };
 
   return (
     <div className="home">
       <SideBar />
       <div className="home-page-content">
-        <TopBar setGlobalSearchTerm={updateSearchTerm} />
+        <TopBar setGlobalSearchTerm={activateSearch} />
         <div className="home-page-song-content">
           {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
           {props.song && id ? (
@@ -69,7 +82,7 @@ export default function Home(props: { song?: SongInterface }) {
           ) : (
             <SongFeed
               songs={songs}
-              setIndex={setIndex}
+              loadMore={loadMore}
               reachedEnd={reachedEnd}
             />
           )}

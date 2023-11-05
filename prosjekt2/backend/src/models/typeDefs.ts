@@ -1,12 +1,12 @@
-const gql = require("graphql-tag");
+const gql = require('graphql-tag');
 
 export const typeDefs = gql`
   type Query {
     greetings: String
     welcome(name: String!): String
     songs: [Song]
-    next12songs(index: Int): [Song]
     song(id: ID): Song
+    songsByTitle(title: String, index: Int): [Song]
   }
 
   # Song object
