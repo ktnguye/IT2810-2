@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/TopBar.css';
 
 export default function SearchBar({
@@ -7,6 +7,17 @@ export default function SearchBar({
   search: (term: string) => void;
 }) {
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      console.log('searching for', searchTerm);
+      search(searchTerm);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [search, searchTerm]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = event.target.value;
@@ -24,22 +35,13 @@ export default function SearchBar({
   };
 
   return (
-    <>
-      <input
-        className="search-bar"
-        type="text"
-        placeholder="Search for song"
-        value={searchTerm}
-        onChange={handleChange}
-        onKeyDown={handleKeyPress}
-      />
-      <button
-        className="search-button"
-        onClick={() => handleSearch(searchTerm)}
-      >
-        {' '}
-        Hei{' '}
-      </button>
-    </>
+    <input
+      className="search-bar"
+      type="text"
+      placeholder="Search for song"
+      value={searchTerm}
+      onChange={handleChange}
+      onKeyDown={handleKeyPress}
+    />
   );
 }

@@ -29,12 +29,6 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   const {
-    error: errorAll,
-    loading: loadingAll,
-    data: dataAll,
-  } = useQuery(GET_SONGS);
-
-  const {
     error: errorByTitle,
     loading: loadingByTitle,
     data: dataByTitle,
@@ -43,26 +37,14 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   useEffect(() => {
-    if (dataAll) {
-      setSongs(dataAll.songs);
+    if (dataByTitle) {
+      setSongs(dataByTitle.songsByTitle);
     }
-  }, []);
+  }, [dataByTitle]);
 
   function activateSearch(Term: string) {
     setSearchTerm(Term);
   }
-
-  useEffect(() => {
-    console.log(searchTerm);
-    console.log('dataByTitle', dataByTitle);
-    console.log('dataByTitle.songsByTitle', dataByTitle?.songsByTitle);
-    if (dataByTitle) {
-      console.log('updating view');
-      setSongs(dataByTitle.songsByTitle);
-    } else {
-      setSongs([]);
-    }
-  }, [searchTerm]);
 
   const { id } = useParams();
 
