@@ -16,6 +16,7 @@ export default function Home(props: { song?: SongInterface }) {
   const [order, setOrder] = useState<number>(0);
 
   let oldIndex = 0;
+  let oldOrder = 0;
 
   const { error, loading, data } = useQuery(GET_SONGS_BY_TITLE, {
     variables: { title: searchTerm, index: index, order: order },
@@ -40,14 +41,17 @@ export default function Home(props: { song?: SongInterface }) {
   useEffect(() => {
     console.log(data);
     if (data) {
-      console.log(oldIndex, index);
       if (oldIndex !== index) {
+        if (oldOrder !== order) {
+          setSongs([...data.songsByTitle]);
+        }
         setSongs([...songs, ...data.songsByTitle]);
-        oldIndex = index;
       } else {
         setSongs([...data.songsByTitle]);
       }
     }
+    oldIndex = index;
+    oldOrder = order;
     setReachedEnd(data && data.songsByTitle.length < 12);
   }, [data]);
 
@@ -68,6 +72,11 @@ export default function Home(props: { song?: SongInterface }) {
     }
   }, [id, songs]);
 
+  const setNewOrder = (newOrder: number) => {
+    setIndex(0);
+    setOrder(newOrder);
+  };
+
   const loadMore = () => {
     setIndex(index + 12);
   };
@@ -76,7 +85,7 @@ export default function Home(props: { song?: SongInterface }) {
     <div className="home">
       <SideBar />
       <div className="home-page-content">
-        <TopBar setGlobalSearchTerm={activateSearch} setOrder={setOrder} />
+        <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
           {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
           {props.song && id ? (
