@@ -9,7 +9,7 @@ export const resolvers = {
     //   await Song.find();
     // },
     songs: async () => {
-      const results = await Song.find().sort({ year: 1 }).limit(12);
+      const results = await Song.find().sort({ year: 1, title: 1 }).limit(12);
       return results;
     },
     song: async (parent, args) => {
@@ -17,14 +17,52 @@ export const resolvers = {
       return song;
     },
     songsByTitle: async (parent, args) => {
-      const { title, index } = args;
-      const songs = await Song.find({ title: { $regex: title, $options: 'i' } })
-        .skip(index)
-        .limit(12);
-      if (songs) {
-        return songs;
+      const { title, index, order } = args;
+      if (order === 0) {
+        const songs = await Song.find({
+          title: { $regex: title, $options: 'i' },
+        })
+          .sort({ title: 1, year: 1 })
+          .skip(index)
+          .limit(12);
+        if (songs) {
+          return songs;
+        }
+        return [];
+      } else if (order === 1) {
+        const songs = await Song.find({
+          title: { $regex: title, $options: 'i' },
+        })
+          .sort({ title: -1, year: 1 })
+          .skip(index)
+          .limit(12);
+        if (songs) {
+          return songs;
+        }
+        return [];
+      } else if (order === 2) {
+        const songs = await Song.find({
+          title: { $regex: title, $options: 'i' },
+        })
+          .sort({ year: -1, title: 1 })
+          .skip(index)
+          .limit(12);
+        if (songs) {
+          return songs;
+        }
+        return [];
+      } else {
+        const songs = await Song.find({
+          title: { $regex: title, $options: 'i' },
+        })
+          .sort({ year: 1, title: 1 })
+          .skip(index)
+          .limit(12);
+        if (songs) {
+          return songs;
+        }
+        return [];
       }
-      return [];
     },
   },
 
