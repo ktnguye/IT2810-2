@@ -10,7 +10,6 @@ export default function SearchBar({
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      console.log('searching for', searchTerm);
       search(searchTerm);
     }, 500);
 
