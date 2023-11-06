@@ -17,20 +17,19 @@ export const resolvers = {
       return song;
     },
     songsByTitle: async (parent, args) => {
-      const { title, index, order, genre } = args;
+      const { title, index, order, tag } = args;
 
       const sortingOptions = [
-        { title: 1, year: 1, _id: 1 },
-        { title: -1, year: -1, _id: 1 },
-        { year: -1, title: 1, _id: 1 },
-        { year: 1, title: -1, _id: 1 },
+        { title: 1, views:-1, year: 1, _id: 1 },
+        { title: -1, views: -1, year: -1, _id: 1 },
+        { year: -1, views: -1, title: 1, _id: 1 },
+        { year: 1, views: -1, title: -1, _id: 1 },
       ];
-
-      const genreFilter = genre === '' ? { $regex: genre } : { $all: [genre] };
 
       const songs = await Song.find({
         title: { $regex: title, $options: 'i' },
-        genres: genreFilter,
+        tag: { $regex: tag, $options: 'i'},
+        views: { $gte: 100000 },
       })
         .sort(sortingOptions[order])
         .skip(index)
@@ -41,11 +40,11 @@ export const resolvers = {
 
   Mutation: {
     create: async (parent, args) => {
-      const { title, artist, genres, year, album, length, rating } = args;
+      const { title, artist, tag, year, album, length, rating } = args;
       const newSong = new Song({
         title,
         artist,
-        genres,
+        tag,
         year,
         album,
         length,

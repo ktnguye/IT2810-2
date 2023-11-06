@@ -4,12 +4,12 @@ const Song = mongoose.model(
   "Song",
   new Schema({
     title: String,
+    tag: String,
     artist: String,
-    genres: [String],
     year: Number,
-    album: String,
-    length: Number,
-    rating: Number,
+    views: Number,
+    lyrics: String,
+    id: Number,
   })
 );
 

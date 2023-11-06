@@ -38,14 +38,14 @@
   margin: 0px;
 }
 
-.song-card .song-genres {
+.song-card .song-tags {
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 500;
 }
 
-.song-genres {
+.song-tags {
   margin-top: 0px;
 }
 

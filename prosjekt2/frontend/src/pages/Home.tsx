@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import TopBar from '../components/TopBar';
 import SideBar from '../components/SideBar';
 import SongFeed from '../components/SongFeed';
@@ -18,16 +18,16 @@ export default function Home(props: { song?: SongInterface }) {
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
-  const [genre, setGenre] = useState<string>('');
-  const oldOrderRef = useRef(order);
-  const oldIndexRef = useRef(index);
+  const [tag, setTag] = useState<string>('');
+  let oldOrder = 0;
+  let oldIndex = 0;
 
   const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
     variables: {
       title: searchTerm,
       index: index,
       order: order,
-      genre: genre,
+      tag: tag,
     },
   });
 
@@ -35,27 +35,26 @@ export default function Home(props: { song?: SongInterface }) {
   const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
     return (
       props.song || {
-        id: '',
         title: '',
         artist: '',
-        album: '',
+        tag: '',
         year: 0,
-        length: 0,
-        rating: 0,
-        genres: [],
+        views: 0,
+        lyrics: '',
+        id: 0,
       }
     );
   });
 
   useEffect(() => {
-    if (data) {
-      if (oldIndexRef.current !== index) {
-        if (oldOrderRef.current !== order) {
+    if (data && data != undefined) {
+      if (oldIndex !== index) {
+        if (oldOrder !== order) {
           setSongs([...data.songsByTitle]);
-          oldOrderRef.current = order;
+          oldOrder = order;
         }
         setSongs([...songs, ...data.songsByTitle]);
-        oldIndexRef.current = index;
+        oldIndex = index;
       } else {
         setSongs([...data.songsByTitle]);
       }
@@ -65,7 +64,7 @@ export default function Home(props: { song?: SongInterface }) {
     } else {
       setReachedEnd(false);
     }
-  }, [data, index, order, songs]);
+  }, [data]);
 
   function activateSearch(Term: string) {
     setIndex(0);
@@ -76,7 +75,7 @@ export default function Home(props: { song?: SongInterface }) {
 
   useEffect(() => {
     if (id) {
-      const songWithId = songs.find((song) => song.id === id);
+      const songWithId = songs.find((song) => song.id === parseInt(id));
 
       if (songWithId) {
         setSelectedSong(songWithId);
@@ -89,9 +88,9 @@ export default function Home(props: { song?: SongInterface }) {
     setOrder(newOrder);
   };
 
-  const setNewGenre = (newGenre: string) => {
+  const setNewTag = (newTag: string) => {
     setIndex(0);
-    setGenre(newGenre);
+    setTag(newTag);
   };
 
   const loadMore = () => {
@@ -100,11 +99,10 @@ export default function Home(props: { song?: SongInterface }) {
 
   return (
     <div className="home">
-      <SideBar setGenre={setNewGenre} />
+      <SideBar setTag={setNewTag} />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
-          {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
           {props.song && id ? (
             <SongDisplay song={selectedSong} />
           ) : (
