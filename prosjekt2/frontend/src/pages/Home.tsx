@@ -56,7 +56,6 @@ export default function Home(props: { song?: SongInterface }) {
         setSongs([...songs, ...data.songsByTitle]);
         oldIndexRef.current = index;
       } else {
-        console.log(data);
         setSongs([...data.songsByTitle]);
       }
     }
@@ -76,8 +75,6 @@ export default function Home(props: { song?: SongInterface }) {
 
   useEffect(() => {
     if (id) {
-      console.log(id);
-      console.log(songs[0]);
       const songWithId = songs.find((song) => song.id === parseInt(id));
 
       if (songWithId) {
