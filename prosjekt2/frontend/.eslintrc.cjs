@@ -20,10 +20,9 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
-  rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
-  },
+  settings: {
+    react: {
+      version: "detect"
+    }
+  }
 };

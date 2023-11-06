@@ -1,4 +1,3 @@
-import React from 'react';
 import '../css/SongDisplay.css';
 import { SongInterface } from '../types/interfaces';
 import { Link } from 'react-router-dom';

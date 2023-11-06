@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TopBar from '../components/TopBar';
 import SideBar from '../components/SideBar';
 import SongFeed from '../components/SongFeed';
@@ -9,18 +9,26 @@ import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
 import { GET_SONGS_BY_TITLE } from '../graphql/queries';
 
+interface DataProps {
+  songsByTitle: SongInterface[];
+}
+
 export default function Home(props: { song?: SongInterface }) {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
   const [genre, setGenre] = useState<string>('');
+  const oldOrderRef = useRef(order);
+  const oldIndexRef = useRef(index);
 
-  let oldIndex = 0;
-  let oldOrder = 0;
-
-  const { error, loading, data } = useQuery(GET_SONGS_BY_TITLE, {
-    variables: { title: searchTerm, index: index, order: order, genre: genre },
+  const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
+    variables: {
+      title: searchTerm,
+      index: index,
+      order: order,
+      genre: genre,
+    },
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
@@ -40,21 +48,24 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   useEffect(() => {
-    console.log(data);
     if (data) {
-      if (oldIndex !== index) {
-        if (oldOrder !== order) {
+      if (oldIndexRef.current !== index) {
+        if (oldOrderRef.current !== order) {
           setSongs([...data.songsByTitle]);
+          oldOrderRef.current = order;
         }
         setSongs([...songs, ...data.songsByTitle]);
+        oldIndexRef.current = index;
       } else {
         setSongs([...data.songsByTitle]);
       }
     }
-    oldIndex = index;
-    oldOrder = order;
-    setReachedEnd(data && data.songsByTitle.length < 12);
-  }, [data]);
+    if (data && data.songsByTitle.length < 12) {
+      setReachedEnd(true);
+    } else {
+      setReachedEnd(false);
+    }
+  }, [data, index, order, songs]);
 
   function activateSearch(Term: string) {
     setIndex(0);
@@ -65,7 +76,7 @@ export default function Home(props: { song?: SongInterface }) {
 
   useEffect(() => {
     if (id) {
-      let songWithId = songs.find((song) => song.id === id);
+      const songWithId = songs.find((song) => song.id === id);
 
       if (songWithId) {
         setSelectedSong(songWithId);

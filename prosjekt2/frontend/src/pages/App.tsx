@@ -24,14 +24,12 @@ const song: SongInterface = {
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    graphQLErrors.map(({ message, locations, path }) =>
-      console.log(
-        `GraphQL Errors: Message: ${message}, Location: ${locations}, Path: ${path}`
-      )
+    graphQLErrors.map(({ message }) =>
+      console.log(`GraphQL Errors: Message: ${message}`)
     );
   }
   if (networkError) {
-    console.log(`Network Error: ${networkError}`);
+    console.log(`Network Error`);
   }
 });
 
@@ -45,7 +43,7 @@ const client = new ApolloClient({
   link: link,
 });
 
-function App() {
+export default function App() {
   return (
     <ApolloProvider client={client}>
       <Routes>
@@ -55,5 +53,3 @@ function App() {
     </ApolloProvider>
   );
 }
-
-export default App;

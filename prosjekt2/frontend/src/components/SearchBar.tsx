@@ -11,12 +11,12 @@ export default function SearchBar({
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       search(searchTerm);
-    }, 500);
+    }, 300);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [searchTerm]);
+  }, [searchTerm, search]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = event.target.value;

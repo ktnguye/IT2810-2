@@ -1,7 +1,6 @@
 import Song from './Song';
 import '../css/SongFeed.css';
 import { SongInterface } from '../types/interfaces';
-import { useState } from 'react';
 
 const songColors = [
   '#2d004e', // Dark Indigo

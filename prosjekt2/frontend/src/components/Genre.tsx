@@ -1,4 +1,3 @@
-import React from 'react';
 import '../css/Genre.css';
 
 export default function Genre(props: {
