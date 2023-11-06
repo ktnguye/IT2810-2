@@ -16,7 +16,7 @@ export default function SearchBar({
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [searchTerm]);
+  }, [searchTerm, search]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = event.target.value;

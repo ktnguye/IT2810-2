@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TopBar from '../components/TopBar';
 import SideBar from '../components/SideBar';
 import SongFeed from '../components/SongFeed';
@@ -19,9 +19,8 @@ export default function Home(props: { song?: SongInterface }) {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
   const [genre, setGenre] = useState<string>('');
-
-  let oldIndex = 0;
-  let oldOrder = 0;
+  const oldOrderRef = useRef(order);
+  const oldIndexRef = useRef(index);
 
   const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
     variables: {
@@ -49,15 +48,14 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   useEffect(() => {
-    console.log(data);
     if (data) {
-      if (oldIndex !== index) {
-        if (oldOrder !== order) {
+      if (oldIndexRef.current !== index) {
+        if (oldOrderRef.current !== order) {
           setSongs([...data.songsByTitle]);
-          oldOrder = order;
+          oldOrderRef.current = order;
         }
         setSongs([...songs, ...data.songsByTitle]);
-        oldIndex = index;
+        oldIndexRef.current = index;
       } else {
         setSongs([...data.songsByTitle]);
       }
@@ -67,7 +65,7 @@ export default function Home(props: { song?: SongInterface }) {
     } else {
       setReachedEnd(false);
     }
-  }, [data]);
+  }, [data, index, order, songs]);
 
   function activateSearch(Term: string) {
     setIndex(0);
