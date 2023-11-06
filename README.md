@@ -5,6 +5,8 @@
 1. **Prerequisites**:
    - Install Node.js v19.6+ and npm v9.4+.
    - Ensure Vite 4.4+ is set up.
+   - Ensure Vite 4.4+ and MongoDB 7.0 is set up.
+   - Follow the instructions [here](https://www.mongodb.com/docs/manual/installation/) to install and set up MongoDB on your machine.
 
 2. **Installation**:
    - Clone the repository: `https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-30/project-2.git`
