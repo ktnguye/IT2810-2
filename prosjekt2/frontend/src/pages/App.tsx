@@ -12,14 +12,13 @@ import {
 import { onError } from '@apollo/client/link/error';
 
 const song: SongInterface = {
-  id: '1',
+  id: 1,
   title: 'Song title',
   artist: 'Artist name',
-  genres: ['Pop', 'Rock'],
+  tag: 'Rock',
   year: 2021,
-  album: 'Album name',
-  length: 180,
-  rating: 4.5,
+  views: 328,
+  lyrics: 'Dette er en banger sang',
 };
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {

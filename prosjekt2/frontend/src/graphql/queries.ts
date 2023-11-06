@@ -5,17 +5,16 @@ export const GET_SONGS_BY_TITLE = gql`
     $title: String!
     $index: Int!
     $order: Int!
-    $genre: String!
+    $tag: String!
   ) {
-    songsByTitle(title: $title, index: $index, order: $order, genre: $genre) {
-      id
+    songsByTitle(title: $title, index: $index, order: $order, tag: $tag) {
       title
+      tag
       artist
-      genres
       year
-      album
-      length
-      rating
+      views
+      lyrics
+      id
     }
   }
 `;

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import '../css/SideBar.css';
-import Genre from './Genre';
+import Tag from './Tag';
 // import songify logo from '../../public/songify-logo.png';
 import songifyLogo from '../assets/songify-logo.png';
 import { Link } from 'react-router-dom';
 
-const genres = [
+const tags = [
   'Rap',
   'Pop',
   'Rock',
@@ -16,27 +16,27 @@ const genres = [
   'Bangers',
 ];
 
-export default function SideBar(props: { setGenre: (genre: string) => void }) {
-  const [selectedGenre, setSelectedGenre] = useState<string>('');
+export default function SideBar(props: { setTag: (tag: string) => void }) {
+  const [selectedTag, setSelectedTag] = useState<string>('');
 
-  const setGenre = (genre: string) => {
-    setSelectedGenre(genre);
-    props.setGenre(genre);
+  const setTag = (tag: string) => {
+    setSelectedTag(tag);
+    props.setTag(tag);
   };
 
   return (
     <div className="side-bar">
-      <Link to="/">
+      <Link to="/project2">
         <img src={songifyLogo} className="side-bar-logo" alt="songify logo" />
       </Link>
-      <h2>Genre</h2>
-      <div className="genres-display">
-        {genres.map((genre, index) => (
-          <Genre
+      <h2>Tag</h2>
+      <div className="tags-display">
+        {tags.map((tag, index) => (
+          <Tag
             key={index}
-            genre={genre}
-            isSelected={genre === selectedGenre}
-            selectGenre={setGenre}
+            tag={tag}
+            isSelected={tag === selectedTag}
+            selectTag={setTag}
           />
         ))}
       </div>

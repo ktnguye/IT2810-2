@@ -22,7 +22,7 @@
   height: auto;
 }
 
-.genres-display {
+.tags-display {
   display: grid;
   grid-gap: 1vw;
   justify-items: flex-start;

@@ -18,7 +18,7 @@ export default function Home(props: { song?: SongInterface }) {
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
-  const [genre, setGenre] = useState<string>('');
+  const [tag, setTag] = useState<string>('');
   const oldOrderRef = useRef(order);
   const oldIndexRef = useRef(index);
 
@@ -27,7 +27,7 @@ export default function Home(props: { song?: SongInterface }) {
       title: searchTerm,
       index: index,
       order: order,
-      genre: genre,
+      tag: tag,
     },
   });
 
@@ -35,14 +35,13 @@ export default function Home(props: { song?: SongInterface }) {
   const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
     return (
       props.song || {
-        id: '',
         title: '',
         artist: '',
-        album: '',
+        tag: '',
         year: 0,
-        length: 0,
-        rating: 0,
-        genres: [],
+        views: 0,
+        lyrics: '',
+        id: 0,
       }
     );
   });
@@ -57,6 +56,7 @@ export default function Home(props: { song?: SongInterface }) {
         setSongs([...songs, ...data.songsByTitle]);
         oldIndexRef.current = index;
       } else {
+        console.log(data);
         setSongs([...data.songsByTitle]);
       }
     }
@@ -65,7 +65,7 @@ export default function Home(props: { song?: SongInterface }) {
     } else {
       setReachedEnd(false);
     }
-  }, [data, index, order, songs]);
+  }, [data]);
 
   function activateSearch(Term: string) {
     setIndex(0);
@@ -76,7 +76,9 @@ export default function Home(props: { song?: SongInterface }) {
 
   useEffect(() => {
     if (id) {
-      const songWithId = songs.find((song) => song.id === id);
+      console.log(id);
+      console.log(songs[0]);
+      const songWithId = songs.find((song) => song.id === parseInt(id));
 
       if (songWithId) {
         setSelectedSong(songWithId);
@@ -89,9 +91,9 @@ export default function Home(props: { song?: SongInterface }) {
     setOrder(newOrder);
   };
 
-  const setNewGenre = (newGenre: string) => {
+  const setNewTag = (newTag: string) => {
     setIndex(0);
-    setGenre(newGenre);
+    setTag(newTag);
   };
 
   const loadMore = () => {
@@ -100,7 +102,7 @@ export default function Home(props: { song?: SongInterface }) {
 
   return (
     <div className="home">
-      <SideBar setGenre={setNewGenre} />
+      <SideBar setTag={setNewTag} />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
