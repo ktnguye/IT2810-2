@@ -47,8 +47,8 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Routes>
-        <Route path="/song/:id" element={<Home song={song} />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/project2/song/:id" element={<Home song={song} />} />
+        <Route path="/project2/" element={<Home />} />
       </Routes>
     </ApolloProvider>
   );
