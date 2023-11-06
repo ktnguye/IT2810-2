@@ -20,15 +20,16 @@ export const resolvers = {
       const { title, index, order, tag } = args;
 
       const sortingOptions = [
-        { title: 1, year: 1, _id: 1 },
-        { title: -1, year: -1, _id: 1 },
-        { year: -1, title: 1, _id: 1 },
-        { year: 1, title: -1, _id: 1 },
+        { title: 1, views:-1, year: 1, _id: 1 },
+        { title: -1, views: -1, year: -1, _id: 1 },
+        { year: -1, views: -1, title: 1, _id: 1 },
+        { year: 1, views: -1, title: -1, _id: 1 },
       ];
 
       const songs = await Song.find({
         title: { $regex: title, $options: 'i' },
         tag: { $regex: tag, $options: 'i'},
+        views: { $gte: 100000 },
       })
         .sort(sortingOptions[order])
         .skip(index)
