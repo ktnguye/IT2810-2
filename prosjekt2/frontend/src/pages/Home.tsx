@@ -47,8 +47,6 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   useEffect(() => {
-    console.log(data);
-    console.log(index);
     if (data && data != undefined) {
       if (oldIndex !== index) {
         if (oldOrder !== order) {
@@ -96,7 +94,6 @@ export default function Home(props: { song?: SongInterface }) {
   };
 
   const loadMore = () => {
-    console.log(index);
     setIndex(index + 12);
   };
 
