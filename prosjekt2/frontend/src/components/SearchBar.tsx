@@ -1,22 +1,18 @@
 import { useState, useEffect } from 'react';
 import '../css/TopBar.css';
 
-export default function SearchBar({
-  search,
-}: {
-  search: (term: string) => void;
-}) {
+export default function SearchBar(props: { search: (term: string) => void }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      search(searchTerm);
+      props.search(searchTerm);
     }, 300);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [searchTerm, search]);
+  }, [searchTerm]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = event.target.value;
@@ -30,7 +26,7 @@ export default function SearchBar({
   };
 
   const handleSearch = (term: string) => {
-    search(term);
+    props.search(term);
   };
 
   return (

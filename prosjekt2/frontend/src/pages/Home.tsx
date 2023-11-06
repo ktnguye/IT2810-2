@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import TopBar from '../components/TopBar';
 import SideBar from '../components/SideBar';
 import SongFeed from '../components/SongFeed';
@@ -19,8 +19,8 @@ export default function Home(props: { song?: SongInterface }) {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
   const [tag, setTag] = useState<string>('');
-  const oldOrderRef = useRef(order);
-  const oldIndexRef = useRef(index);
+  let oldOrder = 0;
+  let oldIndex = 0;
 
   const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
     variables: {
@@ -47,14 +47,16 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   useEffect(() => {
-    if (data) {
-      if (oldIndexRef.current !== index) {
-        if (oldOrderRef.current !== order) {
+    console.log(data);
+    console.log(index);
+    if (data && data != undefined) {
+      if (oldIndex !== index) {
+        if (oldOrder !== order) {
           setSongs([...data.songsByTitle]);
-          oldOrderRef.current = order;
+          oldOrder = order;
         }
         setSongs([...songs, ...data.songsByTitle]);
-        oldIndexRef.current = index;
+        oldIndex = index;
       } else {
         setSongs([...data.songsByTitle]);
       }
@@ -94,6 +96,7 @@ export default function Home(props: { song?: SongInterface }) {
   };
 
   const loadMore = () => {
+    console.log(index);
     setIndex(index + 12);
   };
 
@@ -103,7 +106,6 @@ export default function Home(props: { song?: SongInterface }) {
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
-          {/**Changes the way a song is displayed when chosen, when using media smaller than 500px */}
           {props.song && id ? (
             <SongDisplay song={selectedSong} />
           ) : (
