@@ -25,9 +25,18 @@
    - Run tests: `npm run test` (Tests not implemented yet)
 
 5. **Code formatting**:
+
    - Run linting: `cd frontend` then `npm run lint`
      - You will get three warnings that we decided was necessary for a better user experience
    - Run prettier: `cd frontend` then `npx prettier --write .`
+
+6. **set up backend on VM**
+   - Delete node_modules
+   - Run `scp -r backend jonawo@it2810-30.idi.ntnu.no:/tmp` in terminal
+   - Run `cd /tmp/backend` in VM
+   - Run `npm install`
+   - Run `nohup npm run dev &`
+   - Reinstall frontend
 
 ### Detailed documentation:
 
