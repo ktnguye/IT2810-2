@@ -7,6 +7,7 @@ export const typeDefs = gql`
     songs: [Song]
     song(id: ID): Song
     songsByTitle(title: String, index: Int, order: Int, tag: String): [Song]
+    tags: [String]
   }
 
   # Song object
