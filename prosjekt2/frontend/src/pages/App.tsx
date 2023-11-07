@@ -34,7 +34,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: 'http://localhost:4000/graphql' }),
+  new HttpLink({
+    uri: import.meta.env.DEV
+      ? 'http://localhost:4000/graphql'
+      : 'http://it2810-30.idi.ntnu.no:4000/graphql',
+  }),
 ]);
 
 const client = new ApolloClient({
