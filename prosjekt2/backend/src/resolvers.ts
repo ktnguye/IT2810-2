@@ -20,7 +20,7 @@ export const resolvers = {
       const { title, index, order, tag } = args;
 
       const sortingOptions = [
-        { title: 1, views:-1, year: 1, _id: 1 },
+        { title: 1, views: -1, year: 1, _id: 1 },
         { title: -1, views: -1, year: -1, _id: 1 },
         { year: -1, views: -1, title: 1, _id: 1 },
         { year: 1, views: -1, title: -1, _id: 1 },
@@ -28,13 +28,17 @@ export const resolvers = {
 
       const songs = await Song.find({
         title: { $regex: title, $options: 'i' },
-        tag: { $regex: tag, $options: 'i'},
+        tag: { $regex: tag, $options: 'i' },
         views: { $gte: 100000 },
       })
         .sort(sortingOptions[order])
         .skip(index)
         .limit(12);
       return songs || [];
+    },
+    tags: async () => {
+      const tags = await Song.find().distinct('tag');
+      return tags;
     },
   },
 

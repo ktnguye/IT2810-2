@@ -7,10 +7,14 @@ import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_SONGS_BY_TITLE } from '../graphql/queries';
+import { GET_SONGS_BY_TITLE, GET_TAGS } from '../graphql/queries';
 
 interface DataProps {
   songsByTitle: SongInterface[];
+}
+
+interface TagProps {
+  tags: string[];
 }
 
 export default function Home(props: { song?: SongInterface }) {
@@ -18,7 +22,10 @@ export default function Home(props: { song?: SongInterface }) {
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
+
   const [tag, setTag] = useState<string>('');
+  const [tags, setTags] = useState<string[]>([]);
+
   let oldOrder = 0;
   let oldIndex = 0;
 
@@ -30,6 +37,8 @@ export default function Home(props: { song?: SongInterface }) {
       tag: tag,
     },
   });
+
+  const { data: tagsData } = useQuery<TagProps>(GET_TAGS);
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
   const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
@@ -66,6 +75,12 @@ export default function Home(props: { song?: SongInterface }) {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (tagsData && tagsData != undefined) {
+      setTags(tagsData.tags.map((tag) => tag.toUpperCase()));
+    }
+  }, [tagsData]);
+
   function activateSearch(Term: string) {
     setIndex(0);
     setSearchTerm(Term);
@@ -99,7 +114,7 @@ export default function Home(props: { song?: SongInterface }) {
 
   return (
     <div className="home">
-      <SideBar setTag={setNewTag} />
+      <SideBar tags={tags} setTag={setNewTag} />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
