@@ -29,16 +29,23 @@ export const resolvers = {
       const songs = await Song.find({
         title: { $regex: title, $options: 'i' },
         tag: { $regex: tag, $options: 'i' },
-        views: { $gte: 100000 },
       })
         .sort(sortingOptions[order])
         .skip(index)
         .limit(12);
       return songs || [];
     },
-    tags: async () => {
-      const tags = await Song.find().distinct('tag');
-      return tags;
+    tags: async (parent, args) => {
+      if (args) {
+        const { title } = args;
+        const tags = await Song.find({
+          title: { $regex: title, $options: 'i' },
+        }).distinct('tag');
+        return tags || [];
+      } else {
+        const tags = await Song.find().distinct('tag');
+        return tags || [];
+      }
     },
   },
 
