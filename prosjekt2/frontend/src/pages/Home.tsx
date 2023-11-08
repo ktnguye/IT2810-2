@@ -38,7 +38,11 @@ export default function Home(props: { song?: SongInterface }) {
     },
   });
 
-  const { data: tagsData } = useQuery<TagProps>(GET_TAGS);
+  const { data: tagsData } = useQuery<TagProps>(GET_TAGS, {
+    variables: {
+      title: searchTerm,
+    },
+  });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
   const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
