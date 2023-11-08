@@ -12,14 +12,13 @@ import {
 import { onError } from '@apollo/client/link/error';
 
 const song: SongInterface = {
-  id: '1',
+  id: 1,
   title: 'Song title',
   artist: 'Artist name',
-  genres: ['Pop', 'Rock'],
+  tag: 'Rock',
   year: 2021,
-  album: 'Album name',
-  length: 180,
-  rating: 4.5,
+  views: 328,
+  lyrics: 'Dette er en banger sang',
 };
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -35,7 +34,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: 'http://localhost:4000/graphql' }),
+  new HttpLink({
+    uri: import.meta.env.DEV
+      ? 'http://localhost:4000/graphql'
+      : 'http://it2810-30.idi.ntnu.no:4000/graphql',
+  }),
 ]);
 
 const client = new ApolloClient({
@@ -47,8 +50,8 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Routes>
-        <Route path="/song/:id" element={<Home song={song} />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/project2/song/:id" element={<Home song={song} />} />
+        <Route path="/project2/" element={<Home />} />
       </Routes>
     </ApolloProvider>
   );

@@ -1,12 +1,11 @@
 export interface SongInterface {
-  id: string;
   title: string;
   artist: string;
-  genres: string[];
+  tag: string;
   year: number;
-  album: string;
-  length: number;
-  rating: number;
+  views: number;
+  lyrics: string;
+  id: number;
 }
 
 export interface OptionInterface {

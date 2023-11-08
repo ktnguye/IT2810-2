@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const { resolvers } = require("./resolvers.ts");
 const { typeDefs } = require("./models/typeDefs.ts");
 
-const MONGO_URI = "mongodb://localhost:27017/song-register";
+const MONGO_URI = "mongodb://it2810-30.idi.ntnu.no/song-register";
 
 // Database connection
 mongoose

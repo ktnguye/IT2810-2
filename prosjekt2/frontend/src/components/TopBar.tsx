@@ -24,7 +24,6 @@ export default function TopBar(props: {
       return;
     }
     props.setOrder(parseInt(selectedOption.value));
-    console.log(`Option selected:`, selectedOption.label);
   };
 
   return (

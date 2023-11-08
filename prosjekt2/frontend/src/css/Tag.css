@@ -1,0 +1,29 @@
+.tag-button {
+  background-color: transparent;
+  padding: 10px;
+  color: #ffffff;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  font-size: clamp(0.7rem, 1.5vw, 2rem);
+}
+
+.tag-button:hover {
+  background-image: linear-gradient(90deg, #b17ada, #72abd9);
+  box-shadow: 0px 0px 5px #9c8cdb;
+  color: #333333;
+}
+
+.selected-tag-button {
+  color: #333333;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  font-size: clamp(0.7rem, 1.5vw, 2rem);
+  background-image: linear-gradient(90deg, #a250e0, #4290d0);
+  box-shadow: 0px 0px 5px #9c8cdb;
+}
