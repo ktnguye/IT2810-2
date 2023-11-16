@@ -16,7 +16,7 @@ export default function Tag(props: {
   };
 
   useEffect(() => {
-    if (!props.isActive) {
+    if (!props.isActive && props.isSelected) {
       props.selectTag('');
     }
   }, [props.isActive]);
