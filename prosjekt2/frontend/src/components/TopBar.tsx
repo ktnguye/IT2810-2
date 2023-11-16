@@ -12,8 +12,8 @@ export default function TopBar(props: {
   };
 
   const options: OptionInterface[] = [
-    { value: '0', label: 'Views: Descending' },
-    { value: '1', label: 'Views: Ascending ' },
+    { value: '0', label: 'Views: Most first' },
+    { value: '1', label: 'Views: Least first' },
     { value: '2', label: 'Name: A-Z' },
     { value: '3', label: 'Name: Z-A' },
   ];

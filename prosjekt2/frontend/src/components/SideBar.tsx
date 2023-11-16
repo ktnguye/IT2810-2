@@ -16,16 +16,12 @@ export default function SideBar(props: {
     props.setTag(tag);
   };
 
-  const navigate = useNavigate();
-
   return (
     <div className="side-bar">
       <Link
-        to="/project2"
-        onClick={(e) => {
-          e.preventDefault();
-          navigate('/project2');
-          window.location.reload();
+        to="/project2/"
+        onClick={() => {
+          window.location.href = '/project2/';
         }}
       >
         <img src={songifyLogo} className="side-bar-logo" alt="songify logo" />

@@ -13,9 +13,9 @@ export const resolvers = {
 
       const sortingOptions = [
         {views: -1, title: 1, year: 1, _id: 1},
-        {views: 1, title: 1, year: 1, _id: 1},
+        {views: 1, title: -1, year: -1, _id: -1},
         { title: 1, views: -1, year: 1, _id: 1 },
-        { title: -1, views: -1, year: -1, _id: 1 },
+        { title: -1, views: 1, year: -1, _id: -1 },
       ];
 
       const songs = await Song.find({

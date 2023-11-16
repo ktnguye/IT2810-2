@@ -7,31 +7,33 @@ export default function Tag(props: {
   selectTag: (tag: string) => void;
   isActive: boolean;
 }) {
-  const selectTag = (tag: string) => {
-    if (props.isSelected) {
-      props.selectTag('');
+  const { isActive, isSelected, selectTag } = props;
+
+  const selectChosenTag = (tag: string) => {
+    if (isSelected) {
+      selectTag('');
     } else {
-      props.selectTag(tag);
+      selectTag(tag);
     }
   };
 
   useEffect(() => {
-    if (!props.isActive && props.isSelected) {
-      props.selectTag('');
+    if (!isActive && isSelected) {
+      selectTag('');
     }
-  }, [props.isActive]);
+  }, [isActive, isSelected, selectTag]);
 
   return (
     <button
       className={
-        !props.isActive
+        !isActive
           ? 'inactive-tag-button'
-          : props.isSelected
+          : isSelected
           ? 'selected-tag-button'
           : 'tag-button'
       }
-      onClick={selectTag.bind(null, props.tag)}
-      disabled={!props.isActive}
+      onClick={selectChosenTag.bind(null, props.tag)}
+      disabled={!isActive}
     >
       {props.tag}
     </button>
