@@ -12,13 +12,12 @@ export default function TopBar(props: {
   };
 
   const options: OptionInterface[] = [
-    { value: '0', label: 'Name: A-Z' },
-    { value: '1', label: 'Name: Z-A' },
-    { value: '2', label: 'Year: Newest First' },
-    { value: '3', label: 'Year: Oldest First' },
+    { value: '0', label: 'Views: Most first' },
+    { value: '1', label: 'Views: Least first' },
+    { value: '2', label: 'Name: A-Z' },
+    { value: '3', label: 'Name: Z-A' },
   ];
 
-  /**Does nothing now, but will be used to order songs */
   const handleChange = (selectedOption: SingleValue<OptionInterface>) => {
     if (selectedOption == null) {
       return;

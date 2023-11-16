@@ -1,25 +1,39 @@
 import '../css/Tag.css';
+import { useEffect } from 'react';
 
 export default function Tag(props: {
   tag: string;
   isSelected: boolean;
   selectTag: (tag: string) => void;
+  isActive: boolean;
 }) {
-  const selectTag = (tag: string) => {
-    if (props.isSelected) {
-      props.selectTag('');
+  const { isActive, isSelected, selectTag } = props;
+
+  const selectChosenTag = (tag: string) => {
+    if (isSelected) {
+      selectTag('');
     } else {
-      props.selectTag(tag);
+      selectTag(tag);
     }
   };
 
+  useEffect(() => {
+    if (!isActive && isSelected) {
+      selectTag('');
+    }
+  }, [isActive, isSelected, selectTag]);
+
   return (
     <button
-      className={props.isSelected ? 'selected-tag-button' : 'tag-button'}
-      onClick={selectTag.bind(
-        null,
-        props.tag
-      )} /**After a button is clicked, its css is changed */
+      className={
+        !isActive
+          ? 'inactive-tag-button'
+          : isSelected
+          ? 'selected-tag-button'
+          : 'tag-button'
+      }
+      onClick={selectChosenTag.bind(null, props.tag)}
+      disabled={!isActive}
     >
       {props.tag}
     </button>
