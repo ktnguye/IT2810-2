@@ -8,22 +8,14 @@ export const resolvers = {
     // songs: async () => {
     //   await Song.find();
     // },
-    songs: async () => {
-      const results = await Song.find().sort({ year: 1, title: 1 }).limit(12);
-      return results;
-    },
-    song: async (parent, args) => {
-      const song = await Song.findById(args.id);
-      return song;
-    },
     songsByTitle: async (parent, args) => {
       const { title, index, order, tag } = args;
 
       const sortingOptions = [
+        {views: -1, title: 1, year: 1, _id: 1},
+        {views: 1, title: 1, year: 1, _id: 1},
         { title: 1, views: -1, year: 1, _id: 1 },
         { title: -1, views: -1, year: -1, _id: 1 },
-        { year: -1, views: -1, title: 1, _id: 1 },
-        { year: 1, views: -1, title: -1, _id: 1 },
       ];
 
       const songs = await Song.find({
