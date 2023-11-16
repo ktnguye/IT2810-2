@@ -27,17 +27,9 @@ export const resolvers = {
         .limit(12);
       return songs || [];
     },
-    tags: async (parent, args) => {
-      if (args) {
-        const { title } = args;
-        const tags = await Song.find({
-          title: { $regex: title, $options: 'i' },
-        }).distinct('tag');
-        return tags || [];
-      } else {
+    tags: async (parent) => {
         const tags = await Song.find().distinct('tag');
-        return tags || [];
-      }
+        return tags || [];  
     },
   },
 
