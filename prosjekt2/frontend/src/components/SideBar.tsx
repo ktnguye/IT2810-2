@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import '../css/SideBar.css';
 import Tag from './Tag';
-// import songify logo from '../../public/songify-logo.png';
 import songifyLogo from '../assets/songify-logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SideBar(props: {
   tags: string[];
@@ -16,9 +15,18 @@ export default function SideBar(props: {
     props.setTag(tag);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="side-bar">
-      <Link to="/project2">
+      <Link
+        to="/project2"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate('/project2');
+          window.location.reload();
+        }}
+      >
         <img src={songifyLogo} className="side-bar-logo" alt="songify logo" />
       </Link>
       <h2>Tag</h2>
