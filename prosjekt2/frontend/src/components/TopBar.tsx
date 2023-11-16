@@ -31,7 +31,7 @@ export default function TopBar(props: {
       <Select
         className="order-button"
         options={options}
-        placeholder="Order by"
+        defaultValue={options[0]}
         onChange={(option) => handleChange(option)}
       />
     </div>
