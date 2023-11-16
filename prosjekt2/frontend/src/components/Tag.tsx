@@ -23,7 +23,13 @@ export default function Tag(props: {
 
   return (
     <button
-      className={props.isSelected ? 'selected-tag-button' : 'tag-button'}
+      className={
+        !props.isActive
+          ? 'inactive-tag-button'
+          : props.isSelected
+          ? 'selected-tag-button'
+          : 'tag-button'
+      }
       onClick={selectTag.bind(null, props.tag)}
       disabled={!props.isActive}
     >
