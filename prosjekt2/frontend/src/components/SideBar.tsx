@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function SideBar(props: {
   tags: string[];
   setTag: (tag: string) => void;
+  currentTags: string[];
 }) {
   const [selectedTag, setSelectedTag] = useState<string>('');
 
@@ -37,6 +38,7 @@ export default function SideBar(props: {
             tag={tag}
             isSelected={tag === selectedTag}
             selectTag={setTag}
+            isActive={props.currentTags.includes(tag)}
           />
         ))}
       </div>

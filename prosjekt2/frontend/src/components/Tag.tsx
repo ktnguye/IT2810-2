@@ -1,9 +1,11 @@
 import '../css/Tag.css';
+import { useEffect } from 'react';
 
 export default function Tag(props: {
   tag: string;
   isSelected: boolean;
   selectTag: (tag: string) => void;
+  isActive: boolean;
 }) {
   const selectTag = (tag: string) => {
     if (props.isSelected) {
@@ -13,13 +15,17 @@ export default function Tag(props: {
     }
   };
 
+  useEffect(() => {
+    if (!props.isActive) {
+      props.selectTag('');
+    }
+  }, [props.isActive]);
+
   return (
     <button
       className={props.isSelected ? 'selected-tag-button' : 'tag-button'}
-      onClick={selectTag.bind(
-        null,
-        props.tag
-      )} /**After a button is clicked, its css is changed */
+      onClick={selectTag.bind(null, props.tag)}
+      disabled={!props.isActive}
     >
       {props.tag}
     </button>

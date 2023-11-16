@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TopBar from '../components/TopBar';
 import SideBar from '../components/SideBar';
 import SongFeed from '../components/SongFeed';
@@ -25,6 +25,8 @@ export default function Home(props: { song?: SongInterface }) {
 
   const [tag, setTag] = useState<string>('');
   const [tags, setTags] = useState<string[]>([]);
+  const [possibleTags, setPossibleTags] = useState<string[]>([]);
+  const hasUpdatedPossibleTags = useRef<boolean>(false);
 
   let oldOrder = 0;
   let oldIndex = 0;
@@ -85,6 +87,13 @@ export default function Home(props: { song?: SongInterface }) {
     }
   }, [tagsData]);
 
+  useEffect(() => {
+    if (tagsData && tagsData != undefined && !hasUpdatedPossibleTags.current) {
+      setPossibleTags(tagsData.tags.map((tag) => tag.toUpperCase()));
+      hasUpdatedPossibleTags.current = true;
+    }
+  }, [tagsData]);
+
   function activateSearch(Term: string) {
     setIndex(0);
     setSearchTerm(Term);
@@ -118,7 +127,7 @@ export default function Home(props: { song?: SongInterface }) {
 
   return (
     <div className="home">
-      <SideBar tags={tags} setTag={setNewTag} />
+      <SideBar tags={possibleTags} setTag={setNewTag} currentTags={tags} />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
