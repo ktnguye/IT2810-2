@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../css/SideBar.css';
 import Tag from './Tag';
 import songifyLogo from '../assets/songify-logo.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function SideBar(props: {
   tags: string[];
