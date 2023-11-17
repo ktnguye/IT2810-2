@@ -1,0 +1,12 @@
+.review-box {
+  width: 250px;
+  height: 150px;
+  border: 2px solid white;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  overflow-y: scroll;
+}
+.review-header {
+  line-height: 5px;
+}

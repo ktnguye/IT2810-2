@@ -1,0 +1,67 @@
+.song-display-reviews {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 90vh;
+  position: relative;
+  width: 80%;
+}
+
+.reviews-header {
+  margin-top: 40px;
+}
+
+.add-review-button {
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid #646cff;
+  margin-left: 5px;
+}
+
+.add-review-button:hover {
+  cursor: pointer;
+  border-color: #575dc4;
+}
+
+.toggle-reviews-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid white;
+  padding: 8px;
+  border-radius: 10px;
+  transition: border-color 0.1s;
+}
+
+.toggle-reviews-button:hover {
+  cursor: pointer;
+  border-color: #575dc4;
+}
+
+.song-display-info-and-lyrics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.song-display-review {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  line-height: 40px;
+  width: 40%;
+}
+
+@media screen and (max-width: 500px) {
+  .song-display-info-and-lyrics {
+    flex-direction: column;
+  }
+}

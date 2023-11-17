@@ -17,7 +17,10 @@ interface TagProps {
   tags: string[];
 }
 
-export default function Home(props: { song?: SongInterface }) {
+export default function Home(props: {
+  song?: SongInterface;
+  isShowingReviews?: boolean;
+}) {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -132,7 +135,7 @@ export default function Home(props: { song?: SongInterface }) {
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
           {props.song && id ? (
-            <SongDisplay song={selectedSong} />
+            <SongDisplay song={selectedSong} isShowingReviews={props.isShowingReviews}/>
           ) : (
             <SongFeed
               songs={songs}

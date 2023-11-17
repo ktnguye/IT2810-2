@@ -50,6 +50,10 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Routes>
+        <Route
+          path="/project2/song/:id/reviews"
+          element={<Home song={song} isShowingReviews={true} />}
+        />
         <Route path="/project2/song/:id" element={<Home song={song} />} />
         <Route path="/project2/" element={<Home />} />
       </Routes>
