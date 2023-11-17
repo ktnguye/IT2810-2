@@ -8,6 +8,7 @@ export const typeDefs = gql`
     song(id: ID): Song
     songsByTitle(title: String, index: Int, order: Int, tag: String): [Song]
     tags(title: String): [String]
+    reviewsBySongId(songId: Int!): [Review]
   }
 
   # Song object
@@ -19,6 +20,15 @@ export const typeDefs = gql`
     views: Int
     lyrics: String
     id: Int
+  }
+
+  # Review object
+  type Review {
+    songId: Int
+    name: String
+    rating: Int
+    date: String
+    review: String
   }
 
   # Mutation
@@ -42,5 +52,13 @@ export const typeDefs = gql`
       id: Int
     ): Song
     delete(id: ID): Song
+    createReview(
+      songId: Int
+      name: String
+      rating: Int
+      date: String
+      review: String
+    ): Review
+    deleteReview(id: ID): Review
   }
 `;

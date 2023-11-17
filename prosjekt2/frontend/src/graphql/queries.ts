@@ -24,3 +24,15 @@ export const GET_TAGS = gql`
     tags(title: $title)
   }
 `;
+
+export const GET_REVIEWS_BY_SONG_ID = gql`
+  query ReviewsBySongId($songId: Int!) {
+    reviewsBySongId(songId: $songId) {
+      songId
+      name
+      rating
+      date
+      review
+    }
+  }
+`;

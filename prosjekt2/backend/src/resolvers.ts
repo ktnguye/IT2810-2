@@ -1,4 +1,5 @@
 const { Song } = require('./models/Song.ts');
+const { Review } = require('./models/Review.ts');
 
 // GraphQL Resolvers
 export const resolvers = {
@@ -12,8 +13,8 @@ export const resolvers = {
       const { title, index, order, tag } = args;
 
       const sortingOptions = [
-        {views: -1, title: 1, year: 1, _id: 1},
-        {views: 1, title: -1, year: -1, _id: -1},
+        { views: -1, title: 1, year: 1, _id: 1 },
+        { views: 1, title: -1, year: -1, _id: -1 },
         { title: 1, views: -1, year: 1, _id: 1 },
         { title: -1, views: 1, year: -1, _id: -1 },
       ];
@@ -38,6 +39,11 @@ export const resolvers = {
         const tags = await Song.find().distinct('tag');
         return tags || [];
       }
+    },
+    reviewsBySongId: async (parent, args) => {
+      const { songId } = args;
+      const reviews = await Review.find({ songId });
+      return reviews || [];
     },
   },
 
@@ -70,6 +76,18 @@ export const resolvers = {
       }
 
       return results;
+    },
+    createReview: async (parent, args) => {
+      const { songId, name, rating, date, review } = args;
+      const newReview = new Review({
+        songId,
+        name,
+        rating,
+        date,
+        review,
+      });
+      await newReview.save();
+      return newReview;
     },
   },
 };
