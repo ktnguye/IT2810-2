@@ -3,9 +3,10 @@ import { SongInterface } from '../types/interfaces';
 import { Link, useParams } from 'react-router-dom';
 import ReviewsList from '../components/Review/ReviewsList';
 import { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_SONG } from '../graphql/queries';
 
 export default function SongDisplay(props: {
-  songs: SongInterface[];
   isShowingReviews?: boolean;
 }) {
   const [selectedSong, setSelectedSong] = useState<SongInterface>({
@@ -24,15 +25,15 @@ export default function SongDisplay(props: {
 
   const { id } = useParams();
 
-  useEffect(() => {
-    if (id) {
-      const songWithId = props.songs.find((song) => song.id === parseInt(id));
+  const { data } = useQuery(GET_SONG, {
+    variables: { id: parseInt(id || '') },
+  });
 
-      if (songWithId) {
-        setSelectedSong(songWithId);
-      }
+  useEffect(() => {
+    if (data) {
+      setSelectedSong(data.song);
     }
-  }, [id, props.songs]);
+  }, [data]);
 
   return (
     <>

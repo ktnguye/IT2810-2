@@ -19,6 +19,20 @@ export const GET_SONGS_BY_TITLE = gql`
   }
 `;
 
+export const GET_SONG = gql`
+  query Song($id: Int!) {
+    song(id: $id) {
+      title
+      tag
+      artist
+      year
+      views
+      lyrics
+      id
+    }
+  }
+`;
+
 export const GET_TAGS = gql`
   query Tags($title: String) {
     tags(title: $title)

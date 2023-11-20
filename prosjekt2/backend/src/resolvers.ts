@@ -6,9 +6,11 @@ export const resolvers = {
   Query: {
     greetings: () => 'GraphQL is Awesome',
     welcome: (parent, args) => `Hello ${args.name}`,
-    // songs: async () => {
-    //   await Song.find();
-    // },
+    song: async (parent, args) => {
+      const { id } = args;
+      const song = await Song.findOne({ id });
+      return song || {};
+    },
     songsByTitle: async (parent, args) => {
       const { title, index, order, tag } = args;
 

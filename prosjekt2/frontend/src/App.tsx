@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import { SongInterface } from './types/interfaces';
 import {
   ApolloClient,
   ApolloProvider,
@@ -11,7 +10,6 @@ import {
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import SongDisplay from './pages/SongDisplay';
-import { useState } from 'react';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -39,20 +37,18 @@ const client = new ApolloClient({
 });
 
 export default function App() {
-  const [songs, setSongs] = useState<SongInterface[]>([]);
-
   return (
     <ApolloProvider client={client}>
       <Routes>
         <Route
           path="/project2/song/:id/reviews"
-          element={<SongDisplay songs={songs} isShowingReviews={true} />}
+          element={<SongDisplay isShowingReviews={true} />}
         />
         <Route
           path="/project2/song/:id"
-          element={<SongDisplay songs={songs} isShowingReviews={false} />}
+          element={<SongDisplay isShowingReviews={false} />}
         />
-        <Route path="/project2/" element={<Home setSongs={setSongs} />} />
+        <Route path="/project2/" element={<Home />} />
       </Routes>
     </ApolloProvider>
   );

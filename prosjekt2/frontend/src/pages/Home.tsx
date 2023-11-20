@@ -15,9 +15,7 @@ interface TagProps {
   tags: string[];
 }
 
-export default function Home(props: {
-  setSongs: (song: SongInterface[]) => void;
-}) {
+export default function Home() {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -47,10 +45,6 @@ export default function Home(props: {
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
-
-  useEffect(() => {
-    props.setSongs(songs);
-  }, [songs]);
 
   useEffect(() => {
     if (data && data != undefined) {
