@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import '../css/App.css';
-import Home from './Home';
-import { SongInterface } from '../types/interfaces';
+import './css/App.css';
+import Home from './pages/Home';
+import { SongInterface } from './types/interfaces';
 import {
   ApolloClient,
   ApolloProvider,
@@ -10,7 +10,7 @@ import {
   from,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import SongDisplay from './SongDisplay';
+import SongDisplay from './pages/SongDisplay';
 import { useState } from 'react';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
