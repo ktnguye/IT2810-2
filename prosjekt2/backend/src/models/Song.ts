@@ -1,16 +1,15 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
-const Song = mongoose.model(
-  "Song",
-  new Schema({
-    title: String,
-    tag: String,
-    artist: String,
-    year: Number,
-    views: Number,
-    lyrics: String,
-    id: Number,
-  })
-);
+const songSchema = new Schema({
+  title: String,
+  tag: String,
+  artist: String,
+  year: Number,
+  views: Number,
+  lyrics: String,
+  id: Number,
+});
+
+const Song = mongoose.model('Song', songSchema);
 
 module.exports = { Song };

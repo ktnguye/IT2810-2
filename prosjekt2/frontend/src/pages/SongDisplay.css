@@ -2,20 +2,22 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #1a1a1a;
-  transition: width 0.3s;
-  width: 100%;
+  justify-content: center;
+  width: 90vw;
+  margin: 0 5%;
   overflow-y: scroll;
   text-wrap: wrap;
   height: 90vh;
+  font-size: 14px;
+  font-size-adjust: 0.5;
+}
+
+.song-display h1 {
+  font-size: 30px;
 }
 
 .song-display-lyrics {
-  width: 50%;
   height: 90%;
-  padding: 20px;
   color: white;
   font-size: 20px;
   line-height: 1.2;
@@ -32,18 +34,4 @@
 
 .back-button:hover {
   cursor: pointer;
-}
-
-@media only screen and (max-width: 500px) {
-  .song-display {
-    flex-direction: column;
-    justify-content: center;
-  }
-  .song-display-cover {
-    width: 100%;
-  }
-  .song-display-lyrics {
-    width: 100%;
-    height: 50%;
-  }
 }

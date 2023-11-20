@@ -1,19 +1,22 @@
 const { Song } = require('./models/Song.ts');
+const { Review } = require('./models/Review.ts');
 
 // GraphQL Resolvers
 export const resolvers = {
   Query: {
     greetings: () => 'GraphQL is Awesome',
     welcome: (parent, args) => `Hello ${args.name}`,
-    // songs: async () => {
-    //   await Song.find();
-    // },
+    song: async (parent, args) => {
+      const { id } = args;
+      const song = await Song.findOne({ id });
+      return song || {};
+    },
     songsByTitle: async (parent, args) => {
       const { title, index, order, tag } = args;
 
       const sortingOptions = [
-        {views: -1, title: 1, year: 1, _id: 1},
-        {views: 1, title: -1, year: -1, _id: -1},
+        { views: -1, title: 1, year: 1, _id: 1 },
+        { views: 1, title: -1, year: -1, _id: -1 },
         { title: 1, views: -1, year: 1, _id: 1 },
         { title: -1, views: 1, year: -1, _id: -1 },
       ];
@@ -38,6 +41,11 @@ export const resolvers = {
         const tags = await Song.find().distinct('tag');
         return tags || [];
       }
+    },
+    reviewsBySongId: async (parent, args) => {
+      const { songId } = args;
+      const reviews = await Review.find({ songId });
+      return reviews || [];
     },
   },
 
@@ -70,6 +78,18 @@ export const resolvers = {
       }
 
       return results;
+    },
+    createReview: async (parent, args) => {
+      const { songId, name, rating, date, review } = args;
+      const newReview = new Review({
+        songId,
+        name,
+        rating,
+        date,
+        review,
+      });
+      await newReview.save();
+      return newReview;
     },
   },
 };

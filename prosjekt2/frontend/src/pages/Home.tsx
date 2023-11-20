@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import TopBar from '../components/TopBar';
-import SideBar from '../components/SideBar';
-import SongFeed from '../components/SongFeed';
-import SongDisplay from '../components/SongDisplay';
-import { useParams } from 'react-router-dom';
-import '../css/Home.css';
+import TopBar from '../components/TopBar/TopBar';
+import SideBar from '../components/SideBar/SideBar';
+import SongFeed from '../components/SongFeed/SongFeed';
+import './Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
 import { GET_SONGS_BY_TITLE, GET_TAGS } from '../graphql/queries';
@@ -17,7 +15,7 @@ interface TagProps {
   tags: string[];
 }
 
-export default function Home(props: { song?: SongInterface }) {
+export default function Home() {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -47,19 +45,6 @@ export default function Home(props: { song?: SongInterface }) {
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
-  const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
-    return (
-      props.song || {
-        title: '',
-        artist: '',
-        tag: '',
-        year: 0,
-        views: 0,
-        lyrics: '',
-        id: 0,
-      }
-    );
-  });
 
   useEffect(() => {
     if (data && data != undefined) {
@@ -99,18 +84,6 @@ export default function Home(props: { song?: SongInterface }) {
     setSearchTerm(Term);
   }
 
-  const { id } = useParams();
-
-  useEffect(() => {
-    if (id) {
-      const songWithId = songs.find((song) => song.id === parseInt(id));
-
-      if (songWithId) {
-        setSelectedSong(songWithId);
-      }
-    }
-  }, [id, songs]);
-
   const setNewOrder = (newOrder: number) => {
     setIndex(0);
     setOrder(newOrder);
@@ -131,15 +104,7 @@ export default function Home(props: { song?: SongInterface }) {
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
-          {props.song && id ? (
-            <SongDisplay song={selectedSong} />
-          ) : (
-            <SongFeed
-              songs={songs}
-              loadMore={loadMore}
-              reachedEnd={reachedEnd}
-            />
-          )}
+          <SongFeed songs={songs} loadMore={loadMore} reachedEnd={reachedEnd} />
         </div>
       </div>
     </div>

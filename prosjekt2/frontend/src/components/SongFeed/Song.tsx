@@ -1,6 +1,6 @@
-import '../css/Song.css';
+import './Song.css';
 import { Link } from 'react-router-dom';
-import { SongInterface } from '../types/interfaces';
+import { SongInterface } from '../../types/interfaces';
 
 export default function Song(props: { song: SongInterface; color: string }) {
   return (

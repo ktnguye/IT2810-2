@@ -1,7 +1,7 @@
 import Select, { SingleValue } from 'react-select';
-import '../css/TopBar.css';
+import './TopBar.css';
 import SearchBar from './SearchBar';
-import { OptionInterface } from '../types/interfaces';
+import { OptionInterface } from '../../types/interfaces';
 
 export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;

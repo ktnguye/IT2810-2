@@ -12,3 +12,12 @@ export interface OptionInterface {
   value: string;
   label: string;
 }
+
+export interface ReviewInterface {
+  id: number;
+  songId: number;
+  name: string;
+  rating: number;
+  review: string;
+  date: Date;
+}
