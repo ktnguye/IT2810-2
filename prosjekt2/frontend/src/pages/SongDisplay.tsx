@@ -6,9 +6,11 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_SONG } from '../graphql/queries';
 
-export default function SongDisplay(props: {
-  isShowingReviews?: boolean;
-}) {
+interface DataProps {
+  song: SongInterface;
+}
+
+export default function SongDisplay(props: { isShowingReviews?: boolean }) {
   const [selectedSong, setSelectedSong] = useState<SongInterface>({
     id: 0,
     title: '',
@@ -23,14 +25,14 @@ export default function SongDisplay(props: {
     return <p key={index}>{line}</p>;
   });
 
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
-  const { data } = useQuery(GET_SONG, {
+  const { data } = useQuery<DataProps>(GET_SONG, {
     variables: { id: parseInt(id || '') },
   });
 
   useEffect(() => {
-    if (data) {
+    if (data && data.song) {
       setSelectedSong(data.song);
     }
   }, [data]);
@@ -38,7 +40,7 @@ export default function SongDisplay(props: {
   return (
     <>
       {props.isShowingReviews ? (
-        <ReviewsList songId={selectedSong.id} />
+        <ReviewsList song={selectedSong} />
       ) : (
         <div className="song-display">
           <Link to={'/project2/'} className="back-button">
