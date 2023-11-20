@@ -17,14 +17,14 @@
   font-size: 20px;
 }
 
-.add-review-button {
+.write-review-button {
   font-size: 15px;
   font-weight: bold;
   border: 1px solid #646cff;
   margin-left: 5px;
 }
 
-.add-review-button:hover {
+.write-review-button:hover {
   cursor: pointer;
   border-color: #575dc4;
 }

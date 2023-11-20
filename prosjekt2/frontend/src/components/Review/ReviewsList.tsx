@@ -38,14 +38,16 @@ export default function ReviewsList(props: { song: SongInterface }) {
       <Link to={`/project2/song/${props.song.id}`} className="back-button">
         {'<-'}
       </Link>
-      <button className="add-review-button" onClick={toggleReviewWriter}>
-        {isShowingReviewWriter ? 'Stop Writing' : 'Write Review'}
-      </button>
       <h1 className="reviews-header">{props.song.title}</h1>
       <h2 className="reviews-artist">
         {props.song.artist} ({props.song.year})
       </h2>
-      <h2>Reviews</h2>
+      <h2>
+        Reviews{' '}
+        <button className="write-review-button" onClick={toggleReviewWriter}>
+          {isShowingReviewWriter ? 'Stop Writing' : 'Write Review'}
+        </button>
+      </h2>
       <div className="song-display-review">
         {isShowingReviewWriter ? (
           <WriteReview songId={props.song.id} />
