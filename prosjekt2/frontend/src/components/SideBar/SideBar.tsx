@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../css/SideBar.css';
+import './SideBar.css';
 import Tag from './Tag';
 import songifyLogo from '../../assets/songify-logo.png';
 import { Link } from 'react-router-dom';

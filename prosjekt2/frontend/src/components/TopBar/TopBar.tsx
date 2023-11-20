@@ -1,5 +1,5 @@
 import Select, { SingleValue } from 'react-select';
-import '../../css/TopBar.css';
+import './TopBar.css';
 import SearchBar from './SearchBar';
 import { OptionInterface } from '../../types/interfaces';
 

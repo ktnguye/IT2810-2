@@ -1,4 +1,4 @@
-import '../../css/Song.css';
+import './Song.css';
 import { Link } from 'react-router-dom';
 import { SongInterface } from '../../types/interfaces';
 

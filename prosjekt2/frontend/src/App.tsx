@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import './css/App.css';
+import './App.css';
 import Home from './pages/Home';
 import { SongInterface } from './types/interfaces';
 import {

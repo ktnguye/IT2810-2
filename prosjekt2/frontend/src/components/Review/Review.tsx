@@ -1,5 +1,5 @@
 import { ReviewInterface } from '../../types/interfaces';
-import '../../css/Review.css';
+import './Review.css';
 
 export default function Review(props: { review: ReviewInterface }) {
   return (

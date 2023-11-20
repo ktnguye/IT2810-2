@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import TopBar from '../components/TopBar/TopBar';
 import SideBar from '../components/SideBar/SideBar';
 import SongFeed from '../components/SongFeed/SongFeed';
-import '../css/Home.css';
+import './Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
 import { GET_SONGS_BY_TITLE, GET_TAGS } from '../graphql/queries';

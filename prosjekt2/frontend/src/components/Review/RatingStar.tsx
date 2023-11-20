@@ -1,6 +1,6 @@
 import star from '../../assets/star.svg';
 import starFilled from '../../assets/star_filled.svg';
-import '../../css/RatingStar.css';
+import './RatingStar.css';
 
 export default function RatingStar(props: {
   setRating: (rating: number) => void;

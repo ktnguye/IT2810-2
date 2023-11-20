@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Review from './Review';
 import WriteReview from './ReviewWriter';
 import { ReviewInterface } from '../../types/interfaces';
-import '../../css/ReviewList.css';
+import './ReviewList.css';
 import { useQuery } from '@apollo/client';
 import { GET_REVIEWS_BY_SONG_ID } from '../../graphql/queries';
 import { Link } from 'react-router-dom';

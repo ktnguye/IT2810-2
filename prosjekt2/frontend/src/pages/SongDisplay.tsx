@@ -1,4 +1,4 @@
-import '../css/SongDisplay.css';
+import './SongDisplay.css';
 import { SongInterface } from '../types/interfaces';
 import { Link, useParams } from 'react-router-dom';
 import ReviewsList from '../components/Review/ReviewsList';

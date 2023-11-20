@@ -1,5 +1,5 @@
 import Song from './Song';
-import '../../css/SongFeed.css';
+import './SongFeed.css';
 import { SongInterface } from '../../types/interfaces';
 
 const songColors = [

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RatingStar from './RatingStar';
-import '../../css/ReviewWriter.css';
+import './ReviewWriter.css';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../../graphql/mutations';
 
