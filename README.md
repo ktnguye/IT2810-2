@@ -11,15 +11,14 @@
 2. **Installation**:
 
    - Clone the repository: `https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-30/project-2.git`
-   - Navigate to the backend directory of the project: `cd ../project-2/prosjekt2/backend`
-   - Install dependencies: `npm install`
-   - Navigate to the frontend directory of the project: `cd ../project-2/prosjekt2/frontend`
-   - Install dependencies: `npm install`
+   - Navigate to the project directory: `cd ../project-2/prosjekt2/`
+   - Install dependencies: `npm run setup`
 
 3. **Starting the project**:
 
-   - Run the project: `cd backend` then `npm run dev`
-   - Open a new terminal and run the project: `cd frontend` then `npm run dev`
+These commands should run from the prosjekt2 directory:
+   - Run server: `npm run server`
+   - Run client`npm run dev`
 
 4. **Testing**:
 
@@ -27,9 +26,10 @@
 
 5. **Code formatting**:
 
-   - Run linting: `cd frontend` then `npm run lint`
+   Run these commands from the prosjekt2 directory:
+   - Run linting: `npm run lint`
      - You will get three warnings that we decided was necessary for a better user experience
-   - Run prettier: `cd frontend` then `npx prettier --write .`
+   - Run prettier: `npm run prettier`
 
 6. **Set up backend on VM**
 
