@@ -10,6 +10,11 @@
 
 .reviews-header {
   margin-top: 40px;
+  font-size: 30px;
+}
+
+.reviews-artist {
+  font-size: 20px;
 }
 
 .add-review-button {
