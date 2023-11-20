@@ -10,16 +10,8 @@ import {
   from,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-
-const song: SongInterface = {
-  id: 1,
-  title: 'Song title',
-  artist: 'Artist name',
-  tag: 'Rock',
-  year: 2021,
-  views: 328,
-  lyrics: 'Dette er en banger sang',
-};
+import SongDisplay from './SongDisplay';
+import { useState } from 'react';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -47,15 +39,20 @@ const client = new ApolloClient({
 });
 
 export default function App() {
+  const [songs, setSongs] = useState<SongInterface[]>([]);
+
   return (
     <ApolloProvider client={client}>
       <Routes>
         <Route
           path="/project2/song/:id/reviews"
-          element={<Home song={song} isShowingReviews={true} />}
+          element={<SongDisplay songs={songs} isShowingReviews={true} />}
         />
-        <Route path="/project2/song/:id" element={<Home song={song} />} />
-        <Route path="/project2/" element={<Home />} />
+        <Route
+          path="/project2/song/:id"
+          element={<SongDisplay songs={songs} isShowingReviews={false} />}
+        />
+        <Route path="/project2/" element={<Home setSongs={setSongs} />} />
       </Routes>
     </ApolloProvider>
   );

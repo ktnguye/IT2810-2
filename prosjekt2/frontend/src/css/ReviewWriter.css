@@ -7,6 +7,6 @@
 .review-writer {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100vw;
   align-items: center;
 }

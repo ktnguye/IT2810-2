@@ -4,7 +4,8 @@
   overflow-y: scroll;
   height: 90vh;
   position: relative;
-  width: 80%;
+  width: 100vw;
+  align-items: center;
 }
 
 .reviews-header {

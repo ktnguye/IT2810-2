@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import TopBar from '../components/TopBar/TopBar';
 import SideBar from '../components/SideBar/SideBar';
 import SongFeed from '../components/SongFeed/SongFeed';
-import SongDisplay from '../components/SongFeed/SongDisplay';
-import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
@@ -18,8 +16,7 @@ interface TagProps {
 }
 
 export default function Home(props: {
-  song?: SongInterface;
-  isShowingReviews?: boolean;
+  setSongs: (song: SongInterface[]) => void;
 }) {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
@@ -50,19 +47,10 @@ export default function Home(props: {
   });
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
-  const [selectedSong, setSelectedSong] = useState<SongInterface>(() => {
-    return (
-      props.song || {
-        title: '',
-        artist: '',
-        tag: '',
-        year: 0,
-        views: 0,
-        lyrics: '',
-        id: 0,
-      }
-    );
-  });
+
+  useEffect(() => {
+    props.setSongs(songs);
+  }, [songs]);
 
   useEffect(() => {
     if (data && data != undefined) {
@@ -102,18 +90,6 @@ export default function Home(props: {
     setSearchTerm(Term);
   }
 
-  const { id } = useParams();
-
-  useEffect(() => {
-    if (id) {
-      const songWithId = songs.find((song) => song.id === parseInt(id));
-
-      if (songWithId) {
-        setSelectedSong(songWithId);
-      }
-    }
-  }, [id, songs]);
-
   const setNewOrder = (newOrder: number) => {
     setIndex(0);
     setOrder(newOrder);
@@ -134,18 +110,7 @@ export default function Home(props: {
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
-          {props.song && id ? (
-            <SongDisplay
-              song={selectedSong}
-              isShowingReviews={props.isShowingReviews}
-            />
-          ) : (
-            <SongFeed
-              songs={songs}
-              loadMore={loadMore}
-              reachedEnd={reachedEnd}
-            />
-          )}
+          <SongFeed songs={songs} loadMore={loadMore} reachedEnd={reachedEnd} />
         </div>
       </div>
     </div>
