@@ -38,13 +38,6 @@ export default function ReviewWriter(props: { songId: number }) {
   }, []);
 
   const handleReviewSubmit = () => {
-    console.log(
-      'Review submitted with values: ' + reviewName,
-      reviewRating,
-      reviewText,
-      reviewDate
-    );
-
     void addReview();
 
     window.location.reload();
