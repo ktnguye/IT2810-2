@@ -1,4 +1,4 @@
-import '../css/Tag.css';
+import '../../css/Tag.css';
 import { useEffect } from 'react';
 
 export default function Tag(props: {

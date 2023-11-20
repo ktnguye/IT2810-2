@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import TopBar from '../components/TopBar';
-import SideBar from '../components/SideBar';
-import SongFeed from '../components/SongFeed';
-import SongDisplay from '../components/SongDisplay';
+import TopBar from '../components/TopBar/TopBar';
+import SideBar from '../components/SideBar/SideBar';
+import SongFeed from '../components/SongFeed/SongFeed';
+import SongDisplay from '../components/SongFeed/SongDisplay';
 import { useParams } from 'react-router-dom';
 import '../css/Home.css';
 import { SongInterface } from '../types/interfaces';
@@ -135,7 +135,10 @@ export default function Home(props: {
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
           {props.song && id ? (
-            <SongDisplay song={selectedSong} isShowingReviews={props.isShowingReviews}/>
+            <SongDisplay
+              song={selectedSong}
+              isShowingReviews={props.isShowingReviews}
+            />
           ) : (
             <SongFeed
               songs={songs}

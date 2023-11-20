@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import '../css/TopBar.css';
+import '../../css/TopBar.css';
 
 export default function SearchBar(props: { search: (term: string) => void }) {
   const [searchTerm, setSearchTerm] = useState('');

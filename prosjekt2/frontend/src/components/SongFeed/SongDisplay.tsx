@@ -1,7 +1,7 @@
-import '../css/SongDisplay.css';
-import { SongInterface } from '../types/interfaces';
+import '../../css/SongDisplay.css';
+import { SongInterface } from '../../types/interfaces';
 import { Link } from 'react-router-dom';
-import ReviewsList from './Review/ReviewsList';
+import ReviewsList from '../Review/ReviewsList';
 
 export default function SongDisplay(props: {
   song: SongInterface;
