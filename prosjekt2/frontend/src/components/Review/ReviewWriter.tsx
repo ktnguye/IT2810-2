@@ -10,7 +10,7 @@ export default function ReviewWriter(props: { songId: number }) {
   const [reviewText, setReviewText] = useState<string>('');
   const [reviewDate, setReviewDate] = useState<Date>(new Date());
 
-  const [addReview, { error }] = useMutation(CREATE_REVIEW, {
+  const [addReview] = useMutation(CREATE_REVIEW, {
     variables: {
       songId: props.songId,
       name: reviewName,
@@ -45,7 +45,7 @@ export default function ReviewWriter(props: { songId: number }) {
       reviewDate
     );
 
-    addReview();
+    void addReview();
 
     window.location.reload();
   };

@@ -7,6 +7,10 @@ import { useQuery } from '@apollo/client';
 import { GET_REVIEWS_BY_SONG_ID } from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 
+interface DataProps {
+  reviewsBySongId: ReviewInterface[];
+}
+
 export default function ReviewsList(props: { song: SongInterface }) {
   const [isShowingReviewWriter, setIsShowingReviewWriter] =
     useState<boolean>(false);
@@ -17,17 +21,15 @@ export default function ReviewsList(props: { song: SongInterface }) {
 
   const [reviews, setReviews] = useState<ReviewInterface[]>([]);
 
-  const { data } = useQuery(GET_REVIEWS_BY_SONG_ID, {
+  const { data } = useQuery<DataProps>(GET_REVIEWS_BY_SONG_ID, {
     variables: {
       songId: props.song.id,
     },
   });
 
   useEffect(() => {
-    console.log('songId: ' + props.song.id);
-    console.log(data);
-    if (data) {
-      setReviews(data.reviewsBySongId);
+    if (data && data.reviewsBySongId) {
+      setReviews([...data.reviewsBySongId]);
     } else {
       setReviews([]);
     }
