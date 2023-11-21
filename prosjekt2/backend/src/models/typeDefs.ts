@@ -29,6 +29,7 @@ export const typeDefs = gql`
 
   # Review object
   type Review {
+    _id: ID
     songId: Int
     name: String
     rating: Int
@@ -65,5 +66,6 @@ export const typeDefs = gql`
       review: String
     ): Review
     deleteReview(id: ID): Review
+    deleteAllReviews: Review
   }
 `;
