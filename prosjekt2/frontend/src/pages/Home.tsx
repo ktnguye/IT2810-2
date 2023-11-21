@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import TopBar from '../components/TopBar/TopBar';
 import SideBar from '../components/SideBar/SideBar';
 import SongFeed from '../components/SongFeed/SongFeed';
@@ -21,7 +22,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
 
-  const [tag, setTag] = useState<string>('');
+  const tag = useSelector((state: any) => state.sidebar.tag);
   const [tags, setTags] = useState<string[]>([]);
   const [possibleTags, setPossibleTags] = useState<string[]>([]);
   const hasUpdatedPossibleTags = useRef<boolean>(false);
@@ -89,18 +90,13 @@ export default function Home() {
     setOrder(newOrder);
   };
 
-  const setNewTag = (newTag: string) => {
-    setIndex(0);
-    setTag(newTag);
-  };
-
   const loadMore = () => {
     setIndex(index + 12);
   };
 
   return (
     <div className="home">
-      <SideBar tags={possibleTags} setTag={setNewTag} currentTags={tags} />
+      <SideBar tags={possibleTags} currentTags={tags} />
       <div className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
         <div className="home-page-song-content">
