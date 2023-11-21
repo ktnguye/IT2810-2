@@ -19,13 +19,17 @@ export default function SongFeed(props: {
 }) {
   return (
     <div className="song-feed">
-      {props.songs.map((song, index) => (
-        <Song
-          key={song.id}
-          song={song}
-          color={songColors[index % songColors.length]}
-        />
-      ))}
+      {props.songs.length === 0 ? (
+        <p className="no-songs-message">No songs found</p>
+      ) : (
+        props.songs.map((song, index) => (
+          <Song
+            key={song.id}
+            song={song}
+            color={songColors[index % songColors.length]}
+          />
+        ))
+      )}
       {!props.reachedEnd && (
         <button className="load-more-button" onClick={props.loadMore}>
           Load more

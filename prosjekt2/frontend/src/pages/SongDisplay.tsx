@@ -46,12 +46,6 @@ export default function SongDisplay(props: { isShowingReviews?: boolean }) {
           <Link to={'/project2/'} className="back-button">
             {'<-'}
           </Link>
-          <Link
-            to={`/project2/song/${selectedSong.id}/reviews`}
-            className="toggle-reviews-button"
-          >
-            Show Reviews
-          </Link>
           <div className="song-display-info-and-lyrics">
             <div className="song-display-info">
               <h1 className="song-display-title">{selectedSong.title}</h1>
@@ -60,6 +54,12 @@ export default function SongDisplay(props: { isShowingReviews?: boolean }) {
               </h2>
               <p>Tag: {selectedSong.tag.toUpperCase()}</p>
               <p>Views: {selectedSong.views}</p>
+              <Link
+                to={`/project2/song/${selectedSong.id}/reviews`}
+                className="reviews-button"
+              >
+                Show Reviews
+              </Link>
             </div>
             <div className="song-display-lyrics">
               <h3>Lyrics</h3>

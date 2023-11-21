@@ -18,9 +18,6 @@ export default function Review(props: { review: ReviewInterface }) {
 
   return (
     <div className="review-box">
-      <button className="delete-button" onClick={handleDelete}>
-        X
-      </button>
       <h2>{props.review.name}</h2>
       <div className="review-header">
         <p>({props.review.rating}/5)</p>
