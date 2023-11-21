@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
+  background-color: rgb(35, 35, 35);
   max-height: 90vh;
   scrollbar-width: none;
   -ms-overflow-style: none;

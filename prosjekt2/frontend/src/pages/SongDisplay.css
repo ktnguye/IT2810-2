@@ -42,7 +42,7 @@
   border: 1px solid white;
   border-radius: 10px;
   transition: border-color 0.1s;
-  background-color: transparent;
+  background-color: rgb(35, 35, 35);
   padding: 10px;
   color: #ffffff;
   margin: 5px 0;
