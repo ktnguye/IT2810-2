@@ -16,6 +16,7 @@ export const GET_SONGS_BY_TITLE = gql`
       lyrics
       id
     }
+    tags(title: $title)
   }
 `;
 
@@ -30,12 +31,6 @@ export const GET_SONG = gql`
       lyrics
       id
     }
-  }
-`;
-
-export const GET_TAGS = gql`
-  query Tags($title: String) {
-    tags(title: $title)
   }
 `;
 

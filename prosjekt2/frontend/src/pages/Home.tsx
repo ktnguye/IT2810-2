@@ -5,13 +5,10 @@ import SongFeed from '../components/SongFeed/SongFeed';
 import './Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_SONGS_BY_TITLE, GET_TAGS } from '../graphql/queries';
+import { GET_SONGS_BY_TITLE } from '../graphql/queries';
 
 interface DataProps {
   songsByTitle: SongInterface[];
-}
-
-interface TagProps {
   tags: string[];
 }
 
@@ -38,16 +35,18 @@ export default function Home() {
     },
   });
 
-  const { data: tagsData } = useQuery<TagProps>(GET_TAGS, {
-    variables: {
-      title: searchTerm,
-    },
-  });
-
   const [songs, setSongs] = useState<SongInterface[]>([]);
 
   useEffect(() => {
-    if (data && data != undefined) {
+    if (data) {
+      if (data.tags) {
+        if (!hasUpdatedPossibleTags.current) {
+          setPossibleTags(data.tags.map((tag) => tag.toUpperCase()));
+          hasUpdatedPossibleTags.current = true;
+        }
+        setTags(data.tags.map((tag) => tag.toUpperCase()));
+      }
+
       if (oldIndex !== index) {
         if (oldOrder !== order) {
           setSongs([...data.songsByTitle]);
@@ -65,19 +64,6 @@ export default function Home() {
       setReachedEnd(false);
     }
   }, [data]);
-
-  useEffect(() => {
-    if (tagsData && tagsData != undefined) {
-      setTags(tagsData.tags.map((tag) => tag.toUpperCase()));
-    }
-  }, [tagsData]);
-
-  useEffect(() => {
-    if (tagsData && tagsData != undefined && !hasUpdatedPossibleTags.current) {
-      setPossibleTags(tagsData.tags.map((tag) => tag.toUpperCase()));
-      hasUpdatedPossibleTags.current = true;
-    }
-  }, [tagsData]);
 
   function activateSearch(Term: string) {
     setIndex(0);
