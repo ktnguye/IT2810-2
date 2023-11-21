@@ -33,7 +33,7 @@ export default function SearchBar(props: { search: (term: string) => void }) {
     <input
       className="search-bar"
       type="text"
-      aria-label="search-bar"
+      name="search-bar"
       placeholder="Search for song"
       value={searchTerm}
       onChange={handleChange}
