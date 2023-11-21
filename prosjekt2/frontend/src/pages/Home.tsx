@@ -28,6 +28,7 @@ export default function Home() {
   let oldOrder = 0;
   let oldIndex = 0;
 
+  // Fetches songs from the database
   const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
     variables: {
       searchTerm: searchTerm,
@@ -39,6 +40,7 @@ export default function Home() {
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
 
+  // Updates the songs and tags when the data changes
   useEffect(() => {
     if (data) {
       if (data.tags) {
@@ -67,6 +69,7 @@ export default function Home() {
     }
   }, [data]);
 
+  // Updates the songs when the search term changes
   function activateSearch(Term: string) {
     setIndex(0);
     setSearchTerm(Term);
@@ -77,6 +80,7 @@ export default function Home() {
     setOrder(newOrder);
   };
 
+  // Loads more songs when the user presses "load more"
   const loadMore = () => {
     setIndex(index + 12);
   };

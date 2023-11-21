@@ -21,16 +21,19 @@ export default function SongDisplay(props: { isShowingReviews?: boolean }) {
     tag: '',
   });
 
+  // Splits the lyrics into paragraphs
   const lyrics = selectedSong.lyrics.split('\n').map((line, index) => {
     return <p key={index}>{line}</p>;
   });
 
   const { id } = useParams<{ id: string }>();
 
+  // Fetches the song from the database
   const { data } = useQuery<DataProps>(GET_SONG, {
     variables: { id: parseInt(id || '') },
   });
 
+  // Updates the selected song when the data changes
   useEffect(() => {
     if (data && data.song) {
       setSelectedSong(data.song);

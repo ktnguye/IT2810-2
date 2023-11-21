@@ -13,6 +13,7 @@ import SongDisplay from './pages/SongDisplay';
 import { Provider } from 'react-redux';
 import store from './store';
 
+// Error handling
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message }) =>
@@ -24,6 +25,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
+// Link to the backend
 const link = from([
   errorLink,
   new HttpLink({
@@ -40,7 +42,9 @@ const client = new ApolloClient({
 
 export default function App() {
   return (
+    // Redux store is used to store the tag
     <Provider store={store}>
+      {/* ApolloProvider is used to connect to the backend */}
       <ApolloProvider client={client}>
         <Routes>
           <Route

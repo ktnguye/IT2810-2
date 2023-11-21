@@ -10,6 +10,7 @@ export default function ReviewWriter(props: { songId: number }) {
   const [reviewText, setReviewText] = useState<string>('');
   const [reviewDate, setReviewDate] = useState<Date>(new Date());
 
+  // Adds the review to the database
   const [addReview] = useMutation(CREATE_REVIEW, {
     variables: {
       songId: props.songId,
@@ -20,14 +21,17 @@ export default function ReviewWriter(props: { songId: number }) {
     },
   });
 
+  // Updates the review name
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReviewName(event.target.value);
   };
 
+  // Updates the review rating
   const handleRatingChange = (rating: number) => {
     setReviewRating(rating);
   };
 
+  // Updates the review text
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setReviewText(event.target.value);
   };
@@ -37,6 +41,7 @@ export default function ReviewWriter(props: { songId: number }) {
     setReviewDate(new Date(new Date()));
   }, []);
 
+  // Adds the review to the database
   const handleReviewSubmit = () => {
     if (reviewName === '' || reviewText === '') {
       return;

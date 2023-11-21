@@ -8,6 +8,7 @@ export default function Review(props: { review: ReviewInterface }) {
     variables: { id: props.review._id },
   });
 
+  // Deletes the review from the database
   const handleDelete = () => {
     console.log('Deleting review with _id: ' + props.review._id);
     console.log(props.review);

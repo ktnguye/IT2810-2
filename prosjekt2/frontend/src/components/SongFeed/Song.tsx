@@ -4,6 +4,7 @@ import { SongInterface } from '../../types/interfaces';
 
 export default function Song(props: { song: SongInterface; color: string }) {
   return (
+    // Link to the song display page
     <Link
       to={`/project2/song/${props.song.id}`}
       className="song-card"
