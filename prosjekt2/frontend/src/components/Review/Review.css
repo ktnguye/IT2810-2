@@ -1,4 +1,5 @@
 .review-box {
+  position: relative;
   width: 200px;
   height: 150px;
   border: 2px solid white;
@@ -13,4 +14,13 @@
 }
 .review-header {
   line-height: 5px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: red;
+  padding: 5px;
+  background-color: transparent;
 }
