@@ -81,7 +81,7 @@ export default function ReviewWriter(props: { songId: number }) {
           required
         />
         <br></br>
-        <button
+        <button className="submit-button"
           type="button" // not of type submit to keep it from activating when pressing enter in another field
           onClick={handleReviewSubmit}
         >
