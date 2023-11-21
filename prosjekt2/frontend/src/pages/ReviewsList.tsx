@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import Review from './Review';
-import WriteReview from './ReviewWriter';
-import { ReviewInterface, SongInterface } from '../../types/interfaces';
+import Review from '../components/Review/Review';
+import WriteReview from '../components/Review/ReviewWriter';
+import { ReviewInterface, SongInterface } from '../types/interfaces';
 import './ReviewList.css';
 import { useQuery } from '@apollo/client';
-import { GET_REVIEWS_BY_SONG_ID } from '../../graphql/queries';
+import { GET_REVIEWS_BY_SONG_ID } from '../graphql/queries';
 import { Link } from 'react-router-dom';
-import '../../pages/SongDisplay.css';
+import './SongDisplay.css';
 
 interface DataProps {
   reviewsBySongId: ReviewInterface[];

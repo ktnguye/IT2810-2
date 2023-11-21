@@ -1,7 +1,7 @@
 import { SongDisplay } from './SongDisplay';
 import { SongInterface } from '../types/interfaces';
 import { Link, useParams } from 'react-router-dom';
-import ReviewsList from '../components/Review/ReviewsList';
+import ReviewsList from './ReviewsList';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_SONG } from '../graphql/queries';

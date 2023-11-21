@@ -65,9 +65,9 @@ export default function ReviewWriter(props: { songId: number }) {
           value={reviewName}
           onChange={handleNameChange}
           required
+          autoComplete="name"
         />
-        <label htmlFor="rating">Rating</label>
-        <div className="rating-stars" id="rating">
+        <div className="rating-stars">
           {[1, 2, 3, 4, 5].map((starNumber) => (
             <RatingStar
               key={starNumber}
@@ -86,8 +86,8 @@ export default function ReviewWriter(props: { songId: number }) {
           onChange={handleTextChange}
           required
         />
-        <br></br>
         <button
+          className="submit-button"
           type="submit" // not of type submit to keep it from activating when pressing enter in another field
           onClick={handleReviewSubmit}
         >
