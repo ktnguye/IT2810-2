@@ -11,9 +11,6 @@ import { RootState } from '../store/reducers/index';
 
 interface DataProps {
   songsByTitle: SongInterface[];
-}
-
-interface TagProps {
   tags: string[];
 }
 
@@ -33,23 +30,25 @@ export default function Home() {
 
   const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
     variables: {
-      title: searchTerm,
+      searchTerm: searchTerm,
       index: index,
       order: order,
       tag: tag,
     },
   });
 
-  const { data: tagsData } = useQuery<TagProps>(GET_TAGS, {
-    variables: {
-      title: searchTerm,
-    },
-  });
-
   const [songs, setSongs] = useState<SongInterface[]>([]);
 
   useEffect(() => {
-    if (data && data != undefined) {
+    if (data) {
+      if (data.tags) {
+        if (!hasUpdatedPossibleTags.current) {
+          setPossibleTags(data.tags.map((tag) => tag.toUpperCase()));
+          hasUpdatedPossibleTags.current = true;
+        }
+        setTags(data.tags.map((tag) => tag.toUpperCase()));
+      }
+
       if (oldIndex !== index) {
         if (oldOrder !== order) {
           setSongs([...data.songsByTitle]);
@@ -67,19 +66,6 @@ export default function Home() {
       setReachedEnd(false);
     }
   }, [data]);
-
-  useEffect(() => {
-    if (tagsData && tagsData != undefined) {
-      setTags(tagsData.tags.map((tag) => tag.toUpperCase()));
-    }
-  }, [tagsData]);
-
-  useEffect(() => {
-    if (tagsData && tagsData != undefined && !hasUpdatedPossibleTags.current) {
-      setPossibleTags(tagsData.tags.map((tag) => tag.toUpperCase()));
-      hasUpdatedPossibleTags.current = true;
-    }
-  }, [tagsData]);
 
   function activateSearch(Term: string) {
     setIndex(0);
