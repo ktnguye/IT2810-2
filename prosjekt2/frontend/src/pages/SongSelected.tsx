@@ -21,10 +21,6 @@ export default function SongSelected(props: { isShowingReviews?: boolean }) {
     tag: '',
   });
 
-  const lyrics = selectedSong.lyrics.split('\n').map((line, index) => {
-    return <p key={index}>{line}</p>;
-  });
-
   const { id } = useParams<{ id: string }>();
 
   const { data } = useQuery<DataProps>(GET_SONG, {
@@ -42,7 +38,7 @@ export default function SongSelected(props: { isShowingReviews?: boolean }) {
       {props.isShowingReviews ? (
         <ReviewsList song={selectedSong} />
       ) : (
-        <SongDisplay selectedSong={selectedSong} lyrics={lyrics} />
+        <SongDisplay selectedSong={selectedSong} />
       )}
     </>
   );

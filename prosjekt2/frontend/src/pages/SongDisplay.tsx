@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { SongInterface } from '../types/interfaces';
 import './SongDisplay.css';
 
-export function SongDisplay(props: {
-  selectedSong: SongInterface;
-  lyrics: JSX.Element[];
-}) {
+export function SongDisplay(props: { selectedSong: SongInterface }) {
+  const lyrics = props.selectedSong.lyrics.split('\n').map((line, index) => {
+    return <p key={index}>{line}</p>;
+  });
+
   return (
     <main className="song-display">
       <Link to={'/project2/'} className="back-button">
@@ -28,7 +29,7 @@ export function SongDisplay(props: {
         </section>
         <section tabIndex={0} className="song-display-lyrics">
           <h3>Lyrics</h3>
-          <div>{props.lyrics}</div>
+          <div>{lyrics}</div>
         </section>
       </div>
     </main>

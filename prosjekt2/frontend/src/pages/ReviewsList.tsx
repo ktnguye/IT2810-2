@@ -37,7 +37,7 @@ export default function ReviewsList(props: { song: SongInterface }) {
   }, [data]);
 
   return (
-    <div className="song-display-reviews">
+    <main className="song-display-reviews">
       <Link to={`/project2/song/${props.song.id}`} className="back-button">
         {'<-'}
       </Link>
@@ -49,13 +49,13 @@ export default function ReviewsList(props: { song: SongInterface }) {
       <button className="reviews-button" onClick={toggleReviewWriter}>
         {isShowingReviewWriter ? 'Stop Writing' : 'Write Review'}
       </button>
-      <div className="song-display-review">
+      <section className="song-display-review">
         {isShowingReviewWriter ? (
           <WriteReview songId={props.song.id} />
         ) : (
           reviews.map((review, index) => <Review key={index} review={review} />)
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
