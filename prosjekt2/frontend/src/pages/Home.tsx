@@ -6,7 +6,7 @@ import SongFeed from '../components/SongFeed/SongFeed';
 import './Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
-import { GET_SONGS_BY_TITLE, GET_TAGS } from '../graphql/queries';
+import { GET_SONGS_BY_TITLE } from '../graphql/queries';
 import { RootState } from '../store/reducers/index';
 
 interface DataProps {
