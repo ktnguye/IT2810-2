@@ -24,5 +24,5 @@ export interface ReviewInterface {
 
 export interface Action {
   type: string;
-  payload: any;
+  payload: string;
 }

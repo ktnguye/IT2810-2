@@ -7,6 +7,7 @@ import './Home.css';
 import { SongInterface } from '../types/interfaces';
 import { useQuery } from '@apollo/client';
 import { GET_SONGS_BY_TITLE, GET_TAGS } from '../graphql/queries';
+import { RootState } from '../store/reducers/index';
 
 interface DataProps {
   songsByTitle: SongInterface[];
@@ -22,7 +23,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [order, setOrder] = useState<number>(0);
 
-  const tag = useSelector((state: any) => state.sidebar.tag);
+  const tag = useSelector((state: RootState) => state.sidebar.tag);
   const [tags, setTags] = useState<string[]>([]);
   const [possibleTags, setPossibleTags] = useState<string[]>([]);
   const hasUpdatedPossibleTags = useRef<boolean>(false);
