@@ -6,6 +6,7 @@ import './ReviewList.css';
 import { useQuery } from '@apollo/client';
 import { GET_REVIEWS_BY_SONG_ID } from '../../graphql/queries';
 import { Link } from 'react-router-dom';
+import '../../pages/SongDisplay.css';
 
 interface DataProps {
   reviewsBySongId: ReviewInterface[];
@@ -44,12 +45,10 @@ export default function ReviewsList(props: { song: SongInterface }) {
       <h2 className="reviews-artist">
         {props.song.artist} ({props.song.year})
       </h2>
-      <h2>
-        Reviews{' '}
-        <button className="write-review-button" onClick={toggleReviewWriter}>
-          {isShowingReviewWriter ? 'Stop Writing' : 'Write Review'}
-        </button>
-      </h2>
+      <h2>Reviews </h2>
+      <button className="reviews-button" onClick={toggleReviewWriter}>
+        {isShowingReviewWriter ? 'Stop Writing' : 'Write Review'}
+      </button>
       <div className="song-display-review">
         {isShowingReviewWriter ? (
           <WriteReview songId={props.song.id} />
