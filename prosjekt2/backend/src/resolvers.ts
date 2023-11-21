@@ -97,5 +97,24 @@ export const resolvers = {
       await newReview.save();
       return newReview;
     },
+    deleteReview: async (parent, args) => {
+      const { id } = args;
+      const results = await Review.findByIdAndDelete(id);
+
+      if (!results) {
+        throw new Error(`Review with id ${id} does not exist`);
+      }
+
+      return results;
+    },
+    deleteAllReviews: async (parent, args) => {
+      const results = await Review.deleteMany({});
+
+      if (!results) {
+        throw new Error(`No reviews to delete`);
+      }
+
+      return results;
+    },
   },
 };

@@ -65,6 +65,7 @@
     width: 160px;
     height: 160px;
     font-size: 10px;
+    margin: 15px;
   }
 }
 
@@ -72,6 +73,7 @@
   .song-card {
     width: 100px;
     height: 100px;
+    margin: 10px;
     font-size: 7px;
   }
 }

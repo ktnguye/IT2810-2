@@ -38,6 +38,10 @@ export default function ReviewWriter(props: { songId: number }) {
   }, []);
 
   const handleReviewSubmit = () => {
+    if (reviewName === '' || reviewText === '') {
+      return;
+    }
+
     void addReview();
 
     window.location.reload();
@@ -74,6 +78,7 @@ export default function ReviewWriter(props: { songId: number }) {
         </div>
         <label htmlFor="review">Review</label>
         <textarea
+          className="review-textarea"
           id="review"
           name="review"
           value={reviewText}
@@ -82,7 +87,7 @@ export default function ReviewWriter(props: { songId: number }) {
         />
         <br></br>
         <button className="submit-button"
-          type="button" // not of type submit to keep it from activating when pressing enter in another field
+          type="submit"
           onClick={handleReviewSubmit}
         >
           Submit

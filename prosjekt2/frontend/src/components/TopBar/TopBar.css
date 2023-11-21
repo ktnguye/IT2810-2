@@ -19,7 +19,8 @@
 .search-bar {
   display: flex;
   width: 40%;
-  height: 60%;
+  height: 40px;
+  margin: 10px;
   background-color: #ffffff;
   color: #1a1a1a;
   font-size: 1.2rem;
@@ -63,7 +64,12 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .top-bar {
+    flex-direction: column;
+    height: 13vh;
+  }
+
   .search-bar {
-    width: 50%;
+    width: 90%;
   }
 }
