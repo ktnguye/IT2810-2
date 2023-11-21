@@ -17,13 +17,18 @@ export default function Review(props: { review: ReviewInterface }) {
   };
 
   return (
-    <div className="review-box">
-      <h2>{props.review.name}</h2>
-      <div className="review-header">
-        <p>({props.review.rating}/5)</p>
-        <p>{props.review.date.toString().split('T')[0]}</p>
+    <div className="review-box-container">
+      <div className="review-box">
+        <button className="delete-button" onClick={handleDelete}>
+          X
+        </button>
+        <h2>{props.review.name}</h2>
+        <div className="review-header">
+          <p>({props.review.rating}/5)</p>
+          <p>{props.review.date.toString().split('T')[0]}</p>
+        </div>
+        <p>{props.review.review}</p>
       </div>
-      <p>{props.review.review}</p>
     </div>
   );
 }

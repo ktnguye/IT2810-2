@@ -7,6 +7,10 @@
 .review-writer {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 95vw;
   align-items: center;
+}
+.review-textarea {
+  resize: none;
+  height: 100px;
 }
