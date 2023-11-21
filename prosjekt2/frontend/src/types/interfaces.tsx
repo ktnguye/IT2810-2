@@ -21,3 +21,8 @@ export interface ReviewInterface {
   review: string;
   date: Date;
 }
+
+export interface Action {
+  type: string;
+  payload: string;
+}

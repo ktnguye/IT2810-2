@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './SideBar.css';
 import Tag from './Tag';
 import songifyLogo from '../../assets/songify-logo.png';
@@ -6,14 +7,14 @@ import { Link } from 'react-router-dom';
 
 export default function SideBar(props: {
   tags: string[];
-  setTag: (tag: string) => void;
   currentTags: string[];
 }) {
   const [selectedTag, setSelectedTag] = useState<string>('');
+  const dispatch = useDispatch();
 
   const setTag = (tag: string) => {
     setSelectedTag(tag);
-    props.setTag(tag);
+    dispatch({ type: 'SET_TAG', payload: tag });
   };
 
   return (

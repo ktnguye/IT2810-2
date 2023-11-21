@@ -10,6 +10,8 @@ import {
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import SongDisplay from './pages/SongDisplay';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -38,18 +40,20 @@ const client = new ApolloClient({
 
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <Routes>
-        <Route
-          path="/project2/song/:id/reviews"
-          element={<SongDisplay isShowingReviews={true} />}
-        />
-        <Route
-          path="/project2/song/:id"
-          element={<SongDisplay isShowingReviews={false} />}
-        />
-        <Route path="/project2/" element={<Home />} />
-      </Routes>
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <Routes>
+          <Route
+            path="/project2/song/:id/reviews"
+            element={<SongDisplay isShowingReviews={true} />}
+          />
+          <Route
+            path="/project2/song/:id"
+            element={<SongDisplay isShowingReviews={false} />}
+          />
+          <Route path="/project2/" element={<Home />} />
+        </Routes>
+      </ApolloProvider>
+    </Provider>
   );
 }

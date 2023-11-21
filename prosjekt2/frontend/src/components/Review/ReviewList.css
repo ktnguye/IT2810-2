@@ -17,35 +17,6 @@
   font-size: 20px;
 }
 
-.write-review-button {
-  font-size: 15px;
-  font-weight: bold;
-  border: 1px solid #646cff;
-  margin-left: 5px;
-}
-
-.write-review-button:hover {
-  cursor: pointer;
-  border-color: #575dc4;
-}
-
-.toggle-reviews-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 15px;
-  font-weight: bold;
-  border: 1px solid white;
-  padding: 8px;
-  border-radius: 10px;
-  transition: border-color 0.1s;
-}
-
-.toggle-reviews-button:hover {
-  cursor: pointer;
-  border-color: #575dc4;
-}
-
 .song-display-info-and-lyrics {
   display: flex;
   flex-direction: row;
