@@ -28,7 +28,7 @@ export default function Home() {
 
   const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
     variables: {
-      title: searchTerm,
+      searchTerm: searchTerm,
       index: index,
       order: order,
       tag: tag,

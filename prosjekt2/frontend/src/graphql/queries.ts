@@ -2,12 +2,17 @@ import { gql } from '@apollo/client';
 
 export const GET_SONGS_BY_TITLE = gql`
   query SongsByTitle(
-    $title: String!
+    $searchTerm: String!
     $index: Int!
     $order: Int!
     $tag: String!
   ) {
-    songsByTitle(title: $title, index: $index, order: $order, tag: $tag) {
+    songsByTitle(
+      searchTerm: $searchTerm
+      index: $index
+      order: $order
+      tag: $tag
+    ) {
       title
       tag
       artist
@@ -16,7 +21,7 @@ export const GET_SONGS_BY_TITLE = gql`
       lyrics
       id
     }
-    tags(title: $title)
+    tags(searchTerm: $searchTerm)
   }
 `;
 
