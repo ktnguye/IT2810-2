@@ -18,7 +18,7 @@ export default function SongFeed(props: {
   reachedEnd: boolean;
 }) {
   return (
-    <div className="song-feed">
+    <section className="song-feed">
       {props.songs.length === 0 ? (
         <p className="no-songs-message">No songs found</p>
       ) : (
@@ -35,6 +35,6 @@ export default function SongFeed(props: {
           Load more
         </button>
       )}
-    </div>
+    </section>
   );
 }

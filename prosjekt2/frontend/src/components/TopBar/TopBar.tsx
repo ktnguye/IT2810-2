@@ -26,7 +26,7 @@ export default function TopBar(props: {
   };
 
   return (
-    <div className="top-bar">
+    <section className="top-bar">
       <SearchBar search={search} />
       <Select
         className="order-button"
@@ -35,6 +35,6 @@ export default function TopBar(props: {
         defaultValue={options[0]}
         onChange={(option) => handleChange(option)}
       />
-    </div>
+    </section>
   );
 }
