@@ -5,5 +5,12 @@
   },
   "devDependencies": {
     "cypress": "^13.5.1"
+  },
+  "scripts": {
+    "setup": "cd frontend && npm install && cd ../backend && npm install",
+    "server": "cd backend && npm run dev",
+    "dev": "cd frontend && npm run dev",
+    "lint": "cd frontend && npm run lint",
+    "prettier": "cd frontend && npx prettier -w ."
   }
 }

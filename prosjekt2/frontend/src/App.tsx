@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import '../css/App.css';
-import Home from './Home';
-import { SongInterface } from '../types/interfaces';
+import './App.css';
+import Home from './pages/Home';
 import {
   ApolloClient,
   ApolloProvider,
@@ -10,16 +9,7 @@ import {
   from,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-
-const song: SongInterface = {
-  id: 1,
-  title: 'Song title',
-  artist: 'Artist name',
-  tag: 'Rock',
-  year: 2021,
-  views: 328,
-  lyrics: 'Dette er en banger sang',
-};
+import SongDisplay from './pages/SongDisplay';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -50,7 +40,14 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Routes>
-        <Route path="/project2/song/:id" element={<Home song={song} />} />
+        <Route
+          path="/project2/song/:id/reviews"
+          element={<SongDisplay isShowingReviews={true} />}
+        />
+        <Route
+          path="/project2/song/:id"
+          element={<SongDisplay isShowingReviews={false} />}
+        />
         <Route path="/project2/" element={<Home />} />
       </Routes>
     </ApolloProvider>
