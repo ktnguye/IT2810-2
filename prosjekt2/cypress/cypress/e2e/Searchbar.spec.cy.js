@@ -1,6 +1,6 @@
 describe('use searchbar', () => {
   it('passes for searching after song title', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.search-bar').type('I Drink Wine');
     cy.get('.song-card').first().should('contain', 'I Drink Wine');
 
@@ -13,7 +13,7 @@ describe('use searchbar', () => {
   });
 
   it('passes for searching after artist name', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.search-bar').type('Drake');
     cy.get('.song-card').first().should('contain', 'Gods Plan');
     cy.get('.tag-button').contains('POP').click();

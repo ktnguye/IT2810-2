@@ -1,6 +1,6 @@
 describe('handle reviews', () => {
   it('passes for writing reviews', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.song-card').first().should('contain', 'Despacito Remix').click();
     cy.get('.reviews-button').click();
     cy.get('.reviews-header').should('contain', 'Despacito Remix');
@@ -26,7 +26,7 @@ describe('handle reviews', () => {
   });
 
   it('passes for stop writing reviews', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.song-card').eq(3).should('contain', 'Shape of You').click();
     cy.get('.reviews-button').click();
     cy.get('.reviews-header').should('contain', 'Shape of You');

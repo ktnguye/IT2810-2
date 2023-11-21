@@ -1,6 +1,6 @@
 describe('navigate page', () => {
   it('passes for visiting three different songs', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.song-card').first().click();
     cy.get('.song-display-title').should('contain', 'Despacito Remix');
     cy.get('.back-button').click();
@@ -13,7 +13,7 @@ describe('navigate page', () => {
   });
 
   it('passes for filtering and sorting', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.tag-button').eq(4).click();
     cy.get('.order-button').click();
     cy.contains('Views: Least first').click();
