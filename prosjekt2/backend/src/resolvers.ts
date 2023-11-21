@@ -12,7 +12,7 @@ export const resolvers = {
       return song || {};
     },
     songsByTitle: async (parent, args) => {
-      const { title, index, order, tag } = args;
+      const { searchTerm, index, order, tag } = args;
 
       const sortingOptions = [
         { views: -1, title: 1, year: 1, _id: 1 },
@@ -22,7 +22,10 @@ export const resolvers = {
       ];
 
       const songs = await Song.find({
-        title: { $regex: title, $options: 'i' },
+        $or: [
+          { title: { $regex: searchTerm, $options: 'i' } },
+          { artist: { $regex: searchTerm, $options: 'i' } },
+        ],
         tag: { $regex: tag, $options: 'i' },
       })
         .sort(sortingOptions[order])
@@ -32,9 +35,12 @@ export const resolvers = {
     },
     tags: async (parent, args) => {
       if (args) {
-        const { title } = args;
+        const { searchTerm } = args;
         const tags = await Song.find({
-          title: { $regex: title, $options: 'i' },
+          $or: [
+            { title: { $regex: searchTerm, $options: 'i' } },
+            { artist: { $regex: searchTerm, $options: 'i' } },
+          ],
         }).distinct('tag');
         return tags || [];
       } else {

@@ -6,8 +6,13 @@ export const typeDefs = gql`
     welcome(name: String!): String
     songs: [Song]
     song(id: Int): Song
-    songsByTitle(title: String, index: Int, order: Int, tag: String): [Song]
-    tags(title: String): [String]
+    songsByTitle(
+      searchTerm: String
+      index: Int
+      order: Int
+      tag: String
+    ): [Song]
+    tags(searchTerm: String): [String]
     reviewsBySongId(songId: Int!): [Review]
   }
 
