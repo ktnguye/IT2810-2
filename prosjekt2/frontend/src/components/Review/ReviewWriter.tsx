@@ -51,6 +51,7 @@ export default function ReviewWriter(props: { songId: number }) {
     <div className="review-writer">
       <h3>Write a review</h3>
       <form
+        aria-label="review-form"
         className="review-form"
         onSubmit={(e) => {
           e.preventDefault();

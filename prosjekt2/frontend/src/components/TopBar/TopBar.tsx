@@ -30,6 +30,7 @@ export default function TopBar(props: {
       <SearchBar search={search} />
       <Select
         className="order-button"
+        aria-label="order-button"
         options={options}
         defaultValue={options[0]}
         onChange={(option) => handleChange(option)}
