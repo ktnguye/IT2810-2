@@ -67,7 +67,7 @@ export default function ReviewWriter(props: { songId: number }) {
           required
         />
         <label htmlFor="rating">Rating</label>
-        <div className="rating-stars">
+        <div className="rating-stars" id="rating">
           {[1, 2, 3, 4, 5].map((starNumber) => (
             <RatingStar
               key={starNumber}
