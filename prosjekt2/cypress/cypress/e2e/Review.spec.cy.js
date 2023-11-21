@@ -11,6 +11,11 @@ describe('handle reviews', () => {
     cy.get('.rating-star').eq(0).click();
     cy.get('#review').type('This is a test review.');
     cy.get('.submit-button').click();
+    cy.contains('.review-box', 'DespacitoTestReview').should('exist');
+    cy.contains('.review-box', 'DespacitoTestReview')
+      .parent()
+      .find('.delete-button')
+      .click();
     cy.contains('.review-box', 'DespacitoTestReview').should('not.exist');
 
     cy.go(-2);
