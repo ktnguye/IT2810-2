@@ -14,7 +14,7 @@ export interface OptionInterface {
 }
 
 export interface ReviewInterface {
-  id: number;
+  _id: number;
   songId: number;
   name: string;
   rating: number;

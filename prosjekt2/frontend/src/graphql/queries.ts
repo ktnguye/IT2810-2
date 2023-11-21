@@ -42,6 +42,7 @@ export const GET_SONG = gql`
 export const GET_REVIEWS_BY_SONG_ID = gql`
   query ReviewsBySongId($songId: Int!) {
     reviewsBySongId(songId: $songId) {
+      _id
       songId
       name
       rating
