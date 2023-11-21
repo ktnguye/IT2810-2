@@ -39,10 +39,6 @@
   cursor: pointer;
 }
 
-.no-songs-message {
-  font-size: 2em; /* adjust as needed */
-}
-
 .reviews-button {
   border: 1px solid white;
   border-radius: 10px;

@@ -8,6 +8,7 @@
   -ms-overflow-style: none;
   margin: 0px;
   width: 100%;
+  height: 100vh;
   justify-content: space-around;
 }
 
@@ -26,6 +27,10 @@
     background-color 0.3s ease,
     box-shadow 0.3s ease;
   font-size: clamp(0.7rem, 1.5vw, 2rem);
+}
+
+.no-songs-message {
+  font-size: 2em;
 }
 
 .load-more-button:hover {
