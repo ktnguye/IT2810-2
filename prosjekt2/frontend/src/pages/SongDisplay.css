@@ -35,3 +35,7 @@
 .back-button:hover {
   cursor: pointer;
 }
+
+.no-songs-message {
+  font-size: 2em; /* adjust as needed */
+}
