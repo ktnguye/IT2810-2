@@ -21,6 +21,10 @@ These commands should run from the prosjekt2 directory:
    - Run client`npm run dev`
 
 4. **Testing**:
+These commands should run from the prosjekt2 directory:
+   - Run E2E tests: `npm run test:e2e`
+   - Open Cypress GUI: `npm run cypress:open`
+
 
    - Run tests: `npm run test` (Tests not implemented yet)
 
