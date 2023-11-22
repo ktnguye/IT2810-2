@@ -17,13 +17,17 @@
 3. **Starting the project**:
 
 These commands should run from the prosjekt2 directory:
-   - Run server: `npm run server`
-   - Run client: `npm run dev`
+
+- Run server: `npm run server`
+- Run client: `npm run dev`
 
 4. **Testing**:
+   These commands should run from the prosjekt2 directory:
 
-   - Run tests: `npm run test`
-      - To update snapshot tests, press `u` in the terminal
+   - Run E2E tests: `npm run test:e2e`
+   - Open Cypress GUI: `npm run cypress:open`
+   - Run component tests: `npm run test`
+     - To update snapshot tests, press `u` in the terminal
 
 5. **Code formatting**:
 
