@@ -12,8 +12,18 @@ export default function RatingStar(props: {
   };
 
   return (
-    <button type="button" onClick={handleSetRating} className="rating-star">
-      <img src={props.isFilled ? starFilled : star} alt="star" />
-    </button>
+    <>
+      <label htmlFor={`star${props.rating}`} hidden={true}>
+        Rating
+      </label>
+      <button
+        type="button"
+        onClick={handleSetRating}
+        className="rating-star"
+        id={`star${props.rating}`}
+      >
+        <img src={props.isFilled ? starFilled : star} alt="star" />
+      </button>
+    </>
   );
 }

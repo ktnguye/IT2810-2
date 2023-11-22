@@ -12,23 +12,26 @@ export default function SideBar(props: {
   const [selectedTag, setSelectedTag] = useState<string>('');
   const dispatch = useDispatch();
 
+  // Uses Redux store to set the tag
   const setTag = (tag: string) => {
     setSelectedTag(tag);
     dispatch({ type: 'SET_TAG', payload: tag });
   };
 
   return (
-    <div className="side-bar">
+    <header className="side-bar">
       <Link
         to="/project2/"
         onClick={() => {
           window.location.href = '/project2/';
         }}
       >
-        <img src={songifyLogo} className="side-bar-logo" alt="songify logo" />
+        <h1>
+          <img src={songifyLogo} className="side-bar-logo" alt="songify logo" />
+        </h1>
       </Link>
       <h2>Tag</h2>
-      <div className="tags-display">
+      <section className="tags-display">
         {props.tags.map((tag, index) => (
           <Tag
             key={index}
@@ -38,7 +41,7 @@ export default function SideBar(props: {
             isActive={props.currentTags.includes(tag)}
           />
         ))}
-      </div>
-    </div>
+      </section>
+    </header>
   );
 }
