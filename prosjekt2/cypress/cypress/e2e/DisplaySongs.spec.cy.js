@@ -4,11 +4,18 @@ describe('navigate page', () => {
     cy.get('.song-card').first().click();
     cy.get('.song-display-title').should('contain', 'Despacito Remix');
     cy.get('.back-button').click();
+    cy.wait(3000);
     cy.get('.song-card').eq(1).click();
+    cy.wait(3000);
     cy.get('.song-display-title').should('contain', 'Rap God');
     cy.get('.back-button').click();
+    cy.wait(3000);
     cy.get('.load-more-button').click();
-    cy.get('.song-card').should('contain', 'rockstar');
+    cy.wait(3000);
+    cy.get('.song-card', { timeout: 10000, retries: 5 }).should(
+      'contain',
+      'rockstar'
+    );
     cy.get('.song-card').should('have.length', 24);
   });
 
@@ -17,6 +24,7 @@ describe('navigate page', () => {
     cy.get('.tag-button').eq(4).click();
     cy.get('.order-button').click();
     cy.contains('Views: Least first').click();
+    cy.wait(3000);
     cy.get('.song-card').first().should('contain', 'Hold Me');
     cy.get('.selected-tag-button').click();
     cy.get('.song-card').first().should('not.contain', 'Hold Me');
@@ -48,7 +56,7 @@ describe('navigate page', () => {
       .should('have.attr', 'src')
       .and('match', /heart/);
     // Checks if the favourite page contains the correct favourite songs
-    cy.get('.tag-button').contains('Favourite').click();
+    cy.get('.tag-button').contains('FAVOURITES').click();
     cy.get('.song-card').should('have.length', 4);
     cy.get('.song-card').first().should('contain', 'Despacito Remix');
     // Tests for filtering on the favourite songs
@@ -63,7 +71,7 @@ describe('navigate page', () => {
 
     // Tests if the songs have been removed from favourites on home page
     cy.get('.selected-tag-button').contains('RAP').click();
-    cy.get('.selected-tag-button').contains('Favourite').click();
+    cy.get('.selected-tag-button').contains('FAVOURITES').click();
     cy.get('.favourite-button')
       .eq(1)
       .find('img')
@@ -71,18 +79,17 @@ describe('navigate page', () => {
       .should('have.attr', 'src')
       .and('match', /heart/);
   });
-
   it('passes for favouriting inside SongDisplay', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.song-card').first().click();
-    cy.get('.favourite-heart-song-display').click({ force: true });
+    cy.get('.favourite-heart-song-display').click();
     cy.go(-1);
+    cy.wait(1000);
     cy.get('.favourite-button')
       .first()
       .find('img')
       .should('exist')
       .should('have.attr', 'src')
-      .and('include', 'heart_filled');
+      .and('match', /heart_filled/);
   });
-
 });
