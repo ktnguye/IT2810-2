@@ -5,7 +5,7 @@ import { MockedProvider } from '@apollo/client/testing';
 import userEvent from '@testing-library/user-event';
 
 describe('ReviewWriter test', () => {
-  test('render ReviewWriter component', async () => {
+  test('render ReviewWriter component', () => {
     render(
       <MockedProvider>
         <ReviewWriter songId={0} />

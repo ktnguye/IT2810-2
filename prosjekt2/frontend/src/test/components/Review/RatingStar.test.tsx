@@ -11,7 +11,7 @@ describe('RatingStar test', () => {
     expect(screen.getByAltText('star')).toBeInTheDocument();
   });
 
-  test('correct star is shown', async () => {
+  test('correct star is shown', () => {
     const mockSetRating = vi.fn();
     render(<RatingStar setRating={mockSetRating} rating={1} isFilled={true} />);
 
