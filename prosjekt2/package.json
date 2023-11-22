@@ -3,11 +3,16 @@
     "@apollo/client": "^3.8.7",
     "graphql": "^16.8.1"
   },
+  "devDependencies": {
+    "cypress": "^13.5.1"
+  },
   "scripts": {
-    "setup": "cd frontend && npm install && cd ../backend && npm install",
+    "setup": "cd frontend && npm install && cd ../backend && npm install && cd ../cypress && npm install",
     "server": "cd backend && npm run dev",
     "dev": "cd frontend && npm run dev",
     "lint": "cd frontend && npm run lint",
-    "prettier": "cd frontend && npx prettier -w ."
+    "prettier": "cd frontend && npx prettier -w .",
+    "test:e2e": "cd cypress && npx cypress run",
+    "cypress:open": "cd cypress && npx cypress open"
   }
 }
