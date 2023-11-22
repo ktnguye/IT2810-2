@@ -22,12 +22,14 @@ export default function ReviewsList(props: { song: SongInterface }) {
 
   const [reviews, setReviews] = useState<ReviewInterface[]>([]);
 
+  // Fetches reviews from the database
   const { data } = useQuery<DataProps>(GET_REVIEWS_BY_SONG_ID, {
     variables: {
       songId: props.song.id,
     },
   });
 
+  // Updates the reviews when the data changes
   useEffect(() => {
     if (data && data.reviewsBySongId) {
       setReviews([...data.reviewsBySongId]);

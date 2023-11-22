@@ -12,6 +12,7 @@ export default function SideBar(props: {
   const [selectedTag, setSelectedTag] = useState<string>('');
   const dispatch = useDispatch();
 
+  // Uses Redux store to set the tag
   const setTag = (tag: string) => {
     setSelectedTag(tag);
     dispatch({ type: 'SET_TAG', payload: tag });
