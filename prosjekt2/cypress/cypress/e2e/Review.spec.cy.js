@@ -1,7 +1,8 @@
 describe('handle reviews', () => {
   it('passes for writing reviews', () => {
     cy.visit('http://it2810-30.idi.ntnu.no/project2/');
-    cy.get('.song-card').first().should('contain', 'Despacito Remix').click();
+    cy.get('.song-card').first().click();
+    cy.get('.song-display-title').should('contain', 'Despacito Remix');
     cy.get('.reviews-button').click();
     cy.get('.reviews-header').should('contain', 'Despacito Remix');
     cy.get('.review-box').should('have.length.least', 0);
