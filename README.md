@@ -18,7 +18,7 @@
 
 These commands should run from the prosjekt2 directory:
    - Run server: `npm run server`
-   - Run client`npm run dev`
+   - Run client: `npm run dev`
 
 4. **Testing**:
 
@@ -27,14 +27,22 @@ These commands should run from the prosjekt2 directory:
 5. **Code formatting**:
 
    Run these commands from the prosjekt2 directory:
+
    - Run linting: `npm run lint`
      - You will get three warnings that we decided was necessary for a better user experience
    - Run prettier: `npm run prettier`
 
-6. **Set up backend on VM**
+6. **Set up frontend on VM**
+   - cd to frontend
+   - run `npm run build` in terminal
+   - run `scp -r dist username@it2810-30.idi.ntnu.no:/tmp`
+   - log in to VM
+   - run `sudo mv /tmp/dist /var/www/html/project1`
+   - If frontend is already install run `sudo rm -r /var/www/html/project1` first
+7. **Set up backend on VM**
 
    - Delete node_modules
-   - Run `scp -r backend jonawo@it2810-30.idi.ntnu.no:/tmp` in terminal
+   - Run `scp -r backend username@it2810-30.idi.ntnu.no:/tmp` in terminal
    - Check if node version 20 or later is installed if not follow these steps - Run `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash` in VM - Run `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "$ {XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm` - Check node version. Should be 20 or later
    - Check if nohup is installed
@@ -43,8 +51,6 @@ These commands should run from the prosjekt2 directory:
    - Run `npm install`
    - Run `nohup npm run dev &`
    - Reinstall frontend
-
-   ### NB! If backend is not running contact Jonas Wolla for help
 
 ### Detailed documentation:
 

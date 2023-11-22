@@ -20,8 +20,9 @@ export default function SongFeed(props: {
 }) {
   return (
     <section className="song-feed">
+      {/* If there are no songs, display a message, otherwise display the songs */}
       {props.songs.length === 0 ? (
-        <p className="no-songs-message">No songs found</p>
+        <p className="no-songs-message">No results</p>
       ) : (
         props.songs.map((song, index) => (
           <Song

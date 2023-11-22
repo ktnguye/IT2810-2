@@ -4,6 +4,7 @@ import './TopBar.css';
 export default function SearchBar(props: { search: (term: string) => void }) {
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Searches for the song when the search term changes or when the timer runs out
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       props.search(searchTerm);
@@ -14,11 +15,13 @@ export default function SearchBar(props: { search: (term: string) => void }) {
     };
   }, [searchTerm]);
 
+  // Updates the search term when the user types
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = event.target.value;
     setSearchTerm(newSearchTerm);
   };
 
+  // Searches for the song when the user presses enter
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleSearch(searchTerm);

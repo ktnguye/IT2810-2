@@ -9,6 +9,7 @@ export default function Tag(props: {
 }) {
   const { isActive, isSelected, selectTag } = props;
 
+  // Selects the tag if it is not active, deselects it if it is active
   const selectChosenTag = (tag: string) => {
     if (isSelected) {
       selectTag('');
@@ -17,6 +18,7 @@ export default function Tag(props: {
     }
   };
 
+  // If the tag is not active, and it is selected, deselect it
   useEffect(() => {
     if (!isActive && isSelected) {
       selectTag('');

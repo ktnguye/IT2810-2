@@ -3,14 +3,18 @@ const { Review } = require('./models/Review.ts');
 
 // GraphQL Resolvers
 export const resolvers = {
+  
   Query: {
     greetings: () => 'GraphQL is Awesome',
     welcome: (parent, args) => `Hello ${args.name}`,
+    
     song: async (parent, args) => {
       const { id } = args;
       const song = await Song.findOne({ id });
       return song || {};
     },
+
+    // Fethces all songs from database. Takes in arguments for sorting
     songsByTitle: async (parent, args) => {
       const { searchTerm, index, order, tag, isShowingFavourites, favourites } =
         args;
@@ -35,6 +39,8 @@ export const resolvers = {
         .limit(12);
       return songs || [];
     },
+
+    // Fetches all songs from database. Takes in searchterm as an argument
     tags: async (parent, args) => {
       if (args) {
         const { searchTerm } = args;
@@ -50,6 +56,8 @@ export const resolvers = {
         return tags || [];
       }
     },
+
+    // Fetches all reviews for a song from database. Takes in songId as an argument
     reviewsBySongId: async (parent, args) => {
       const { songId } = args;
       const reviews = await Review.find({ songId });
@@ -87,6 +95,7 @@ export const resolvers = {
 
       return results;
     },
+
     createReview: async (parent, args) => {
       const { songId, name, rating, date, review } = args;
       const newReview = new Review({
