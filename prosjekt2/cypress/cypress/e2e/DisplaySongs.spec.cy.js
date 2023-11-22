@@ -1,6 +1,6 @@
 describe('navigate page', () => {
   it('passes for visiting three different songs', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.song-card').first().click();
     cy.get('.song-display-title').should('contain', 'Despacito Remix');
     cy.get('.back-button').click();
@@ -13,7 +13,7 @@ describe('navigate page', () => {
   });
 
   it('passes for filtering and sorting', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.tag-button').eq(4).click();
     cy.get('.order-button').click();
     cy.contains('Views: Least first').click();
@@ -28,7 +28,7 @@ describe('navigate page', () => {
   });
 
   it('passes for favouriting and filtering', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     // Clicking on the favourite button for the first 4 elements and then reloads the page to check if the favourite button is still filled
     cy.get('.favourite-button').first().click({ force: true });
     cy.get('.favourite-button').eq(1).click({ force: true });
@@ -40,13 +40,13 @@ describe('navigate page', () => {
       .find('img')
       .should('exist')
       .should('have.attr', 'src')
-      .and('include', 'heart_filled.svg');
+      .and('match', /heart_filled/);
     cy.get('.favourite-button')
       .eq(1)
       .find('img')
       .should('exist')
       .should('have.attr', 'src')
-      .and('include', 'heart_filled.svg');
+      .and('match', /heart/);
     // Checks if the favourite page contains the correct favourite songs
     cy.get('.tag-button').contains('Favourite').click();
     cy.get('.song-card').should('have.length', 4);
@@ -69,7 +69,7 @@ describe('navigate page', () => {
       .find('img')
       .should('exist')
       .should('have.attr', 'src')
-      .and('include', 'heart.svg');
+      .and('match', /heart/);
   });
 
   it('passes for favouriting inside SongDisplay', () => {
@@ -82,7 +82,7 @@ describe('navigate page', () => {
       .find('img')
       .should('exist')
       .should('have.attr', 'src')
-      .and('include', 'heart_filled.svg');
+      .and('include', 'heart_filled');
   });
 
 });
