@@ -22,6 +22,7 @@ describe('handle reviews', () => {
     cy.go(-2);
     cy.get('.song-card').eq(1).should('contain', 'Rap God').click();
     cy.get('.reviews-button').click();
+    cy.wait(5000);
     cy.get('.reviews-header').should('contain', 'Rap God');
     cy.contains('.review-box', 'DespacitoTestReview').should('not.exist');
   });
