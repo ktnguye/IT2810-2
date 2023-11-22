@@ -73,7 +73,7 @@ describe('navigate page', () => {
   });
 
   it('passes for favouriting inside SongDisplay', () => {
-    cy.visit('http://localhost:5173/project2');
+    cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.song-card').first().click();
     cy.get('.favourite-heart-song-display').click({ force: true });
     cy.go(-1);
