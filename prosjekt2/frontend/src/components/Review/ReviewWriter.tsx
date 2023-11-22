@@ -10,6 +10,7 @@ export default function ReviewWriter(props: { songId: number }) {
   const [reviewText, setReviewText] = useState<string>('');
   const [reviewDate, setReviewDate] = useState<Date>(new Date());
 
+  // Adds the review to the database
   const [addReview] = useMutation(CREATE_REVIEW, {
     variables: {
       songId: props.songId,
@@ -20,14 +21,17 @@ export default function ReviewWriter(props: { songId: number }) {
     },
   });
 
+  // Updates the review name
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReviewName(event.target.value);
   };
 
+  // Updates the review rating
   const handleRatingChange = (rating: number) => {
     setReviewRating(rating);
   };
 
+  // Updates the review text
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setReviewText(event.target.value);
   };
@@ -37,6 +41,7 @@ export default function ReviewWriter(props: { songId: number }) {
     setReviewDate(new Date(new Date()));
   }, []);
 
+  // Adds the review to the database
   const handleReviewSubmit = () => {
     if (reviewName === '' || reviewText === '') {
       return;
@@ -51,6 +56,7 @@ export default function ReviewWriter(props: { songId: number }) {
     <div className="review-writer">
       <h3>Write a review</h3>
       <form
+        aria-label="review-form"
         className="review-form"
         onSubmit={(e) => {
           e.preventDefault();
@@ -64,8 +70,8 @@ export default function ReviewWriter(props: { songId: number }) {
           value={reviewName}
           onChange={handleNameChange}
           required
+          autoComplete="name"
         />
-        <label htmlFor="rating">Rating</label>
         <div className="rating-stars">
           {[1, 2, 3, 4, 5].map((starNumber) => (
             <RatingStar
@@ -85,8 +91,8 @@ export default function ReviewWriter(props: { songId: number }) {
           onChange={handleTextChange}
           required
         />
-        <br></br>
         <button
+          className="submit-button"
           type="submit" // not of type submit to keep it from activating when pressing enter in another field
           onClick={handleReviewSubmit}
         >

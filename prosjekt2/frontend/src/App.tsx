@@ -9,10 +9,11 @@ import {
   from,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import SongDisplay from './pages/SongDisplay';
+import SongSelected from './pages/SongSelected';
 import { Provider } from 'react-redux';
 import store from './store';
 
+// Error handling
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message }) =>
@@ -24,6 +25,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
+// Link to the backend
 const link = from([
   errorLink,
   new HttpLink({
@@ -40,16 +42,18 @@ const client = new ApolloClient({
 
 export default function App() {
   return (
+    // Redux store is used to store the tag
     <Provider store={store}>
+      {/* ApolloProvider is used to connect to the backend */}
       <ApolloProvider client={client}>
         <Routes>
           <Route
             path="/project2/song/:id/reviews"
-            element={<SongDisplay isShowingReviews={true} />}
+            element={<SongSelected isShowingReviews={true} />}
           />
           <Route
             path="/project2/song/:id"
-            element={<SongDisplay isShowingReviews={false} />}
+            element={<SongSelected isShowingReviews={false} />}
           />
           <Route path="/project2/" element={<Home />} />
         </Routes>

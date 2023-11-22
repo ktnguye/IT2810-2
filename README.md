@@ -17,9 +17,8 @@
 3. **Starting the project**:
 
 These commands should run from the prosjekt2 directory:
-
-- Run server: `npm run server`
-- Run client`npm run dev`
+   - Run server: `npm run server`
+   - Run client: `npm run dev`
 
 4. **Testing**:
 
@@ -52,8 +51,6 @@ These commands should run from the prosjekt2 directory:
    - Run `npm install`
    - Run `nohup npm run dev &`
    - Reinstall frontend
-
-   ### NB! If backend is not running contact Jonas Wolla for help
 
 ### Detailed documentation:
 

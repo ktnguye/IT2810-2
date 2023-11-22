@@ -7,10 +7,12 @@ export default function TopBar(props: {
   setGlobalSearchTerm: (searchTerm: string) => void;
   setOrder: (order: number) => void;
 }) {
+  // Searches for the song when the user presses enter
   const search = (term: string) => {
     props.setGlobalSearchTerm(term);
   };
 
+  // Options for the order select
   const options: OptionInterface[] = [
     { value: '0', label: 'Views: Most first' },
     { value: '1', label: 'Views: Least first' },
@@ -18,6 +20,7 @@ export default function TopBar(props: {
     { value: '3', label: 'Name: Z-A' },
   ];
 
+  // Changes the order when the user selects an option
   const handleChange = (selectedOption: SingleValue<OptionInterface>) => {
     if (selectedOption == null) {
       return;
@@ -26,14 +29,15 @@ export default function TopBar(props: {
   };
 
   return (
-    <div className="top-bar">
+    <section className="top-bar">
       <SearchBar search={search} />
       <Select
         className="order-button"
+        aria-label="order-button"
         options={options}
         defaultValue={options[0]}
         onChange={(option) => handleChange(option)}
       />
-    </div>
+    </section>
   );
 }
