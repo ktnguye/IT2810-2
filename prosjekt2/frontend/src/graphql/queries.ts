@@ -6,12 +6,16 @@ export const GET_SONGS_BY_TITLE = gql`
     $index: Int!
     $order: Int!
     $tag: String!
+    $isShowingFavourites: Boolean!
+    $favourites: [Int!]!
   ) {
     songsByTitle(
       searchTerm: $searchTerm
       index: $index
       order: $order
       tag: $tag
+      isShowingFavourites: $isShowingFavourites
+      favourites: $favourites
     ) {
       title
       tag
