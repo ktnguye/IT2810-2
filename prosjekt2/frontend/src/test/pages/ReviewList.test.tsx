@@ -5,8 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { SongInterface } from '../../types/interfaces.tsx';
 import { MockedProvider } from "@apollo/client/testing";
 
-
-
 describe('ReviewList test', () => {
     const mockSong: SongInterface = {
         title: "Rap God",

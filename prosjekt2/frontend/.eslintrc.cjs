@@ -22,7 +22,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   settings: {
     react: {
-      version: "detect"
-    }
-  }
+      version: 'detect',
+    },
+  },
 };
