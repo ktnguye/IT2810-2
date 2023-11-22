@@ -74,11 +74,10 @@ describe('navigate page', () => {
       .should('have.attr', 'src')
       .and('match', /heart/);
   });
-
   it('passes for favouriting inside SongDisplay', () => {
     cy.visit('http://it2810-30.idi.ntnu.no/project2/');
     cy.get('.song-card').first().click();
-    cy.get('.favourite-heart-song-display').click({ force: true });
+    cy.get('.favourite-heart-song-display').click();
     cy.go(-1);
     cy.get('.favourite-button')
       .first()
@@ -87,5 +86,6 @@ describe('navigate page', () => {
       .should('have.attr', 'src')
       .and('match', /heart_filled/);
   });
-
 });
+
+
