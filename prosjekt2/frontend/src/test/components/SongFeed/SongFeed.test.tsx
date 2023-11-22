@@ -26,7 +26,7 @@ describe('SongFeed test', () => {
         },
     ];
     test('render SongFeed component', () => {
-        render(<BrowserRouter> <SongFeed songs={mockSongs} loadMore={vi.fn()} reachedEnd={false} /> </BrowserRouter>)
+        render(<BrowserRouter> <SongFeed songs={mockSongs} loadMore={vi.fn()} reachedEnd={false} isShowingFavourites={false} /> </BrowserRouter>)
 
         const songTitle1 = screen.getByText('HUMBLE.');
         const songArtist1 = screen.getByText('Kendrick Lamar');
@@ -43,13 +43,13 @@ describe('SongFeed test', () => {
     });
 
     test('render SongFeed component with no songs', () => {
-        render(<BrowserRouter> <SongFeed songs={[]} loadMore={vi.fn()} reachedEnd={false} /> </BrowserRouter>)
+        render(<BrowserRouter> <SongFeed songs={[]} loadMore={vi.fn()} reachedEnd={false} isShowingFavourites={false} /> </BrowserRouter>)
         const noSongsMessage = screen.getByText('No results');
         expect(noSongsMessage).toBeInTheDocument();
     });
 
     test('snapshot test', () => {
-        const result = render(<BrowserRouter> <SongFeed songs={mockSongs} loadMore={vi.fn()} reachedEnd={false} /> </BrowserRouter>)
+        const result = render(<BrowserRouter> <SongFeed songs={mockSongs} loadMore={vi.fn()} reachedEnd={false} isShowingFavourites={false} /> </BrowserRouter>)
         expect(result).toMatchSnapshot();
     });
 });

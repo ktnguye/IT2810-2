@@ -29,6 +29,14 @@ describe('ReviewList test', () => {
 
         expect(screen.getByText('Reviews')).toBeInTheDocument();
         expect(screen.getByText('Write Review')).toBeInTheDocument();
+    });
 
+    test('snapshot test', () => {
+        const result = render(<MockedProvider>
+            <BrowserRouter>
+                <ReviewsList song={mockSong} />
+            </BrowserRouter>
+        </MockedProvider>)
+        expect(result).toMatchSnapshot();
     });
 });

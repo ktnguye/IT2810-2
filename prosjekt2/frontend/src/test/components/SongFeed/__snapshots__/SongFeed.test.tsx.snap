@@ -17,6 +17,15 @@ exports[`SongFeed test > snapshot test 1`] = `
           <div
             class="song-cover-fade"
           />
+          <button
+            class="favourite-button"
+          >
+            <img
+              alt="star"
+              class="favourite-heart"
+              src="/project2/src/assets/heart.svg"
+            />
+          </button>
           <div
             class="song-info"
           >
@@ -45,6 +54,15 @@ exports[`SongFeed test > snapshot test 1`] = `
           <div
             class="song-cover-fade"
           />
+          <button
+            class="favourite-button"
+          >
+            <img
+              alt="star"
+              class="favourite-heart"
+              src="/project2/src/assets/heart.svg"
+            />
+          </button>
           <div
             class="song-info"
           >
@@ -87,6 +105,15 @@ exports[`SongFeed test > snapshot test 1`] = `
         <div
           class="song-cover-fade"
         />
+        <button
+          class="favourite-button"
+        >
+          <img
+            alt="star"
+            class="favourite-heart"
+            src="/project2/src/assets/heart.svg"
+          />
+        </button>
         <div
           class="song-info"
         >
@@ -115,6 +142,15 @@ exports[`SongFeed test > snapshot test 1`] = `
         <div
           class="song-cover-fade"
         />
+        <button
+          class="favourite-button"
+        >
+          <img
+            alt="star"
+            class="favourite-heart"
+            src="/project2/src/assets/heart.svg"
+          />
+        </button>
         <div
           class="song-info"
         >

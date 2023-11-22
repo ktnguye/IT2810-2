@@ -1,0 +1,198 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SongDisplay test > snapshot test 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <main
+        class="song-display"
+      >
+        <a
+          class="back-button"
+          href="/project2/"
+        >
+          &lt;-
+        </a>
+        <div
+          class="song-display-info-and-lyrics"
+        >
+          <section
+            class="song-display-info"
+          >
+            <h1
+              class="song-display-title"
+            >
+              Work
+            </h1>
+            <h2
+              class="song-display-artist"
+            >
+              Rihanna
+               (
+              2016
+              )
+            </h2>
+            <p>
+              Tag: 
+              POP
+            </p>
+            <p>
+              Views: 
+              231000
+            </p>
+            <a
+              class="reviews-button"
+              href="/project2/song/1/reviews"
+            >
+              Show Reviews
+            </a>
+          </section>
+          <section
+            class="song-display-lyrics"
+            tabindex="0"
+          >
+            <h3>
+              Lyrics
+            </h3>
+            <div>
+              <p>
+                Work work work work work work
+              </p>
+            </div>
+          </section>
+          <button
+            class="favourite-button-song-display"
+          >
+            <img
+              alt="star"
+              class="favourite-heart-song-display"
+              src="/project2/src/assets/heart.svg"
+            />
+          </button>
+        </div>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="song-display"
+    >
+      <a
+        class="back-button"
+        href="/project2/"
+      >
+        &lt;-
+      </a>
+      <div
+        class="song-display-info-and-lyrics"
+      >
+        <section
+          class="song-display-info"
+        >
+          <h1
+            class="song-display-title"
+          >
+            Work
+          </h1>
+          <h2
+            class="song-display-artist"
+          >
+            Rihanna
+             (
+            2016
+            )
+          </h2>
+          <p>
+            Tag: 
+            POP
+          </p>
+          <p>
+            Views: 
+            231000
+          </p>
+          <a
+            class="reviews-button"
+            href="/project2/song/1/reviews"
+          >
+            Show Reviews
+          </a>
+        </section>
+        <section
+          class="song-display-lyrics"
+          tabindex="0"
+        >
+          <h3>
+            Lyrics
+          </h3>
+          <div>
+            <p>
+              Work work work work work work
+            </p>
+          </div>
+        </section>
+        <button
+          class="favourite-button-song-display"
+        >
+          <img
+            alt="star"
+            class="favourite-heart-song-display"
+            src="/project2/src/assets/heart.svg"
+          />
+        </button>
+      </div>
+    </main>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

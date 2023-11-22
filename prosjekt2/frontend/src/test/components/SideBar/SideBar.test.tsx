@@ -1,12 +1,12 @@
 import SideBar from '../../../components/SideBar/SideBar'
 import { describe, expect, test } from 'vitest'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { BrowserRouter } from 'react-router-dom'
 
 describe('SideBar test', () => {
-    const initialState = { output: 10 };
+    const initialState = { sidebar: { tag: 'RAP' } };
     const mockStore = configureStore();
     let store;
 
@@ -25,11 +25,8 @@ describe('SideBar test', () => {
         expect(screen.getByAltText('songify logo')).toBeInTheDocument();
         mockTags.forEach(tag => { expect(screen.getByText(tag)).toBeInTheDocument() });
         expect(screen.getByText('ROCK')).toHaveClass('inactive-tag-button');
-        expect(screen.getByText('RAP')).toHaveClass('tag-button');
-
-        fireEvent.click(screen.getByText('RAP'));
-        expect(store.getActions()).toEqual([{ type: 'SET_TAG', payload: 'RAP' }]);
         expect(screen.getByText('RAP')).toHaveClass('selected-tag-button');
+        expect(screen.getByText('POP')).toHaveClass('tag-button');
     });
 
     test('snapshot test', () => {

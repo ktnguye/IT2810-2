@@ -1,113 +1,81 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SideBar test > snapshot test 1`] = `
+exports[`ReviewList test > snapshot test 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <header
-        class="side-bar"
+      <main
+        class="song-display-reviews"
       >
         <a
-          href="/project2/"
+          class="back-button"
+          href="/project2/song/1"
         >
-          <h1>
-            <img
-              alt="songify logo"
-              class="side-bar-logo"
-              src="/project2/src/assets/songify-logo.png"
-            />
-          </h1>
+          &lt;-
         </a>
-        <h2>
-          Favourite
-        </h2>
-        <div
-          class="tags-display"
+        <h1
+          class="reviews-header"
         >
-          <button
-            class="tag-button"
-          >
-            Favourite
-          </button>
-        </div>
-        <h2>
-          Tag
+          Rap God
+        </h1>
+        <h2
+          class="reviews-artist"
+        >
+          Eminem
+           (
+          2013
+          )
         </h2>
+        <h2>
+          Reviews 
+        </h2>
+        <button
+          class="reviews-button"
+        >
+          Write Review
+        </button>
         <section
-          class="tags-display"
-        >
-          <button
-            class="selected-tag-button"
-          >
-            RAP
-          </button>
-          <button
-            class="tag-button"
-          >
-            POP
-          </button>
-          <button
-            class="inactive-tag-button"
-            disabled=""
-          >
-            ROCK
-          </button>
-        </section>
-      </header>
+          class="song-display-review"
+        />
+      </main>
     </div>
   </body>,
   "container": <div>
-    <header
-      class="side-bar"
+    <main
+      class="song-display-reviews"
     >
       <a
-        href="/project2/"
+        class="back-button"
+        href="/project2/song/1"
       >
-        <h1>
-          <img
-            alt="songify logo"
-            class="side-bar-logo"
-            src="/project2/src/assets/songify-logo.png"
-          />
-        </h1>
+        &lt;-
       </a>
-      <h2>
-        Favourite
-      </h2>
-      <div
-        class="tags-display"
+      <h1
+        class="reviews-header"
       >
-        <button
-          class="tag-button"
-        >
-          Favourite
-        </button>
-      </div>
-      <h2>
-        Tag
+        Rap God
+      </h1>
+      <h2
+        class="reviews-artist"
+      >
+        Eminem
+         (
+        2013
+        )
       </h2>
+      <h2>
+        Reviews 
+      </h2>
+      <button
+        class="reviews-button"
+      >
+        Write Review
+      </button>
       <section
-        class="tags-display"
-      >
-        <button
-          class="selected-tag-button"
-        >
-          RAP
-        </button>
-        <button
-          class="tag-button"
-        >
-          POP
-        </button>
-        <button
-          class="inactive-tag-button"
-          disabled=""
-        >
-          ROCK
-        </button>
-      </section>
-    </header>
+        class="song-display-review"
+      />
+    </main>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
