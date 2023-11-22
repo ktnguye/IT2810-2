@@ -17,8 +17,9 @@
 3. **Starting the project**:
 
 These commands should run from the prosjekt2 directory:
-   - Run server: `npm run server`
-   - Run client: `npm run dev`
+
+- Run server: `npm run server`
+- Run client: `npm run dev`
 
 4. **Testing**:
 
@@ -37,8 +38,8 @@ These commands should run from the prosjekt2 directory:
    - run `npm run build` in terminal
    - run `scp -r dist username@it2810-30.idi.ntnu.no:/tmp`
    - log in to VM
-   - run `sudo mv /tmp/dist /var/www/html/project1`
-   - If frontend is already install run `sudo rm -r /var/www/html/project1` first
+   - run `sudo mv /tmp/dist /var/www/html/project2`
+   - If frontend is already install run `sudo rm -r /var/www/html/project2` first
 7. **Set up backend on VM**
 
    - Delete node_modules
