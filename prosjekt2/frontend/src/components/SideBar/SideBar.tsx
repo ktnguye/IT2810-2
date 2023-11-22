@@ -41,10 +41,10 @@ export default function SideBar(props: {
           <img src={songifyLogo} className="side-bar-logo" alt="songify logo" />
         </h1>
       </Link>
-      <h2>Favourite</h2>
+      <h2>FAVOURITES</h2>
       <div className="tags-display">
         <Tag
-          tag="Favourite"
+          tag="FAVOURITES"
           isSelected={isShowingFavorites}
           selectTag={toggleShowFavorites}
           isActive={true}
