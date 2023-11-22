@@ -9,7 +9,7 @@ import {
   from,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import SongDisplay from './pages/SongDisplay';
+import SongSelected from './pages/SongSelected';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -45,11 +45,11 @@ export default function App() {
         <Routes>
           <Route
             path="/project2/song/:id/reviews"
-            element={<SongDisplay isShowingReviews={true} />}
+            element={<SongSelected isShowingReviews={true} />}
           />
           <Route
             path="/project2/song/:id"
-            element={<SongDisplay isShowingReviews={false} />}
+            element={<SongSelected isShowingReviews={false} />}
           />
           <Route path="/project2/" element={<Home />} />
         </Routes>
