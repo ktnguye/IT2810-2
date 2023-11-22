@@ -7,8 +7,8 @@ describe('navigate page', () => {
     cy.get('.song-card').eq(1).click();
     cy.get('.song-display-title').should('contain', 'Rap God');
     cy.get('.back-button').click();
-    cy.get('.load-more-button', { timeout: 20000 }).click();
-    cy.get('.song-card', { retries: 3 }).should('contain', 'rockstar');
+    cy.get('.load-more-button').click();
+    cy.get('.song-card', { timeout: 10000 }).should('contain', 'rockstar');
     cy.get('.song-card').should('have.length', 24);
   });
 
@@ -48,7 +48,7 @@ describe('navigate page', () => {
       .should('have.attr', 'src')
       .and('match', /heart/);
     // Checks if the favourite page contains the correct favourite songs
-    cy.get('.tag-button').contains('Favourite').click();
+    cy.get('.tag-button').contains('FAVOURITES').click();
     cy.get('.song-card').should('have.length', 4);
     cy.get('.song-card').first().should('contain', 'Despacito Remix');
     // Tests for filtering on the favourite songs
@@ -63,7 +63,7 @@ describe('navigate page', () => {
 
     // Tests if the songs have been removed from favourites on home page
     cy.get('.selected-tag-button').contains('RAP').click();
-    cy.get('.selected-tag-button').contains('Favourite').click();
+    cy.get('.selected-tag-button').contains('FAVOURITES').click();
     cy.get('.favourite-button')
       .eq(1)
       .find('img')
@@ -82,7 +82,7 @@ describe('navigate page', () => {
       .find('img')
       .should('exist')
       .should('have.attr', 'src')
-      .and('include', 'heart_filled');
+      .and('match', /heart_filled/);
   });
 
 });
