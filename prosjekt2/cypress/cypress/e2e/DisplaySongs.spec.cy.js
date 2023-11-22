@@ -8,7 +8,10 @@ describe('navigate page', () => {
     cy.get('.song-display-title').should('contain', 'Rap God');
     cy.get('.back-button').click();
     cy.get('.load-more-button').click();
-    cy.get('.song-card', { timeout: 10000 }).should('contain', 'rockstar');
+    cy.get('.song-card', { timeout: 10000, retries: 5 }).should(
+      'contain',
+      'rockstar'
+    );
     cy.get('.song-card').should('have.length', 24);
   });
 
