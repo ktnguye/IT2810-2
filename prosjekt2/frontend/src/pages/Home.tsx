@@ -88,12 +88,10 @@ export default function Home() {
   return (
     <div className="home">
       <SideBar tags={possibleTags} currentTags={tags} />
-      <div className="home-page-content">
+      <main className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
-        <div className="home-page-song-content">
-          <SongFeed songs={songs} loadMore={loadMore} reachedEnd={reachedEnd} />
-        </div>
-      </div>
+        <SongFeed songs={songs} loadMore={loadMore} reachedEnd={reachedEnd} />
+      </main>
     </div>
   );
 }

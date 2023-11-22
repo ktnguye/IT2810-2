@@ -9,7 +9,7 @@
   margin: 0px;
   width: 100%;
   height: 100vh;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .load-more-button {
@@ -42,17 +42,8 @@
   border-color: #575dc4;
 }
 
-/* if screen width is less then 750px, set width to 50% */
-@media only screen and (max-width: 750px) {
-  .song-feed {
-    width: 40%;
-    flex-grow: 1;
-  }
-}
-
 @media only screen and (max-width: 500px) {
   .song-feed {
-    width: 100%;
     height: 87vh;
   }
 }

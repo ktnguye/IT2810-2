@@ -56,6 +56,7 @@ export default function ReviewWriter(props: { songId: number }) {
     <div className="review-writer">
       <h3>Write a review</h3>
       <form
+        aria-label="review-form"
         className="review-form"
         onSubmit={(e) => {
           e.preventDefault();
@@ -69,8 +70,8 @@ export default function ReviewWriter(props: { songId: number }) {
           value={reviewName}
           onChange={handleNameChange}
           required
+          autoComplete="name"
         />
-        <label htmlFor="rating">Rating</label>
         <div className="rating-stars">
           {[1, 2, 3, 4, 5].map((starNumber) => (
             <RatingStar
@@ -90,8 +91,8 @@ export default function ReviewWriter(props: { songId: number }) {
           onChange={handleTextChange}
           required
         />
-        <br></br>
         <button
+          className="submit-button"
           type="submit" // not of type submit to keep it from activating when pressing enter in another field
           onClick={handleReviewSubmit}
         >
