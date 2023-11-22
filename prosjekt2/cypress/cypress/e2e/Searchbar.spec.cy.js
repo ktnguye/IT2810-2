@@ -9,7 +9,7 @@ describe('use searchbar', () => {
       .should('have.value', '')
       .type('SongThatDoesNotExist');
     cy.get('.song-card').should('have.length', 0);
-    cy.get('.no-songs-message').should('contain', 'No songs found');
+    cy.get('.no-songs-message').should('contain', 'No results');
   });
 
   it('passes for searching after artist name', () => {
