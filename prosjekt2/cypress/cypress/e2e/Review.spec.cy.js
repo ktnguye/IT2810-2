@@ -28,7 +28,8 @@ describe('handle reviews', () => {
 
   it('passes for stop writing reviews', () => {
     cy.visit('http://it2810-30.idi.ntnu.no/project2/');
-    cy.get('.song-card').eq(3).should('contain', 'Shape of You').click();
+    cy.get('.song-card').eq(3).click();
+    cy.get('.song-display-title').should('contain', 'Shape of You');
     cy.get('.reviews-button').click();
     cy.get('.reviews-header').should('contain', 'Shape of You');
     cy.get('.reviews-button').click();
