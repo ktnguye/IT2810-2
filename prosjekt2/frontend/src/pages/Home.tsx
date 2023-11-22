@@ -14,6 +14,12 @@ interface DataProps {
   tags: string[];
 }
 
+let oldOrder = 0;
+let oldIndex = 0;
+let oldSearchTerm = '';
+let oldTag = '';
+let oldIsShowingFavourites = false;
+
 export default function Home() {
   const [index, setIndex] = useState<number>(0);
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
@@ -22,21 +28,39 @@ export default function Home() {
 
   const tag = useSelector((state: RootState) => state.sidebar.tag);
   const [tags, setTags] = useState<string[]>([]);
+
+  const isShowingFavourites = useSelector(
+    (state: RootState) => state.sidebar.showFavorites
+  );
+
+  const favourites = localStorage.getItem('favourites');
+  // remove last character of array (comma) and split into number array
+  const favouritesArray = favourites
+    ? favourites
+        .slice(0, -1)
+        .split(',')
+        .map((id) => parseInt(id))
+    : [];
+
   const [possibleTags, setPossibleTags] = useState<string[]>([]);
   const hasUpdatedPossibleTags = useRef<boolean>(false);
 
-  let oldOrder = 0;
-  let oldIndex = 0;
-
-  // Fetches songs from the database
   const { data } = useQuery<DataProps>(GET_SONGS_BY_TITLE, {
     variables: {
       searchTerm: searchTerm,
       index: index,
       order: order,
       tag: tag,
+      isShowingFavourites: isShowingFavourites,
+      favourites: favouritesArray,
     },
   });
+
+  useEffect(() => {
+    if (isShowingFavourites) {
+      setIndex(0);
+    }
+  }, [isShowingFavourites]);
 
   const [songs, setSongs] = useState<SongInterface[]>([]);
 
@@ -51,21 +75,42 @@ export default function Home() {
         setTags(data.tags.map((tag) => tag.toUpperCase()));
       }
 
-      if (oldIndex !== index) {
-        if (oldOrder !== order) {
-          setSongs([...data.songsByTitle]);
-          oldOrder = order;
-        }
+      // if we changed the order, search term or tag
+      if (
+        oldOrder != order ||
+        oldSearchTerm != searchTerm ||
+        oldTag != tag ||
+        oldIsShowingFavourites != isShowingFavourites
+      ) {
+        setSongs(data.songsByTitle);
+        oldOrder = order;
+        oldSearchTerm = searchTerm;
+        oldTag = tag;
+        oldIsShowingFavourites = isShowingFavourites;
+      } else if (oldIndex < index) {
+        // if we incremented the index
         setSongs([...songs, ...data.songsByTitle]);
-        oldIndex = index;
       } else {
-        setSongs([...data.songsByTitle]);
+        // if we didn't change the order, index, search term or tag
+        // we are either loading the page for the first time where we have no songs
+        // so we set the songs to the data
+        if (songs.length == 0) {
+          setSongs(data.songsByTitle);
+        }
+        // or we have manipulated the data in some way
+        // if we have unfavourited a song and we are showing favourites
+        // we need to remove the song from the list
+        else if (isShowingFavourites) {
+          setSongs(data.songsByTitle);
+        }
+        oldIndex = index;
+        // which means we can still show the same songs
       }
-    }
-    if (data && data.songsByTitle.length < 12) {
-      setReachedEnd(true);
-    } else {
-      setReachedEnd(false);
+      if (data && data.songsByTitle.length < 12) {
+        setReachedEnd(true);
+      } else {
+        setReachedEnd(false);
+      }
     }
   }, [data]);
 
@@ -90,7 +135,12 @@ export default function Home() {
       <SideBar tags={possibleTags} currentTags={tags} />
       <main className="home-page-content">
         <TopBar setGlobalSearchTerm={activateSearch} setOrder={setNewOrder} />
-        <SongFeed songs={songs} loadMore={loadMore} reachedEnd={reachedEnd} />
+        <SongFeed
+          songs={songs}
+          loadMore={loadMore}
+          reachedEnd={reachedEnd}
+          isShowingFavourites={isShowingFavourites}
+        />
       </main>
     </div>
   );

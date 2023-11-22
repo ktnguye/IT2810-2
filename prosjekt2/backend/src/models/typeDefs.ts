@@ -11,6 +11,8 @@ export const typeDefs = gql`
       index: Int
       order: Int
       tag: String
+      isShowingFavourites: Boolean
+      favourites: [Int]
     ): [Song]
     tags(searchTerm: String): [String]
     reviewsBySongId(songId: Int!): [Review]

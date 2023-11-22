@@ -1,18 +1,29 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './SideBar.css';
 import Tag from './Tag';
 import songifyLogo from '../../assets/songify-logo.png';
 import { Link } from 'react-router-dom';
+import { RootState } from '../../store/reducers';
 
 export default function SideBar(props: {
   tags: string[];
   currentTags: string[];
 }) {
-  const [selectedTag, setSelectedTag] = useState<string>('');
+  const [selectedTag, setSelectedTag] = useState<string>(
+    useSelector((state: RootState) => state.sidebar.tag)
+  );
   const dispatch = useDispatch();
 
-  // Uses Redux store to set the tag
+  const [isShowingFavorites, setIsShowingFavorites] = useState<boolean>(
+    useSelector((state: RootState) => state.sidebar.showFavorites)
+  );
+
+  const toggleShowFavorites = () => {
+    setIsShowingFavorites(!isShowingFavorites);
+    dispatch({ type: 'TOGGLE_SHOW_FAVORITES', payload: !isShowingFavorites });
+  };
+
   const setTag = (tag: string) => {
     setSelectedTag(tag);
     dispatch({ type: 'SET_TAG', payload: tag });
@@ -30,6 +41,15 @@ export default function SideBar(props: {
           <img src={songifyLogo} className="side-bar-logo" alt="songify logo" />
         </h1>
       </Link>
+      <h2>Favourite</h2>
+      <div className="tags-display">
+        <Tag
+          tag="Favourite"
+          isSelected={isShowingFavorites}
+          selectTag={toggleShowFavorites}
+          isActive={true}
+        />
+      </div>
       <h2>Tag</h2>
       <section className="tags-display">
         {props.tags.map((tag, index) => (

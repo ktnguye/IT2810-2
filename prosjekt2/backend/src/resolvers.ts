@@ -16,7 +16,8 @@ export const resolvers = {
 
     // Fethces all songs from database. Takes in arguments for sorting
     songsByTitle: async (parent, args) => {
-      const { searchTerm, index, order, tag } = args;
+      const { searchTerm, index, order, tag, isShowingFavourites, favourites } =
+        args;
 
       const sortingOptions = [
         { views: -1, title: 1, year: 1, _id: 1 },
@@ -31,6 +32,7 @@ export const resolvers = {
           { artist: { $regex: searchTerm, $options: 'i' } },
         ],
         tag: { $regex: tag, $options: 'i' },
+        id: isShowingFavourites ? { $in: favourites } : { $exists: true },
       })
         .sort(sortingOptions[order])
         .skip(index)

@@ -1,16 +1,26 @@
 import { Action } from '../../types/interfaces';
 
-const initialState = {
+interface SidebarState {
+  tag: string;
+  showFavorites: boolean;
+}
+
+const initialState: SidebarState = {
   tag: '',
+  showFavorites: false,
 };
 
-// Reducer for the tag in the sidebar
-const sidebarReducer = (state = initialState, action: Action) => {
+const sidebarReducer = (state: SidebarState = initialState, action: Action) => {
   switch (action.type) {
     case 'SET_TAG':
       return {
         ...state,
         tag: action.payload,
+      };
+    case 'TOGGLE_SHOW_FAVORITES':
+      return {
+        ...state,
+        showFavorites: !state.showFavorites,
       };
     default:
       return state;
