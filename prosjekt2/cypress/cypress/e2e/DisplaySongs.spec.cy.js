@@ -4,10 +4,14 @@ describe('navigate page', () => {
     cy.get('.song-card').first().click();
     cy.get('.song-display-title').should('contain', 'Despacito Remix');
     cy.get('.back-button').click();
+    cy.wait(3000);
     cy.get('.song-card').eq(1).click();
+    cy.wait(3000);
     cy.get('.song-display-title').should('contain', 'Rap God');
     cy.get('.back-button').click();
+    cy.wait(3000);
     cy.get('.load-more-button').click();
+    cy.wait(3000);
     cy.get('.song-card', { timeout: 10000, retries: 5 }).should(
       'contain',
       'rockstar'
@@ -20,6 +24,7 @@ describe('navigate page', () => {
     cy.get('.tag-button').eq(4).click();
     cy.get('.order-button').click();
     cy.contains('Views: Least first').click();
+    cy.wait(3000);
     cy.get('.song-card').first().should('contain', 'Hold Me');
     cy.get('.selected-tag-button').click();
     cy.get('.song-card').first().should('not.contain', 'Hold Me');
@@ -79,6 +84,7 @@ describe('navigate page', () => {
     cy.get('.song-card').first().click();
     cy.get('.favourite-heart-song-display').click();
     cy.go(-1);
+    cy.wait(1000);
     cy.get('.favourite-button')
       .first()
       .find('img')
@@ -87,5 +93,3 @@ describe('navigate page', () => {
       .and('match', /heart_filled/);
   });
 });
-
-
