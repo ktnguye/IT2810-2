@@ -1,0 +1,198 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SongFeed test > snapshot test 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+       
+      <section
+        class="song-feed"
+      >
+        <a
+          class="song-card"
+          href="/project2/song/1"
+          style="background-color: rgb(45, 0, 78);"
+        >
+          <div
+            class="song-cover-fade"
+          />
+          <div
+            class="song-info"
+          >
+            <h2
+              class="song-title"
+            >
+              HUMBLE.
+            </h2>
+            <h3
+              class="song-artist"
+            >
+              Kendrick Lamar
+            </h3>
+            <p
+              class="song-tags"
+            >
+              RAP
+            </p>
+          </div>
+        </a>
+        <a
+          class="song-card"
+          href="/project2/song/2"
+          style="background-color: rgb(0, 0, 51);"
+        >
+          <div
+            class="song-cover-fade"
+          />
+          <div
+            class="song-info"
+          >
+            <h2
+              class="song-title"
+            >
+              Gods Plan
+            </h2>
+            <h3
+              class="song-artist"
+            >
+              Drake
+            </h3>
+            <p
+              class="song-tags"
+            >
+              RAP
+            </p>
+          </div>
+        </a>
+        <button
+          class="load-more-button"
+        >
+          Load more
+        </button>
+      </section>
+       
+    </div>
+  </body>,
+  "container": <div>
+     
+    <section
+      class="song-feed"
+    >
+      <a
+        class="song-card"
+        href="/project2/song/1"
+        style="background-color: rgb(45, 0, 78);"
+      >
+        <div
+          class="song-cover-fade"
+        />
+        <div
+          class="song-info"
+        >
+          <h2
+            class="song-title"
+          >
+            HUMBLE.
+          </h2>
+          <h3
+            class="song-artist"
+          >
+            Kendrick Lamar
+          </h3>
+          <p
+            class="song-tags"
+          >
+            RAP
+          </p>
+        </div>
+      </a>
+      <a
+        class="song-card"
+        href="/project2/song/2"
+        style="background-color: rgb(0, 0, 51);"
+      >
+        <div
+          class="song-cover-fade"
+        />
+        <div
+          class="song-info"
+        >
+          <h2
+            class="song-title"
+          >
+            Gods Plan
+          </h2>
+          <h3
+            class="song-artist"
+          >
+            Drake
+          </h3>
+          <p
+            class="song-tags"
+          >
+            RAP
+          </p>
+        </div>
+      </a>
+      <button
+        class="load-more-button"
+      >
+        Load more
+      </button>
+    </section>
+     
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

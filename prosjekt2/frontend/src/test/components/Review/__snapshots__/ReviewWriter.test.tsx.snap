@@ -1,0 +1,316 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ReviewWriter test > snapshot test 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="review-writer"
+      >
+        <h3>
+          Write a review
+        </h3>
+        <form
+          aria-label="review-form"
+          class="review-form"
+        >
+          <label
+            for="name"
+          >
+            Name
+          </label>
+          <input
+            autocomplete="name"
+            id="name"
+            name="name"
+            required=""
+            type="text"
+            value=""
+          />
+          <div
+            class="rating-stars"
+          >
+            <label
+              for="star1"
+              hidden=""
+            >
+              Rating
+            </label>
+            <button
+              class="rating-star"
+              id="star1"
+              type="button"
+            >
+              <img
+                alt="star"
+                src="/project2/src/assets/star_filled.svg"
+              />
+            </button>
+            <label
+              for="star2"
+              hidden=""
+            >
+              Rating
+            </label>
+            <button
+              class="rating-star"
+              id="star2"
+              type="button"
+            >
+              <img
+                alt="star"
+                src="/project2/src/assets/star.svg"
+              />
+            </button>
+            <label
+              for="star3"
+              hidden=""
+            >
+              Rating
+            </label>
+            <button
+              class="rating-star"
+              id="star3"
+              type="button"
+            >
+              <img
+                alt="star"
+                src="/project2/src/assets/star.svg"
+              />
+            </button>
+            <label
+              for="star4"
+              hidden=""
+            >
+              Rating
+            </label>
+            <button
+              class="rating-star"
+              id="star4"
+              type="button"
+            >
+              <img
+                alt="star"
+                src="/project2/src/assets/star.svg"
+              />
+            </button>
+            <label
+              for="star5"
+              hidden=""
+            >
+              Rating
+            </label>
+            <button
+              class="rating-star"
+              id="star5"
+              type="button"
+            >
+              <img
+                alt="star"
+                src="/project2/src/assets/star.svg"
+              />
+            </button>
+          </div>
+          <label
+            for="review"
+          >
+            Review
+          </label>
+          <textarea
+            class="review-textarea"
+            id="review"
+            name="review"
+            required=""
+          />
+          <button
+            class="submit-button"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="review-writer"
+    >
+      <h3>
+        Write a review
+      </h3>
+      <form
+        aria-label="review-form"
+        class="review-form"
+      >
+        <label
+          for="name"
+        >
+          Name
+        </label>
+        <input
+          autocomplete="name"
+          id="name"
+          name="name"
+          required=""
+          type="text"
+          value=""
+        />
+        <div
+          class="rating-stars"
+        >
+          <label
+            for="star1"
+            hidden=""
+          >
+            Rating
+          </label>
+          <button
+            class="rating-star"
+            id="star1"
+            type="button"
+          >
+            <img
+              alt="star"
+              src="/project2/src/assets/star_filled.svg"
+            />
+          </button>
+          <label
+            for="star2"
+            hidden=""
+          >
+            Rating
+          </label>
+          <button
+            class="rating-star"
+            id="star2"
+            type="button"
+          >
+            <img
+              alt="star"
+              src="/project2/src/assets/star.svg"
+            />
+          </button>
+          <label
+            for="star3"
+            hidden=""
+          >
+            Rating
+          </label>
+          <button
+            class="rating-star"
+            id="star3"
+            type="button"
+          >
+            <img
+              alt="star"
+              src="/project2/src/assets/star.svg"
+            />
+          </button>
+          <label
+            for="star4"
+            hidden=""
+          >
+            Rating
+          </label>
+          <button
+            class="rating-star"
+            id="star4"
+            type="button"
+          >
+            <img
+              alt="star"
+              src="/project2/src/assets/star.svg"
+            />
+          </button>
+          <label
+            for="star5"
+            hidden=""
+          >
+            Rating
+          </label>
+          <button
+            class="rating-star"
+            id="star5"
+            type="button"
+          >
+            <img
+              alt="star"
+              src="/project2/src/assets/star.svg"
+            />
+          </button>
+        </div>
+        <label
+          for="review"
+        >
+          Review
+        </label>
+        <textarea
+          class="review-textarea"
+          id="review"
+          name="review"
+          required=""
+        />
+        <button
+          class="submit-button"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
