@@ -22,7 +22,8 @@ These commands should run from the prosjekt2 directory:
 
 4. **Testing**:
 
-   - Run tests: `npm run test` (Tests not implemented yet)
+   - Run tests: `npm run test`
+      - To update snapshot tests, press `u` in the terminal
 
 5. **Code formatting**:
 
