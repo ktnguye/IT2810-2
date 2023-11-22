@@ -16,6 +16,7 @@ export default function SongFeed(props: {
   songs: SongInterface[];
   loadMore: () => void;
   reachedEnd: boolean;
+  isShowingFavourites: boolean;
 }) {
   return (
     <section className="song-feed">
@@ -27,6 +28,7 @@ export default function SongFeed(props: {
             key={song.id}
             song={song}
             color={songColors[index % songColors.length]}
+            isShowingFavourites={props.isShowingFavourites}
           />
         ))
       )}
