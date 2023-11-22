@@ -74,8 +74,8 @@
 .favourite-heart {
   filter: invert(57%) sepia(76%) saturate(1138%) hue-rotate(317deg)
     brightness(111%) contrast(100%);
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   pointer-events: visible;
 }
@@ -93,6 +93,12 @@
     font-size: 10px;
     margin: 15px;
   }
+  .favourite-button {
+    width: 35px;
+    height: 35px;
+    left: 10px;
+    top: 10px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -101,5 +107,11 @@
     height: 100px;
     margin: 10px;
     font-size: 7px;
+  }
+  .favourite-button {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    top: 5px;
   }
 }
