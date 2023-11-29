@@ -11,11 +11,6 @@ exports[`Review test > snapshot test 1`] = `
         <div
           class="review-box"
         >
-          <button
-            class="delete-button"
-          >
-            X
-          </button>
           <h2>
             Joe Test
           </h2>
@@ -45,11 +40,6 @@ exports[`Review test > snapshot test 1`] = `
       <div
         class="review-box"
       >
-        <button
-          class="delete-button"
-        >
-          X
-        </button>
         <h2>
           Joe Test
         </h2>
