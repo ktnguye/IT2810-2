@@ -12,6 +12,7 @@ describe('Review test', () => {
     rating: 5,
     review: 'Good Song!',
     date: new Date('2022-01-01'),
+    ownerID: 'testuser',
   };
 
   test('render Review component', () => {
