@@ -10,6 +10,16 @@ export default function ReviewWriter(props: { songId: number }) {
   const [reviewRating, setReviewRating] = useState<number>(1);
   const [reviewText, setReviewText] = useState<string>('');
   const [reviewDate, setReviewDate] = useState<Date>(new Date());
+  const [reviewOwnerID, setReviewOwnerID] = useState<string>(
+    localStorage.getItem('userID') || ''
+  );
+
+  if (reviewOwnerID === '') {
+    const newID = uuidv4();
+
+    setReviewOwnerID(newID);
+    localStorage.setItem('userID', newID);
+  }
 
   // Adds the review to the database
   const [addReview] = useMutation(CREATE_REVIEW, {
@@ -19,7 +29,7 @@ export default function ReviewWriter(props: { songId: number }) {
       rating: reviewRating,
       review: reviewText,
       date: reviewDate,
-      ownerID: localStorage.getItem('userID') as string,
+      ownerID: reviewOwnerID,
     },
   });
 
@@ -47,13 +57,6 @@ export default function ReviewWriter(props: { songId: number }) {
   const handleReviewSubmit = () => {
     if (reviewName === '' || reviewText === '') {
       return;
-    }
-
-    let userID = localStorage.getItem('userID');
-
-    if (userID === null) {
-      userID = uuidv4();
-      localStorage.setItem('userID', userID);
     }
 
     void addReview();
