@@ -71,6 +71,7 @@ export default function ReviewWriter(props: { songId: number }) {
           onChange={handleNameChange}
           required
           autoComplete="name"
+          className="name-input"
         />
         <div className="rating-stars">
           {[1, 2, 3, 4, 5].map((starNumber) => (
