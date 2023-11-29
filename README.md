@@ -35,7 +35,7 @@ These commands should run from the prosjekt2 directory:
 
    - Run linting: `npm run lint`
      - You will get two warnings that we decided was necessary for a better user experience
-       - These warnings are warnings surrounding the dynamic search function
+       - These warnings are warnings surrounding the dynamic search function. Fixing these errors will result in the useEffect every rerender, and is therefore avoided.
    - Run prettier: `npm run prettier`
 
 6. **Set up frontend on VM**
