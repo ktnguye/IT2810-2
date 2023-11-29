@@ -10,10 +10,7 @@ export default function Review(props: { review: ReviewInterface }) {
 
   const userID = localStorage.getItem('userID');
 
-  console.log(props.review.ownerID);
-
   // Deletes the review from the database
-  // Only commented out so that if we want to implement an admin user, this can be used
   const handleDelete = () => {
     void deleteReview();
     window.location.reload();
