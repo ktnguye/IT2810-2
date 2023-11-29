@@ -3,12 +3,23 @@ import RatingStar from './RatingStar';
 import './ReviewWriter.css';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../../graphql/mutations';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ReviewWriter(props: { songId: number }) {
   const [reviewName, setReviewName] = useState<string>('');
   const [reviewRating, setReviewRating] = useState<number>(1);
   const [reviewText, setReviewText] = useState<string>('');
   const [reviewDate, setReviewDate] = useState<Date>(new Date());
+  const [reviewOwnerID, setReviewOwnerID] = useState<string>(
+    localStorage.getItem('userID') || ''
+  );
+
+  if (reviewOwnerID === '') {
+    const newID = uuidv4();
+
+    setReviewOwnerID(newID);
+    localStorage.setItem('userID', newID);
+  }
 
   // Adds the review to the database
   const [addReview] = useMutation(CREATE_REVIEW, {
@@ -18,6 +29,7 @@ export default function ReviewWriter(props: { songId: number }) {
       rating: reviewRating,
       review: reviewText,
       date: reviewDate,
+      ownerID: reviewOwnerID,
     },
   });
 
@@ -71,6 +83,7 @@ export default function ReviewWriter(props: { songId: number }) {
           onChange={handleNameChange}
           required
           autoComplete="name"
+          className="name-input"
         />
         <div className="rating-stars">
           {[1, 2, 3, 4, 5].map((starNumber) => (

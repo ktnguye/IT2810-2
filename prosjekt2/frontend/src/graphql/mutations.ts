@@ -7,6 +7,7 @@ export const CREATE_REVIEW = gql`
     $rating: Int!
     $date: String!
     $review: String!
+    $ownerID: String!
   ) {
     createReview(
       songId: $songId
@@ -14,12 +15,14 @@ export const CREATE_REVIEW = gql`
       rating: $rating
       date: $date
       review: $review
+      ownerID: $ownerID
     ) {
       songId
       name
       rating
       date
       review
+      ownerID
     }
   }
 `;
@@ -32,6 +35,7 @@ export const DELETE_REVIEW = gql`
       rating
       date
       review
+      ownerID
     }
   }
 `;

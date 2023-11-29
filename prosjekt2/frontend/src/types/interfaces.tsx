@@ -20,6 +20,7 @@ export interface ReviewInterface {
   rating: number;
   review: string;
   date: Date;
+  ownerID: string;
 }
 
 export interface Action {
