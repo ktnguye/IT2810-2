@@ -22,6 +22,7 @@ exports[`ReviewWriter test > snapshot test 1`] = `
           </label>
           <input
             autocomplete="name"
+            class="name-input"
             id="name"
             name="name"
             required=""
@@ -151,6 +152,7 @@ exports[`ReviewWriter test > snapshot test 1`] = `
         </label>
         <input
           autocomplete="name"
+          class="name-input"
           id="name"
           name="name"
           required=""

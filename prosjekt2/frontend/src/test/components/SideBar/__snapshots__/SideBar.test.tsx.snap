@@ -20,7 +20,7 @@ exports[`SideBar test > snapshot test 1`] = `
           </h1>
         </a>
         <h2>
-          Favourite
+          FAVOURITES
         </h2>
         <div
           class="tags-display"
@@ -28,7 +28,7 @@ exports[`SideBar test > snapshot test 1`] = `
           <button
             class="tag-button"
           >
-            Favourite
+            FAVOURITES
           </button>
         </div>
         <h2>
@@ -73,7 +73,7 @@ exports[`SideBar test > snapshot test 1`] = `
         </h1>
       </a>
       <h2>
-        Favourite
+        FAVOURITES
       </h2>
       <div
         class="tags-display"
@@ -81,7 +81,7 @@ exports[`SideBar test > snapshot test 1`] = `
         <button
           class="tag-button"
         >
-          Favourite
+          FAVOURITES
         </button>
       </div>
       <h2>
