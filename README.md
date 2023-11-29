@@ -34,7 +34,8 @@ These commands should run from the prosjekt2 directory:
    Run these commands from the prosjekt2 directory:
 
    - Run linting: `npm run lint`
-     - You will get three warnings that we decided was necessary for a better user experience
+     - You will get two warnings that we decided was necessary for a better user experience
+       - These warnings are warnings surrounding the dynamic search function
    - Run prettier: `npm run prettier`
 
 6. **Set up frontend on VM**
