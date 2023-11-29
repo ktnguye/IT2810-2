@@ -52,6 +52,7 @@ export const GET_REVIEWS_BY_SONG_ID = gql`
       rating
       date
       review
+      ownerID
     }
   }
 `;

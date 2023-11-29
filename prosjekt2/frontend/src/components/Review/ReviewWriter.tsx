@@ -4,6 +4,9 @@ import './ReviewWriter.css';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../../graphql/mutations';
 
+// uuidv4 is used to generate a random ID for the review
+import { v4 as uuidv4 } from 'uuid';
+
 export default function ReviewWriter(props: { songId: number }) {
   const [reviewName, setReviewName] = useState<string>('');
   const [reviewRating, setReviewRating] = useState<number>(1);
@@ -18,6 +21,7 @@ export default function ReviewWriter(props: { songId: number }) {
       rating: reviewRating,
       review: reviewText,
       date: reviewDate,
+      ownerID: localStorage.getItem('userID') as string,
     },
   });
 
@@ -47,9 +51,19 @@ export default function ReviewWriter(props: { songId: number }) {
       return;
     }
 
+    let userID = localStorage.getItem('userID');
+
+    if (userID === null) {
+      userID = uuidv4();
+      localStorage.setItem('userID', userID);
+    }
+
     void addReview();
 
-    window.location.reload();
+    console.log('Review submitted');
+    console.log('Owner ID: ' + userID);
+
+    // window.location.reload();
   };
 
   return (
