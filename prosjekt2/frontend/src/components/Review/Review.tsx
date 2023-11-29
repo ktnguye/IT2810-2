@@ -8,6 +8,8 @@ export default function Review(props: { review: ReviewInterface }) {
     variables: { id: props.review._id },
   });
 
+  const userID = localStorage.getItem('userID');
+
   // Deletes the review from the database
   const handleDelete = () => {
     void deleteReview();
@@ -17,9 +19,14 @@ export default function Review(props: { review: ReviewInterface }) {
   return (
     <div className="review-box-container">
       <div className="review-box">
-        <button className="delete-button" onClick={handleDelete}>
-          X
-        </button>
+        {
+          // Only show the delete button if the review is made by the current user
+          userID === props.review.ownerID && (
+            <button className="delete-button" onClick={handleDelete}>
+              X
+            </button>
+          )
+        }
         <h2>{props.review.name}</h2>
         <div className="review-header">
           <p>({props.review.rating}/5)</p>

@@ -3,11 +3,10 @@ const { Review } = require('./models/Review.ts');
 
 // GraphQL Resolvers
 export const resolvers = {
-  
   Query: {
     greetings: () => 'GraphQL is Awesome',
     welcome: (parent, args) => `Hello ${args.name}`,
-    
+
     song: async (parent, args) => {
       const { id } = args;
       const song = await Song.findOne({ id });
@@ -97,13 +96,14 @@ export const resolvers = {
     },
 
     createReview: async (parent, args) => {
-      const { songId, name, rating, date, review } = args;
+      const { songId, name, rating, date, review, ownerID } = args;
       const newReview = new Review({
         songId,
         name,
         rating,
         date,
         review,
+        ownerID,
       });
       await newReview.save();
       return newReview;

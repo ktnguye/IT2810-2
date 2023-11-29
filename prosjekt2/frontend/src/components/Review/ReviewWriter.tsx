@@ -3,6 +3,7 @@ import RatingStar from './RatingStar';
 import './ReviewWriter.css';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../../graphql/mutations';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ReviewWriter(props: { songId: number }) {
   const [reviewName, setReviewName] = useState<string>('');
@@ -18,6 +19,7 @@ export default function ReviewWriter(props: { songId: number }) {
       rating: reviewRating,
       review: reviewText,
       date: reviewDate,
+      ownerID: localStorage.getItem('userID') as string,
     },
   });
 
@@ -45,6 +47,13 @@ export default function ReviewWriter(props: { songId: number }) {
   const handleReviewSubmit = () => {
     if (reviewName === '' || reviewText === '') {
       return;
+    }
+
+    let userID = localStorage.getItem('userID');
+
+    if (userID === null) {
+      userID = uuidv4();
+      localStorage.setItem('userID', userID);
     }
 
     void addReview();

@@ -37,6 +37,7 @@ export const typeDefs = gql`
     rating: Int
     date: String
     review: String
+    ownerID: String
   }
 
   # Mutation
@@ -66,6 +67,7 @@ export const typeDefs = gql`
       rating: Int
       date: String
       review: String
+      ownerID: String
     ): Review
     deleteReview(id: ID): Review
     deleteAllReviews: Review
